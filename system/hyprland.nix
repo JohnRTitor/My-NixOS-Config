@@ -1,7 +1,7 @@
 # Configure hyprland window manager
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
-{ pkgs, pkgs-stable, ... }:
+{ lib, pkgs, pkgs-stable, ... }:
 
 let
   python-packages = pkgs.python3.withPackages (ps: [
@@ -18,6 +18,10 @@ in
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;
+    banner = ''
+                    Welcome Traveler
+      You are about to enter the realm of Hyprland
+    '';
   };
 
   # hyprland portal is already included, gtk is also needed for compatibility

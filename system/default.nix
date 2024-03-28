@@ -21,6 +21,8 @@
     ./hyprland.nix
     # Include GNOME Keyring settings
     ./gnome-keyring.nix
+    # Include browsers settings
+    ./browsers.nix
     # include printing settings
     ./printing.nix
     # include essential services

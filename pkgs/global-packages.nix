@@ -17,7 +17,6 @@
       ananicy-rules-cachyos
       # firewalld
       ffmpeg # codecs
-      fuseiso # to mount iso system images
       git # obviously
       glib # for gsettings to work
       gpgme # gnupg # for encryption and auth keys
@@ -25,40 +24,13 @@
       libnotify
       openssh # for ssh
       python3
-      udiskie # automount usb drives
-
-      ## BROWSERS ##
-
-      # firefox, chrome from unstable are incompatible with stable
-      (google-chrome.override {
-        # enable video encoding and hardware acceleration, along with several
-        # suitable for my configuration
-        # change it if you have any issues
-        # note the spaces, they are required
-        # Vulkan is not stable, likely because of drivers
-        commandLineArgs = ""
-          + " --enable-accelerated-video-decode"
-          + " --enable-accelerated-mjpeg-decode"
-          + " --enable-gpu-compositing"
-          + " --enable-gpu-rasterization" # dont enable in about:flags
-          + " --enable-native-gpu-memory-buffers"
-          + " --enable-raw-draw"
-          + " --enable-zero-copy" # dont enable in about:flags
-          + " --ignore-gpu-blocklist" # dont enable in about:flags
-          # + " --use-vulkan"
-          + " --enable-features="
-              + "VaapiVideoEncoder,"
-              + "CanvasOopRasterization,"
-              # + "Vulkan"
-          ;
-      })
 
       ## ARCHIVES ##
       zip
       unzip
 
       ## URL FETCH TOOLS ##
-      pkgsx86_64_v3-core.curl # curl
+      curl
       wget
 
       ## EDITOR ##
@@ -90,10 +62,4 @@
       
     ])
   ;
-    
-  # Enable Firefox Wayland
-  programs.firefox = {
-  	enable = true;
-  	package = pkgs.firefox-wayland;
-  };
 }
