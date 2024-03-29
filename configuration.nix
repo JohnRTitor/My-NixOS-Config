@@ -23,8 +23,8 @@
     # include development environment
     ./dev-environment # check ./dev-environment/default.nix for more details
 
-    # include custom cache server settings
-    #./misc/custom-cache-server.nix # disabled temporarily cause it messes up nix-shell
+    # include custom cache server settings (DANGEROUS: this will mess up nix-shell)
+    #./misc/custom-cache-server.nix
   ];
 
   # Features for building
@@ -39,8 +39,9 @@
     "gccarch-x86-64-v4"
     "gccarch-znver4"
   ];
-  # User should be allowed to use custom cache servers
-  nix.settings.trusted-users = [ userSettings.username ];
+  # cachix can be used to add cache servers
+  # easily by running `cachix use <cache-name>`
+  environment.systemPackages = [ pkgs.cachix ];
 
   networking.hostName = systemSettings.hostname; # Define your hostname in flake.nix
 

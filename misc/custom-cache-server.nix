@@ -1,9 +1,16 @@
 # This config is used to define a custom cache server setting for the system
 # It is useful when your build time is slow due to the network latency
+
+# NOT USED BY DEFAULT
+# ONLY KEPT FOR REFERENCE
+# SINCE IT IS DANEROUS TO USE AND CAN LEAD TO SYSTEM BREAKAGE
+
 { userSettings, ... }:
 {
   nix.settings = {
-    # main user has access to modify trusted cache server
+    # THIS IS REQUIRED BUT ALSO DANGEROUS
+    # main user has access to nix store
+    # THIS IS EQUIVALENT TO GIVING ROOT ACCESS TO THE MAIN USER
     trusted-users = [ userSettings.username ];
 
     substituters = [
@@ -20,15 +27,15 @@
     ];
 
     trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       # nix community's cache server public key
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
-  # Use socks5 proxy for nix-daemon
-  # To accelerate downloads
-  systemd.services.nix-daemon.environment = {
-    # socks5h means that the hostname is resolved by the SOCKS server
-    https_proxy = "socks5h://localhost:7891";
-    # https_proxy = "http://localhost:7890"; # or use http protocol instead of socks5
-  };
+
+  # DONT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+  # socks5 proxy might speed up downloads in some cases
+  # but most of the time it won't work leading to you not able to rebuild and fix your system
+  # systemd.services.nix-daemon.environment.https_proxy = "socks5h://localhost:7891"; # socks5 proxy
+  # systemd.services.nix-daemon.environment.https_proxy = "http://localhost:7890"; # https proxy
 }

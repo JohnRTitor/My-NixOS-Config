@@ -1,7 +1,7 @@
 { config, lib, pkgs, pkgs-edge, userSettings, ... }:
 let
   # To be able to use cachix cache from devenv
-  # nix.settings.trusted-users = [ "example-user" ]
+  # run `cachix use devenv`
   # has to be set
   useDevenv = true;
 in
@@ -25,6 +25,8 @@ in
   ]) ++ lib.optionals (useDevenv) (with pkgs-edge; [
     devenv
   ]);
+
+  # Direnv to automatically enable local environment in a directory
   programs.direnv = {
     enable = true; # also enable direnv
     silent = true; # silent direnv outputs
