@@ -25,7 +25,14 @@
 
     # include custom cache server settings (DANGEROUS: this will mess up nix-shell)
     #./misc/custom-cache-server.nix
+
+    # FIXME: once devenv is updated to use --option binary-caches, remove this
+    # just nix.settings.trusted-public-keys and nix.settings.trusted-substituters will be enough
+    # for now: if `cachix use <repo>` is used, manually copy to ./misc/cachix dir
+    ./misc/cachix.nix # absolute location /etc/nixos/cachix.nix
   ];
+
+  nix.settings.trusted-users = [ userSettings.username ]; # FIXME: see above
 
   # Features for building
   nix.settings.system-features = [
@@ -39,6 +46,16 @@
     "gccarch-x86-64-v4"
     "gccarch-znver4"
   ];
+
+  nix.settings = {
+    trusted-substituters = [
+      "https://devenv.cachix.org"
+    ];
+    trusted-public-keys = [
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+    ];
+  };
+
   # cachix can be used to add cache servers
   # easily by running `cachix use <cache-name>`
   environment.systemPackages = [ pkgs.cachix ];

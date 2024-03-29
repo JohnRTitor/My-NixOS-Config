@@ -11,7 +11,7 @@ let
   commonAliases = {
     check-flake = "execmd nix flake check";
     update-flake = "execmd nix flake update";
-    rebuild = "execmd sudo nixos-rebuild switch --flake .";
+    rebuild = "execmd sudo nixos-rebuild switch";
     garbage-collect = "execmd sudo nix-collect-garbage -d";
     fix-store = "execmd sudo nix-store --verify --check-contents --repair";
     # cneofetch is just an alias to run compact neofetch

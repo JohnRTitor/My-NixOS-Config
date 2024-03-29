@@ -19,7 +19,7 @@ in
     enable = true;
     wayland = true;
     banner = ''
-                    Welcome Traveler
+                        Welcome Traveler
       You are about to enter the realm of Hyprland
     '';
   };
