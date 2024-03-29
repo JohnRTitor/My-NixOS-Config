@@ -18,6 +18,8 @@
     ./home-manager/neofetch/neofetch.nix
     ./home-manager/vscode.nix
     ./home-manager/devenv.nix # development environment
+    ./home-manager/nnn.nix # nnn - terminal file manager
+    ./home-manager/eza.nix # eza - modern replacement for ls
     ./home-manager/thunar/thunar.nix
   ]
   ++

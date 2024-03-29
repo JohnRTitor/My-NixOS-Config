@@ -11,8 +11,6 @@
       # here is some command line tools I use frequently
       # feel free to add your own or remove some of them
 
-      nnn # terminal file manager
-
       ## ARCHIVING TOOLS ##
       # p7zip
 
@@ -20,7 +18,6 @@
       # ripgrep # recursively searches directories for a regex pattern
       # jq # A lightweight and flexible command-line JSON processor
       # yq-go # yaml processer https://github.com/mikefarah/yq
-      # eza # A modern replacement for ‘ls’
       # fzf # A command-line fuzzy finder
 
       ## NETWORKING TOOLS ##

@@ -1,3 +1,4 @@
+# This config can be used to configure git via home manager
 { userSettings, ... }:
 {
   # basic configuration of git, please change to your own
