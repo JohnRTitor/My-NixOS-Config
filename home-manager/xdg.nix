@@ -53,7 +53,7 @@ in
     "application/xml" = "org.xfce.mousepad.desktop;";
     "application/x-executable" = "Alacritty.desktop";
     # Open directory with apps
-    "inode/directory" = "org.gnome.Nautilus.desktop;thunar.desktop;nnn.desktop;code.desktop;org.gnome.baobab.desktop;";
+    "inode/directory" = "code.desktop;org.gnome.Nautilus.desktop;thunar.desktop;nnn.desktop;org.gnome.baobab.desktop;";
     # Telegram
     "x-scheme-handler/tg" = "org.telegram.desktop.desktop;";
     "x-xdg-protocol-tg" = "org.telegram.desktop.desktop;";
