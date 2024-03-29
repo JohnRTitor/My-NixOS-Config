@@ -1,5 +1,8 @@
 # this config file is a wrapper to automatically configure vscode via a config file
-{ pkgs, pkgs-vscode-extensions, ... }:
+{ config, osConfig, lib, pkgs, pkgs-vscode-extensions, ... }:
+let 
+  packagesList = (config.home.packages ++ osConfig.environment.systemPackages);
+in
 {
   programs.vscode = {
     enable = true;
@@ -64,9 +67,16 @@
 
       "direnv.restart.automatic" = true; # Automatically restart direnv if .envrc changes
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nixd";
+      
+      # Check if nixd or nil is installed and set the server accordingly
+      "nix.serverPath" = if (builtins.elem "nixd" (map (x: x.pname) packagesList)) then "nixd"
+        else if (builtins.elem "nil" (map (x: x.pname) packagesList)) then "nil"
+        else "";
 
       "dev.containers.dockerPath" = "podman"; # Use podman as the docker path
     };
   };
+  home.packages = with pkgs; [
+    nixd # Nix Language Server
+  ];
 }

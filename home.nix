@@ -16,7 +16,8 @@
     ./home-manager/alacritty/alacritty.nix
     ./home-manager/pyprland/pyprland.nix # pyprland config wrapper
     ./home-manager/neofetch/neofetch.nix
-    ./home-manager/vscode/vscode.nix
+    ./home-manager/vscode.nix
+    ./home-manager/devenv.nix # development environment
     ./home-manager/thunar/thunar.nix
   ]
   ++
