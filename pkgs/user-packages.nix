@@ -12,7 +12,18 @@
       # feel free to add your own or remove some of them
 
       ## ARCHIVING TOOLS ##
+      zip
+      unzip
       # p7zip
+      gnutar
+      # gzip
+      # xz
+      # bzip2
+      # lz4
+      # lzo
+      # zlib
+      zstd
+
 
       # utils
       # ripgrep # recursively searches directories for a regex pattern
@@ -51,46 +62,25 @@
       pciutils # lspci
       usbutils # lsusb
 
-      ## PERSONAL ENJOYMENT ##
-      ani-cli
-
-      ## GRAPHICAL APPS ##
-      # Editors #
-      # vscode
-      # emacs
-      # whatsapp-for-linux
-      libreoffice-fresh
-      discord
-      telegram-desktop
-      deluge
-    ])
-  
-    ++
-
-    # These packages are from Chaotic Nyx repo, optimised for x64-v3
-    # If they don't work for you, replace pkgs.pkgsx86_64_v3 with pkgs
-    # Most of the packages do not have binary cache, meaning nix will build them from source
-    # which can potentially take a long time
-    # Please don't try to build large, complex, or graphical packages, they will take a long time
-    (with pkgs.pkgsx86_64_v3-core; [
-
-
-      ## COMPRESSION TOOLS ##
-      # zip, unzip are provided via global packages list
-      gnutar
-      # gzip
-      # xz
-      # bzip2
-      # lz4
-      # lzo
-      # zlib
-      zstd
 
       ## MISCELLANEOUS ##
       which
       gawk
       gnused
-      
+
+      ## PERSONAL ENJOYMENT ##
+      ani-cli
+
+      ## GRAPHICAL APPS ##
+      # Editors #
+      # emacs
+      androidStudioPackages.beta
+
+      # whatsapp-for-linux
+      libreoffice-fresh
+      discord
+      telegram-desktop
+      deluge
     ])
 
     ++

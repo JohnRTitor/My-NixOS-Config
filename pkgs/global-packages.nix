@@ -25,10 +25,6 @@
       openssh # for ssh
       python3
 
-      ## ARCHIVES ##
-      zip
-      unzip
-
       ## URL FETCH TOOLS ##
       curl
       wget
