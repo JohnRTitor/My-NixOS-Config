@@ -6,7 +6,7 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true; # alsa support
-    alsa.support32Bit = true;
+    # alsa.support32Bit = true;
     pulse.enable = true; # pulseaudio compat
     jack.enable = true; # enable jack audio
   };
