@@ -4,7 +4,8 @@
   # Enable support for bcachefs
   boot.supportedFilesystems = [ "bcachefs" ];
   fileSystems = {
-    "/".options = [ "defaults" "noatime" ];
+    "/".options = [ "defaults" "noatime" ]; # disable access time updates
+    "/boot".options = [ "fmask=0137" "dmask=0027" ]; # restrict access to /boot
   };
 
   # Enable zram swap
