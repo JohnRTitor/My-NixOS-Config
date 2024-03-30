@@ -63,7 +63,7 @@
   networking.hostName = systemSettings.hostname; # Define your hostname in flake.nix
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable nix command and flakes
-  nix.settings.auto-optimise-store = true; # enable deleting duplicate content in store
+  nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

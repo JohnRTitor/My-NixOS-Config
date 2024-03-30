@@ -12,9 +12,17 @@ let
     # the below creates a wrapper function to print the command before executing it
     execmd() { echo "Executing: $@" && "$@" ; }
   '';
+  # Define common session variables which would apply to all shells
+  commonSessionVariables = {
+    # Binds GPG to current tty
+    GPG_TTY = "$(tty)";
+    # Add custom bin directories to the PATH
+    PATH = "$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin";
+  };
 
+in {
   # Define common aliases which would apply to all shells
-  commonAliases = {
+  home.shellAliases = {
     check-flake = "execmd nix flake check";
     update-flake = "execmd nix flake update";
     rebuild = "execmd sudo nixos-rebuild switch";
@@ -26,15 +34,6 @@ let
     cneofetch = "(cd && neofetch --config .config/neofetch/config-compact.conf)";
   };
 
-  # Define common session variables which would apply to all shells
-  commonSessionVariables = {
-    # Binds GPG to current tty
-    GPG_TTY = "$(tty)";
-    # Add custom bin directories to the PATH
-    PATH = "$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin";
-  };
-
-in {
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -45,7 +44,7 @@ in {
       # Add custom session variables for bash
     };
 
-    shellAliases = commonAliases // {
+    shellAliases = {
       # set some aliases specific for bash
     };
   };
@@ -58,7 +57,7 @@ in {
     sessionVariables = commonSessionVariables // {
       # Add custom session variables for zsh
     };
-    shellAliases = commonAliases // {
+    shellAliases = {
       # additional aliases to set for zsh
     };
     # extra lines to add to the zshrc file

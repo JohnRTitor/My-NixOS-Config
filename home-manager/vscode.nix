@@ -1,7 +1,8 @@
 # this config file is a wrapper to automatically configure vscode via a config file
 { config, osConfig, lib, pkgs, pkgs-vscode-extensions, ... }:
-let 
-  packagesList = (config.home.packages ++ osConfig.environment.systemPackages);
+let
+  # extract package pname for each package in the list of all installed packages, then put them in a list
+  packagesList = (map (x: x.pname) (config.home.packages ++ osConfig.environment.systemPackages));
 in
 {
   programs.vscode = {
@@ -69,8 +70,8 @@ in
       "nix.enableLanguageServer" = true;
       
       # Check if nixd or nil is installed and set the server accordingly
-      "nix.serverPath" = if (builtins.elem "nixd" (map (x: x.pname) packagesList)) then "nixd"
-        else if (builtins.elem "nil" (map (x: x.pname) packagesList)) then "nil"
+      "nix.serverPath" = if (builtins.elem "nixd" packagesList) then "nixd"
+        else if (builtins.elem "nil" packagesList) then "nil"
         else "";
 
       "dev.containers.dockerPath" = "podman"; # Use podman as the docker path
