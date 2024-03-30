@@ -13,8 +13,6 @@
     (with pkgs; [
 
       # System Packages
-      ananicy-cpp # for better system performance
-      ananicy-rules-cachyos
       # firewalld
       ffmpeg # codecs
       git # obviously

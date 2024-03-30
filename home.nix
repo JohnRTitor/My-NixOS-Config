@@ -21,6 +21,8 @@
     ./home-manager/nnn.nix # nnn - terminal file manager
     ./home-manager/eza.nix # eza - modern replacement for ls
     ./home-manager/thunar/thunar.nix
+
+    ./home-manager/services.nix # services
   ]
   ++
   # Import if Virtualization is enabled

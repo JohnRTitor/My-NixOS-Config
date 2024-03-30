@@ -17,7 +17,6 @@
   # include zsh support, bash is enabled by default
   # this only includes zsh package
   programs.zsh.enable = true;
-  
   # zsh is also enabled for user, conditionally at ./users.nix
   # set the user shell in ../flake.nix
 
@@ -28,6 +27,12 @@
   };
   # XDG portal paths to link if useUserPackages=true is enabled in home-manager (flake.nix)
   environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+
+  # Enable Ananicy CPP for better system performance
+  services.ananicy = {
+    enable = true;
+    rulesProvider = pkgs.ananicy-cpp-rules; # from nixpkgs: ananicy-rules-cachyos
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
