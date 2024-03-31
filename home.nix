@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-stable, pkgs-edge, pkgs-vscode-extensions, systemSettings, userSettings, ... }:
+{ config, osConfig, lib, pkgs, pkgs-stable, pkgs-edge, pkgs-vscode-extensions, systemSettings, userSettings, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -51,15 +51,9 @@
   #   "Xft.dpi" = 96; # for 4k - 172
   # };
 
-  # This value determines the home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update home Manager without changing this value. See
-  # the home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = systemSettings.stableversion;
+  # home manager version should match the system version
+  # usually not recommended to change this
+  home.stateVersion = osConfig.system.stateVersion;
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

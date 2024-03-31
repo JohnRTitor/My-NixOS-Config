@@ -52,6 +52,8 @@ in
   services.gnome = {
     sushi.enable = true; # quick previewer for nautilus
     glib-networking.enable = true; # network extensions libs
+    tracker.enable = true; # file indexer, needed for gnome-music
+    tracker-miners.enable = true; # file indexer, needed for gnome-music
   };
   services.tumbler.enable = true; # thumbnailer service
 
