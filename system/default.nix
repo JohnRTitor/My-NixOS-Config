@@ -11,6 +11,7 @@
     ./hardware/bluetooth.nix
     ./hardware/disk.nix
     ./hardware/graphics.nix
+    ./hardware/tpm.nix
     # include network settings
     ./network.nix
     # include locale settings
