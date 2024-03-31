@@ -52,8 +52,6 @@ in
   services.gnome = {
     sushi.enable = true; # quick previewer for nautilus
     glib-networking.enable = true; # network extensions libs
-    tracker.enable = true; # file indexer, needed for gnome-music
-    tracker-miners.enable = true; # file indexer, needed for gnome-music
   };
   services.tumbler.enable = true; # thumbnailer service
 
@@ -99,7 +97,6 @@ in
       ## Graphical apps ##
       gnome.gnome-system-monitor # system monitor
       gnome.eog # eye of gnome, image viewer
-      gnome.gnome-music # audio player
       kitty # default terminal on hyprland
       linux-wifi-hotspot # for wifi hotspot
       mpv-vapoursynth # mpv # for video playback, needed for some scripts
