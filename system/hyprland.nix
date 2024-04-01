@@ -99,7 +99,10 @@ in
       gnome.eog # eye of gnome, image viewer
       kitty # default terminal on hyprland
       linux-wifi-hotspot # for wifi hotspot
-      mpv-vapoursynth # mpv # for video playback, needed for some scripts
+      (mpv-unwrapped.override { # mpv with more features
+        jackaudioSupport = true;
+        vapoursynthSupport = true;
+      }) # for video playback, needed for some scripts
       mpvScripts.mpris
       gnome.nautilus # file manager
       shotcut # video editor

@@ -78,7 +78,9 @@
 
       # whatsapp-for-linux
       libreoffice-fresh
-      discord
+      (discord.override {
+        withVencord = true;
+      })
       telegram-desktop
       deluge
     ])

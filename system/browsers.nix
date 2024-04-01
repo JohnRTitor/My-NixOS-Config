@@ -17,7 +17,7 @@
       # suitable for my configuration
       # change it if you have any issues
       # note the spaces, they are required
-      # Vulkan is not stable, likely because of drivers
+      # Vulkan is not stable, likely because of bad drivers
       commandLineArgs = ""
         + " --enable-accelerated-video-decode"
         + " --enable-accelerated-mjpeg-decode"
