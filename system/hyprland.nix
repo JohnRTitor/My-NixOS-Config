@@ -1,7 +1,7 @@
 # Configure hyprland window manager
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
-{ lib, pkgs, pkgs-stable, ... }:
+{ lib, pkgs, pkgs-hyprland, ... }:
 
 let
   python-packages = pkgs.python3.withPackages (ps: [
@@ -12,7 +12,10 @@ let
 in
 {
   # Enable Hyprland Window Manager
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = pkgs-hyprland.hyprland;
+  };
   programs.waybar.enable = true; # enable waybar launcher
   # Enable GDM with wayland
   services.xserver.displayManager.gdm = {
@@ -72,7 +75,6 @@ in
       pavucontrol # audio control
       playerctl # media player control
       polkit_gnome # needed for apps requesting root access
-      pyprland # hyprland plugin support
       python-packages # needed for Weather.py from dotfiles
       pywal
       rofi-wayland 
@@ -88,11 +90,8 @@ in
       yad
 
       gsettings-desktop-schemas
-      wlr-randr
+      wlr-randr # xrandr but for wayland
       ydotool
-      hyprland-protocols
-      # hyprpicker # does not work
-      # hyprpaper # alternative to swww
 
       ## Graphical apps ##
       gnome.gnome-system-monitor # system monitor
@@ -118,14 +117,21 @@ in
       xdg-utils
       xdg-user-dirs
       xorg.xhost # needed for some packages running x11 like gparted
+
+      ## Hypr ecosystem ##
+      hyprcursor
+      # hyprpicker # does not work
+      # hyprpaper # alternative to swww
+      # hyprlock # alternative to swaylock
+      # hypridle # alternative to swayidle
+      pyprland # hyprland plugin support
     ])
 
     ++
 
-    (with pkgs-stable; [
-      # list of latest packages from stable repo
-      # Can be used to downgrade packages
-      
+    (with pkgs-hyprland; [
+      # list of latest packages from hyprland repo
+      hyprland-protocols
     ]);
 
   # Environment variables to start the session with

@@ -4,7 +4,7 @@
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../apps/ directories
 
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, pkgs-edge, ... }:
 {
   home.packages = 
     (with pkgs; [
@@ -87,8 +87,8 @@
 
     ++
 
-    (with pkgs-stable; [
-      # list of latest packages from stable repo
+    (with pkgs-edge; [
+      # list of latest packages from nixpkgs unstable
       # Can be used to downgrade packages
       
     ])

@@ -4,7 +4,7 @@
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../apps/ directories
 
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, pkgs-edge, ... }:
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -50,7 +50,7 @@
 
     ++
 
-    (with pkgs-stable; [
+    (with pkgs-edge; [
       # list of latest packages from stable repo
       # Can be used to downgrade packages
       

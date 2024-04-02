@@ -1,7 +1,7 @@
 {
   description = "Flake of JohnRTitor (Hyprland, Secure-Boot)";
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-edge, chaotic, nix-vscode-extensions, lanzaboote, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-edge, chaotic, lanzaboote, hyprland, home-manager, nix-vscode-extensions,  ... }:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -41,18 +41,15 @@
         config = { allowUnfree = true;
                   allowUnfreePredicate = (_: true); };
       };
-      # configure packages from stable repo, used for downgrading specific packages
-      pkgs-stable = import nixpkgs-stable {
-        system = systemSettings.systemarch;
-        config = { allowUnfree = true;
-                  allowUnfreePredicate = (_: true); };
-      };
-      # bleeding edge packages from nixpkgs branch, for packages that need immediate updates
+      # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
       pkgs-edge = import nixpkgs-edge {
         system = systemSettings.systemarch;
         config = { allowUnfree = true;
                   allowUnfreePredicate = (_: true); };
       };
+
+      # latest hyprland, from hyprland flake
+      pkgs-hyprland = hyprland.packages.${pkgs.system};
       # configure vscode extensions flake
       # Mainly used in ./home-manager/vscode/vscode.nix
       pkgs-vscode-extensions = nix-vscode-extensions.extensions.${systemSettings.systemarch};
@@ -61,8 +58,8 @@
       lib = nixpkgs.lib;
       # pass the custom settings and flakes to system
       specialArgs = {
-        inherit pkgs-stable;
         inherit pkgs-edge;
+        inherit pkgs-hyprland;
         inherit pkgs-vscode-extensions;
         inherit systemSettings;
         inherit userSettings;
@@ -101,11 +98,11 @@
   # Main sources and repositories
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11"; # Stable NixOS packages (23.11)
     nixpkgs-edge.url = "github:NixOS/nixpkgs/nixpkgs-unstable"; # Only used for bleeding edge packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nix
 
     lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # home-manager, used for managing user configuration, should follow system nixpkgs
     home-manager.url = "github:nix-community/home-manager/master";
