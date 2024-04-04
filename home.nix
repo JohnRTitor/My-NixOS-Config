@@ -15,7 +15,7 @@
     ./home-manager/starship/starship.nix # starship config
     ./home-manager/alacritty/alacritty.nix
     ./home-manager/pyprland/pyprland.nix # pyprland config wrapper
-    ./home-manager/neofetch/neofetch.nix
+    ./home-manager/fastfetch/fastfetch.nix
     ./home-manager/vscode.nix
     ./home-manager/devenv.nix # development environment
     ./home-manager/nnn.nix # nnn - terminal file manager

@@ -28,10 +28,8 @@ in {
     rebuild = "execmd sudo nixos-rebuild switch";
     garbage-collect = "execmd sudo nix-collect-garbage -d";
     fix-store = "execmd sudo nix-store --verify --check-contents --repair";
-    # cneofetch is just an alias to run compact neofetch
-    # run in a subshell to avoid changing the current directory
-    # because of neofetch can not source config files correctly using implicit home paths
-    cneofetch = "(cd && neofetch --config .config/neofetch/config-compact.conf)";
+    # cfastfetch is just an alias to run compact fastfetch
+    cfastfetch = "fastfetch --config ~/.config/fastfetch/config-compact.jsonc";
   };
 
   programs.bash = {
