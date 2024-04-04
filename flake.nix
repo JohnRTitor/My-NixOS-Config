@@ -1,7 +1,7 @@
 {
   description = "Flake of JohnRTitor (Hyprland, Secure-Boot)";
 
-  outputs = { self, nixpkgs, nixpkgs-edge, chaotic, lanzaboote, hyprland, home-manager, nix-vscode-extensions,  ... }:
+  outputs = { self, nixpkgs, nixpkgs-edge, chaotic, lanzaboote, hyprland, home-manager, nix-vscode-extensions,  ... }@inputs:
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -48,19 +48,12 @@
                   allowUnfreePredicate = (_: true); };
       };
 
-      # latest hyprland, from hyprland flake
-      pkgs-hyprland = hyprland.packages.${pkgs.system};
-      # configure vscode extensions flake
-      # Mainly used in ./home-manager/vscode/vscode.nix
-      pkgs-vscode-extensions = nix-vscode-extensions.extensions.${systemSettings.systemarch};
-
       # system is built on nixos unstable 
       lib = nixpkgs.lib;
       # pass the custom settings and flakes to system
       specialArgs = {
+        inherit inputs;
         inherit pkgs-edge;
-        inherit pkgs-hyprland;
-        inherit pkgs-vscode-extensions;
         inherit systemSettings;
         inherit userSettings;
       };

@@ -1,4 +1,4 @@
-{ config, osConfig, lib, pkgs, pkgs-edge, pkgs-vscode-extensions, systemSettings, userSettings, ... }:
+{ config, osConfig, lib, pkgs, pkgs-edge, systemSettings, userSettings, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should

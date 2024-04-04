@@ -1,9 +1,10 @@
 # Configure hyprland window manager
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
-{ lib, pkgs, pkgs-hyprland, ... }:
+{ lib, pkgs, inputs, ... }:
 
 let
+  pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
   python-packages = pkgs.python3.withPackages (ps: [
     ps.requests # requests module
     ps.sh # subprocess module

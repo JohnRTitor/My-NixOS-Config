@@ -1,6 +1,7 @@
 # this config file is a wrapper to automatically configure vscode via a config file
-{ config, osConfig, lib, pkgs, pkgs-vscode-extensions, ... }:
+{ config, osConfig, lib, pkgs, inputs, ... }:
 let
+  pkgs-vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
   # extract package pname for each package in the list of all installed packages, then put them in a list
   packagesList = (map (x: x.pname) (config.home.packages ++ osConfig.environment.systemPackages));
 in

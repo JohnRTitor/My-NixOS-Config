@@ -8,6 +8,10 @@
     "/boot".options = [ "fmask=0137" "dmask=0027" ]; # restrict access to /boot
   };
 
+  swapDevices = [
+    { device = "/dev/nvme0n1p8"; }
+  ];
+
   # Enable zram swap
   zramSwap.enable = true;
 
