@@ -1,5 +1,5 @@
 # This config file is used to define user specific packages
-# installed using home manager, this file is imported in ../home.nix
+# installed using home manager, this file is imported in ../system/users.nix
 # System/Global packages should be installed in ./system-packages.nix
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../apps/ directories
@@ -88,8 +88,8 @@
     ++
 
     (with pkgs-edge; [
-      # list of latest packages from nixpkgs unstable
-      # Can be used to downgrade packages
+      # list of latest packages from nixpkgs master
+      # Can be used to install latest version of some packages
       
     ])
   ;

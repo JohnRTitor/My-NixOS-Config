@@ -50,14 +50,6 @@
 
       # system is built on nixos unstable 
       lib = nixpkgs.lib;
-      # pass the custom settings and flakes to system
-      specialArgs = {
-        inherit inputs;
-        inherit pkgs-edge;
-        inherit systemSettings;
-        inherit userSettings;
-      };
-
     in {
       nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
         modules = [
@@ -66,42 +58,40 @@
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.${userSettings.username} = import ./home.nix;
-            # extra specialArgs is used to pass arguments to home-manager
-            home-manager.extraSpecialArgs = specialArgs // {
-              # Additional arguments for home-manager
-            };
-          }
-
+          home-manager.nixosModules.default
         ]
         ++
         # Enable Lanzaboote if secureboot is configured
         lib.optionals (systemSettings.secureboot) [
           lanzaboote.nixosModules.lanzaboote 
         ];
-        inherit specialArgs;
+        # pass the custom settings and flakes to system
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-edge;
+          inherit systemSettings;
+          inherit userSettings;
+        };
       };
     };
     
   # Main sources and repositories
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
-    nixpkgs-edge.url = "github:NixOS/nixpkgs/nixpkgs-unstable"; # Only used for bleeding edge packages
+    nixpkgs-edge.url = "github:NixOS/nixpkgs/master"; # Only used for bleeding edge packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nix
 
-    lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
-    hyprland.url = "github:hyprwm/Hyprland";
+    lanzaboote = {  url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
+                    inputs.nixpkgs.follows = "nixpkgs"; };
 
-    # home-manager, used for managing user configuration, should follow system nixpkgs
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland = {  url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
+                  inputs.nixpkgs.follows = "nixpkgs"; };
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; # vs code extensions
+    home-manager = {  url = "github:nix-community/home-manager/master";
+                      inputs.nixpkgs.follows = "nixpkgs"; };
+
+    nix-vscode-extensions = { url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
+                              inputs.nixpkgs.follows = "nixpkgs"; };
   };
   
 }
