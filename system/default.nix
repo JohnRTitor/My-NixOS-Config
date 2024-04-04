@@ -1,6 +1,7 @@
 { lib, systemSettings, ... }:
 {
   imports = [
+    ./nix-settings.nix
     # include boot and kernel settings
     ./boot/kernel.nix
     ./boot/boot-options.nix
