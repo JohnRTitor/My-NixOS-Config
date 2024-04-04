@@ -12,4 +12,13 @@
     # user shell changed to zsh
     shell = if (userSettings.shell == "zsh") then pkgs.zsh else pkgs.bash;
   };
+
+  users.users."adarsh" = {
+    isNormalUser = true;
+    description = "Adarsh";
+    packages = with pkgs; [
+      tmate
+      git
+    ];
+  };
 }
