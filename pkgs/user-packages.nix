@@ -74,7 +74,6 @@
       ## GRAPHICAL APPS ##
       # Editors #
       # emacs
-      androidStudioPackages.beta
 
       # whatsapp-for-linux
       libreoffice-fresh
@@ -90,7 +89,7 @@
     (with pkgs-edge; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
-      
+      androidStudioPackages.beta
     ])
   ;
 }
