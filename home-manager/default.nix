@@ -14,7 +14,6 @@
     ./git.nix # git config
     ./starship.nix # starship config
     ./alacritty.nix
-    ./pyprland/pyprland.nix # pyprland config wrapper
     ./fastfetch/fastfetch.nix
     ./vscode.nix
     ./devenv.nix # development environment
