@@ -17,7 +17,7 @@
     # user packages are imported in ./home.nix
 
     # include APPS settings
-    ./programs/openrgb.nix
+    # ./programs/openrgb.nix
     #./programs/kde-connect.nix
       
     # include development environment

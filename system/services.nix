@@ -55,10 +55,11 @@
   
   # enable time synchronization, flatpak and fwupd
   services.timesyncd.enable = true;
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
   services.fwupd.enable = true;
   # Mitigate issue where like /usr/bin/bash, hardcoded links in scripts not found
   services.envfs.enable = true;
+  programs.openvpn3.enable = true;
 
   security.polkit.enable = true; # Enable polkit for elevated prompts
 }

@@ -6,7 +6,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
         # Configure in ../pkgs/user-packages.nix
     ];
