@@ -24,14 +24,14 @@
   # plymouth theme for splash screen
   boot.plymouth = rec {
     enable = true;
-    theme = "breeze";
+    # theme = "breeze"; # default
     # black_hud circle_hud cross_hud square_hud
     # circuit connect cuts_alt seal_2 seal_3
-    # theme = "connect";
-    # themePackages = with pkgs; [(
-    #   adi1090x-plymouth-themes.override {
-    #     selected_themes = [ theme ];
-    #   }
-    # )];
+    theme = "rings_2";
+    themePackages = with pkgs; [(
+      adi1090x-plymouth-themes.override {
+        selected_themes = [ theme ];
+      }
+    )];
   };
 }
