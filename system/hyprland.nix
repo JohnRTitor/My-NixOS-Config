@@ -16,6 +16,7 @@ in
   programs.hyprland = {
     enable = true;
     package = pkgs-hyprland.hyprland;
+    systemd.setPath.enable = false; #FIXME: enable this once https://github.com/NixOS/nixpkgs/pull/303174 is merged
   };
   programs.waybar.enable = true; # enable waybar launcher
   # Enable GDM with wayland
@@ -157,9 +158,9 @@ in
   };
 
   systemd = {
-    # Fix opening links in apps like vscode
+    # FIXME: remove this once https://github.com/NixOS/nixpkgs/pull/303174 is merged
     user.extraConfig = ''
-      DefaultEnvironment="PATH=/run/current-system/sw/bin:/run/wrappers/bin:/var/lib/flatpak/exports/bin:/nix/profile/bin:/etc/profiles/per-user/masum/bin:/nix/var/nix/profiles/default/bin:/home/masum/.local/share/applications/"
+      DefaultEnvironment="PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin:/run/wrappers/bin"
     '';
     # Polkit starting systemd service - needed for apps requesting root access
     user.services.polkit-gnome-authentication-agent-1 = {

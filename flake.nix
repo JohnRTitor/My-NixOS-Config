@@ -81,17 +81,14 @@
     nixpkgs-edge.url = "github:NixOS/nixpkgs/master"; # Only used for bleeding edge packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nix
 
-    lanzaboote = {  url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
-                    inputs.nixpkgs.follows = "nixpkgs"; };
+    lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
 
-    hyprland = {  url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
-                  inputs.nixpkgs.follows = "nixpkgs"; };
+    hyprland.url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
 
     home-manager = {  url = "github:nix-community/home-manager/master";
                       inputs.nixpkgs.follows = "nixpkgs"; };
 
-    nix-vscode-extensions = { url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
-                              inputs.nixpkgs.follows = "nixpkgs"; };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
   };
   
 }

@@ -1,7 +1,7 @@
 # This conf file is used to configure user accounts in the system
 { pkgs, pkgs-edge, systemSettings, userSettings, inputs, ... }:
 {
-  imports = [ inputs.home-manager.nixosModules.default];
+  imports = [ inputs.home-manager.nixosModules.default ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userSettings.username} = {
     isNormalUser = true;
@@ -25,14 +25,5 @@
       inherit systemSettings;
       inherit userSettings;
     };
-  };
-
-  users.users."adarsh" = {
-    isNormalUser = true;
-    description = "Adarsh";
-    packages = with pkgs; [
-      tmate
-      git
-    ];
   };
 }
