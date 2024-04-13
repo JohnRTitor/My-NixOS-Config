@@ -31,7 +31,7 @@
   ];
 
   # Also load amdgpu at boot
-  boot.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "amdgpu-pro" ];
   # AMDGPU graphics driver for Xorg
   services.xserver.videoDrivers = [ "amdgpu" ];
 

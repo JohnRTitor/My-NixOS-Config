@@ -9,7 +9,10 @@
   };
 
   # Enable zram swap
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryPercent = 75;
+  };
 
   # fstrim for SSD
   services.fstrim = {

@@ -18,7 +18,6 @@ in
     zenpower
     amdgpu-pro
   ];
-  boot.kernelModules = [ "amdgpu-pro" ];
 
   # List of patches to compile the kernel with
   boot.kernelPatches = [
