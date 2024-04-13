@@ -1,8 +1,8 @@
 # Contains devenv and direnv settings
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   # Enable devenv
-  home.packages = [ pkgs.devenv ];
+  home.packages = [ inputs.devenv.packages.${pkgs.system}.devenv ];
   # Configure direnv
   programs.direnv = {
     enable = true;

@@ -89,6 +89,7 @@
                       inputs.nixpkgs.follows = "nixpkgs"; };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
+    devenv.url = "github:cachix/devenv"; # Devenv flake
   };
   
 }
