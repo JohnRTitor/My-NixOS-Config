@@ -82,6 +82,10 @@
       })
       telegram-desktop
       deluge
+
+      ## NixPkgs development ##
+      nix-output-monitor
+      nixpkgs-review
     ])
 
     ++
