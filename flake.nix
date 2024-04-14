@@ -1,7 +1,7 @@
 {
   description = "Flake of JohnRTitor (Hyprland, Secure-Boot)";
 
-  outputs = { self, nixpkgs, nixpkgs-edge, chaotic, lanzaboote, hyprland, home-manager, nix-vscode-extensions,  ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-edge, ... }@inputs: # Also pass all inputs
     let
       # ---- SYSTEM SETTINGS ---- #
       systemSettings = {
@@ -43,7 +43,7 @@
       };
       # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
       pkgs-edge = import nixpkgs-edge {
-        system = systemSettings.systemarch;
+        system = pkgs.system;
         config = { allowUnfree = true;
                   allowUnfreePredicate = (_: true); };
       };
@@ -54,16 +54,16 @@
       nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
         modules = [
           ./configuration.nix # main nix configuration
-          chaotic.nixosModules.default # chaotic nix bleeding edge packages
+          inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          home-manager.nixosModules.default
+          inputs.home-manager.nixosModules.default
         ]
         ++
         # Enable Lanzaboote if secureboot is configured
         lib.optionals (systemSettings.secureboot) [
-          lanzaboote.nixosModules.lanzaboote 
+          inputs.lanzaboote.nixosModules.lanzaboote 
         ];
         # pass the custom settings and flakes to system
         specialArgs = {
@@ -91,5 +91,4 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
     devenv.url = "github:cachix/devenv"; # Devenv flake
   };
-  
 }
