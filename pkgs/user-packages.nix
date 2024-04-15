@@ -82,6 +82,7 @@
       })
       telegram-desktop
       deluge
+      shotwell # GNOME image editor
 
       ## NixPkgs development ##
       nix-output-monitor

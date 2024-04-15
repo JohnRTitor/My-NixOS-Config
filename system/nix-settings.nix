@@ -1,6 +1,6 @@
 { config, pkgs, userSettings, ... }:
 {
-  nix.settings.trusted-users = [ userSettings.username ]; # FIXME: see above
+  nix.settings.trusted-users = [ userSettings.username ]; # FIXME: if someday custom cache works without this
 
   # Features for building
   nix.settings.system-features = [
@@ -14,19 +14,6 @@
     "gccarch-x86-64-v4"
     "gccarch-znver4"
   ];
-
-  nix.settings = {
-    trusted-substituters = [
-      "https://devenv.cachix.org"
-    ];
-    trusted-public-keys = [
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-    ];
-  };
-
-  # cachix can be used to add cache servers
-  # easily by running `cachix use <cache-name>`
-  environment.systemPackages = [ pkgs.cachix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable nix command and flakes
   nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
