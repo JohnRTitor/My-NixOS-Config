@@ -16,7 +16,6 @@ in
   boot.extraModulePackages = with config.boot.kernelPackages; [
     # zenpower is used for reading temperature, voltage, current and power
     zenpower
-    amdgpu-pro
   ];
 
   # List of patches to compile the kernel with

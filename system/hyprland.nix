@@ -24,7 +24,7 @@ in
     enable = true;
     wayland = true;
     banner = ''
-                        Welcome Traveler
+                      Welcome Traveler, Behold!
       You are about to enter the realm of Hyprland
     '';
   };
@@ -82,9 +82,9 @@ in
       rofi-wayland 
       slurp # screenshots
       swappy # screenshots
-      swayidle
-      swaylock-effects
-      swaynotificationcenter
+      swayidle # idle manager
+      swaylock-effects # swaylock with effects
+      swaynotificationcenter # notification daemon
       swww
       wlsunset # for night mode
       wl-clipboard
@@ -153,7 +153,6 @@ in
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     GTK_USE_PORTAL = "1"; # makes dialogs (file opening) consistent with rest of the ui
-
     # WLR_RENDERER = "vulkan"; # vulkan not supported in hyprland
   };
 
@@ -177,6 +176,4 @@ in
       };
     };
   };
-  # Text for swaylock
-  security.pam.services.swaylock.text = "auth include login";
 }

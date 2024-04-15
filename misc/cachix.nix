@@ -10,4 +10,8 @@ let
 in {
   inherit imports;
   nix.settings.substituters = ["https://cache.nixos.org/"];
+
+  # cachix can be used to add cache servers
+  # easily by running `cachix use <cache-name>`
+  environment.systemPackages = [ pkgs.cachix ];
 }

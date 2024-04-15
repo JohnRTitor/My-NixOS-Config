@@ -2,10 +2,10 @@
 { config, pkgs, ... }:
 
 {
-  # Enable OpenGL
+  # Enable OpenGL and Vulkan support
   hardware.opengl = {
-    enable = true; # Mesa
-    driSupport = true; # Vulkan
+    enable = true;
+    driSupport = true;
     driSupport32Bit = true;
     # Extra drivers
     extraPackages = with pkgs; [
@@ -23,7 +23,6 @@
     ];
   };
   environment.systemPackages = with pkgs; [
-    libdrm # direct rendering manager
     ## GRAPHICS UTILS ##
     libva-utils # libva graphics library tools
     vdpauinfo # vdpau graphics library tools
@@ -31,7 +30,9 @@
   ];
 
   # Also load amdgpu at boot
-  boot.kernelModules = [ "amdgpu-pro" ];
+  boot.kernelModules = [ "amdgpu" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ amdgpu-pro ];
+
   # AMDGPU graphics driver for Xorg
   services.xserver.videoDrivers = [ "amdgpu" ];
 
