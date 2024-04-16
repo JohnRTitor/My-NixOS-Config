@@ -80,7 +80,7 @@
       (discord.override {
         withVencord = true;
       })
-      telegram-desktop
+      telegram-desktop_git # latest from chaotic
       deluge
       shotwell # GNOME image editor
 
