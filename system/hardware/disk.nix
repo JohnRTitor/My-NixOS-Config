@@ -3,6 +3,9 @@
 {
   # Enable support for bcachefs
   boot.supportedFilesystems = [ "bcachefs" ];
+  boot.initrd.supportedFilesystems = [ "bcachefs" ];
+  boot.initrd.kernelModules = [ "bcachefs" ];
+  
   fileSystems = {
     "/".options = [ "defaults" "noatime" ]; # disable access time updates
     "/boot".options = [ "fmask=0137" "dmask=0027" ]; # restrict access to /boot
@@ -15,7 +18,7 @@
   };
   # Settings for zram
   boot.kernel.sysctl = {
-    "vm.swappiness" = 230;
+    "vm.swappiness" = 200;
     "vm.watermark_boost_factor" = 0;
     "vm.watermark_scale_factor" = 125;
     "vm.page-cluster" = 0;

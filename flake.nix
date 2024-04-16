@@ -77,8 +77,8 @@
     
   # Main sources and repositories
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
-    nixpkgs-edge.url = "github:NixOS/nixpkgs/master"; # Only used for bleeding edge packages
+    nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
+    nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nix
 
     lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
