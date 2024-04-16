@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "ananicy-fix": {
+      "locked": {
+        "lastModified": 1713258506,
+        "narHash": "sha256-D54rvko2p8n2g34+gjxiDPnFkxzLa7ZdBZx9eNHCEbk=",
+        "owner": "JohnRTitor",
+        "repo": "nixpkgs",
+        "rev": "7466a6d7a4ff5e1af0d0f0304a89a0b717aa9eac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JohnRTitor",
+        "repo": "nixpkgs",
+        "rev": "7466a6d7a4ff5e1af0d0f0304a89a0b717aa9eac",
+        "type": "github"
+      }
+    },
     "attic": {
       "inputs": {
         "crane": [
@@ -1199,6 +1215,7 @@
     },
     "root": {
       "inputs": {
+        "ananicy-fix": "ananicy-fix",
         "chaotic": "chaotic",
         "devenv": "devenv",
         "home-manager": "home-manager_2",

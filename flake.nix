@@ -81,6 +81,9 @@
     nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nix
 
+    # FIXME: when https://github.com/NixOS/nixpkgs/pull/304469 is merged to nixos-unstable, remove this
+    ananicy-fix.url = "github:JohnRTitor/nixpkgs/7466a6d7a4ff5e1af0d0f0304a89a0b717aa9eac"; # Ananicy update for nixpkgs
+
     lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
 
     hyprland.url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo

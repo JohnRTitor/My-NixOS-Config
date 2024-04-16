@@ -1,5 +1,5 @@
 # Configure printers
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   ## Essential services ##
@@ -31,7 +31,8 @@
   # Enable Ananicy CPP for better system performance
   services.ananicy = {
     enable = true;
-    rulesProvider = pkgs.ananicy-cpp-rules; # from nixpkgs: ananicy-rules-cachyos
+    # FIXME: when https://github.com/NixOS/nixpkgs/pull/304469 is merged, remove this
+    rulesProvider = inputs.ananicy-fix.legacyPackages.${pkgs.system}.ananicy-rules-cachyos; # from nixpkgs: ananicy-rules-cachyos
   };
 
   # Some programs need SUID wrappers, can be configured further or are
