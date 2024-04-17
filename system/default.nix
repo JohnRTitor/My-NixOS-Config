@@ -19,16 +19,16 @@
     ./locale.nix
     # include fonts settings
     ./fonts.nix
-    # include hyprland settings
+    # include Hyprland settings
     ./hyprland.nix
-    # Include GNOME Keyring settings
-    ./gnome-keyring.nix
     # Include browsers settings
     ./browsers.nix
     # include printing settings
     ./printing.nix
     # include essential services
     ./services.nix
+    ./services/ananicy-cpp.nix
+    ./services/gnome-keyring.nix
   ]
   ++
   # Configure secure boot with lanzaboote, if secureboot is enabled
