@@ -5,10 +5,10 @@
 
 let
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
-  python-packages = pkgs.python3.withPackages (ps: [
-    ps.requests # requests module
-    ps.sh # subprocess module
-    ps.pyquery
+  python-packages = pkgs.python3.withPackages (ps: with ps; [
+    requests # requests module
+    sh # subprocess module
+    pyquery
   ]);
 in
 {
@@ -16,7 +16,7 @@ in
   programs.hyprland = {
     enable = true;
     package = pkgs-hyprland.hyprland;
-    systemd.setPath.enable = false; #FIXME: enable this once https://github.com/NixOS/nixpkgs/pull/303174 is merged
+    systemd.setPath.enable = true;
   };
   programs.waybar.enable = true; # enable waybar launcher
   # Enable GDM with wayland
@@ -157,10 +157,6 @@ in
   };
 
   systemd = {
-    # FIXME: remove this once https://github.com/NixOS/nixpkgs/pull/303174 is merged
-    user.extraConfig = ''
-      DefaultEnvironment="PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/%u/bin:/run/wrappers/bin"
-    '';
     # Polkit starting systemd service - needed for apps requesting root access
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
