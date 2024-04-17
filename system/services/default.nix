@@ -2,6 +2,11 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./ananicy-cpp.nix
+    ./gnome-keyring.nix
+  ];
+
   ## Essential services ##
   # Enable xserver with xwayland
   services.xserver = {
@@ -27,28 +32,6 @@
   };
   # XDG portal paths to link if useUserPackages=true is enabled in home-manager (flake.nix)
   environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
-
-  # Enable Ananicy CPP for better system performance
-  services.ananicy = {
-    enable = true;
-    # from nixpkgs: ananicy-rules-cachyos
-    rulesProvider = pkgs.ananicy-cpp-rules.overrideAttrs (oldAttrs: rec {
-      patches = [
-        (pkgs.fetchpatch {
-          # FIXME: remove when https://github.com/CachyOS/ananicy-rules/pull/80 is merged and available in nixpkgs
-          name = "add-compiler-rules.patch";
-          url = "https://patch-diff.githubusercontent.com/raw/CachyOS/ananicy-rules/pull/80.diff";
-          hash = "sha256-GF2bjOaCkNaAP160C7Cs3DYs2FId5vcKeErG0ToHRbA=";
-        })
-        (pkgs.fetchpatch {
-          # FIXME: remove when https://github.com/CachyOS/ananicy-rules/pull/84 is merged and available in nixpkgs
-          name = "add-xdg-gvfs-misc.patch";
-          url = "https://patch-diff.githubusercontent.com/raw/CachyOS/ananicy-rules/pull/84.patch";
-          hash = "sha256-S2m+/xgjuAhFg7Ta4X5z150xgYEl917lw8wtoWU3C3M=";
-        })
-      ];
-    });
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
