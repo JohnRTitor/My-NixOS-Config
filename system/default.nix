@@ -26,9 +26,7 @@
     # include printing settings
     ./printing.nix
     # include essential services
-    ./services.nix
-    ./services/ananicy-cpp.nix
-    ./services/gnome-keyring.nix
+    ./services
   ]
   ++
   # Configure secure boot with lanzaboote, if secureboot is enabled

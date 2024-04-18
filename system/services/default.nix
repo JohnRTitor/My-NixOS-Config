@@ -2,6 +2,11 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./ananicy-cpp.nix
+    ./gnome-keyring.nix
+  ];
+
   ## Essential services ##
   # Enable xserver with xwayland
   services.xserver = {
