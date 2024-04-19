@@ -21,6 +21,8 @@
     ./eza.nix # eza - modern replacement for ls
     ./thunar.nix
 
+    ./nix-helpers.nix
+
     ./services.nix # services
   ]
   ++

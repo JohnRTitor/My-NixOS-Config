@@ -83,10 +83,7 @@
       telegram-desktop_git # latest from chaotic
       deluge
       shotwell # GNOME image editor
-
-      ## NixPkgs development ##
-      nix-output-monitor
-      nixpkgs-review
+      androidStudioPackages.beta
     ])
 
     ++
@@ -94,7 +91,7 @@
     (with pkgs-edge; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
-      androidStudioPackages.beta
+      # Some packages may not be cached so.. it may take some time to build
     ])
   ;
 }

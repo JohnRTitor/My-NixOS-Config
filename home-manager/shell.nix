@@ -25,8 +25,8 @@ in {
   home.shellAliases = {
     check-flake = "execmd nix flake check";
     update-flake = "execmd nix flake update";
-    rebuild = "execmd sudo nixos-rebuild switch";
-    garbage-collect = "execmd sudo nix-collect-garbage -d";
+    # rebuild = "execmd sudo nixos-rebuild switch"; 
+    # garbage-collect = "execmd sudo nix-collect-garbage -d";
     fix-store = "execmd sudo nix-store --verify --check-contents --repair";
     # cfastfetch is just an alias to run compact fastfetch
     cfastfetch = "fastfetch --config ~/.config/fastfetch/config-compact.jsonc";
