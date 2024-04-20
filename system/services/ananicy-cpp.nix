@@ -10,7 +10,7 @@
           # FIXME: remove when https://github.com/CachyOS/ananicy-rules/pull/80 is merged and available in nixpkgs
           name = "add-compiler-rules.patch";
           url = "https://patch-diff.githubusercontent.com/raw/CachyOS/ananicy-rules/pull/80.diff";
-          hash = "sha256-GF2bjOaCkNaAP160C7Cs3DYs2FId5vcKeErG0ToHRbA=";
+          hash = "sha256-IBGxW3iRPSrBx9cckMKo9fV/xkqV1f5KsepobfLjTAo=";
         })
         (pkgs.fetchpatch {
           # FIXME: remove when https://github.com/CachyOS/ananicy-rules/pull/84 is merged and available in nixpkgs
