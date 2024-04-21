@@ -79,16 +79,19 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nix
-
+    
+    # Don't add follows nixpkgs, else will cause conflicts, leading to local
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nyx
+    devenv.url = "github:cachix/devenv"; # Devenv flake, don't add follows nixpkgs
     lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
 
-    hyprland.url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
+    hyprland = { url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
+                 inputs.nixpkgs.follows = "nixpkgs"; };
 
-    home-manager = {  url = "github:nix-community/home-manager/master";
-                      inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = { url = "github:nix-community/home-manager/master";
+                     inputs.nixpkgs.follows = "nixpkgs"; }; # Must follow nixpkgs, else will cause conflicts
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
-    devenv.url = "github:cachix/devenv"; # Devenv flake
+    nix-vscode-extensions = { url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
+                              inputs.nixpkgs.follows = "nixpkgs"; };
   };
 }
