@@ -3,8 +3,6 @@
 {
   # Enable support for bcachefs
   boot.supportedFilesystems = [ "bcachefs" ];
-  boot.initrd.supportedFilesystems = [ "bcachefs" ];
-  boot.initrd.kernelModules = [ "bcachefs" ];
   
   fileSystems = {
     "/".options = [ "defaults" "noatime" ]; # disable access time updates
