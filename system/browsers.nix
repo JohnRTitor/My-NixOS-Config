@@ -1,5 +1,5 @@
 # This config file is used to configure browsers
-{ pkgs, ... }:
+{ pkgs, pkgs-chrome, ... }:
 {
   # Enable Firefox Wayland
   programs.firefox = {
@@ -11,7 +11,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
+  # FIXME: revert this commit once Chrome 124 is released with proper Wayland support
+  # https://issues.chromium.org/issues/329678163
+  # https://github.com/NixOS/nixpkgs/issues/306010
+  environment.systemPackages = with pkgs-chrome; [
     (google-chrome.override {
       # enable video encoding and hardware acceleration, along with several
       # suitable for my configuration
