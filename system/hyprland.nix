@@ -122,8 +122,6 @@ in
       hyprcursor
       # hyprpicker # does not work
       # hyprpaper # alternative to swww
-      hyprlock # alternative to swaylock
-      hypridle # alternative to swayidle
       pyprland # hyprland plugin support
     ])
 
@@ -132,7 +130,12 @@ in
     (with pkgs-hyprland; [
       # list of latest packages from hyprland repo
       hyprland-protocols
-    ]);
+    ])
+    
+    ++ [
+      inputs.hyprlock.packages.${pkgs.system}.hyprlock
+      inputs.hypridle.packages.${pkgs.system}.hypridle
+    ];
 
   # Environment variables to start the session with
   environment.sessionVariables = {

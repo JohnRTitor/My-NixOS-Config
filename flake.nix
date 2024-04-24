@@ -96,6 +96,10 @@
 
     hyprland = { url = "github:hyprwm/Hyprland/v0.39.1"; # Latest Hyprland from official repo
                  inputs.nixpkgs.follows = "nixpkgs"; };
+    hyprlock = { url = "github:hyprwm/hyprlock"; # Latest Hyprlock from official repo
+                 inputs.nixpkgs.follows = "nixpkgs"; };
+    hypridle = { url = "github:hyprwm/hypridle"; # Latest Hypridle from official repo
+                 inputs.nixpkgs.follows = "nixpkgs"; };
 
     home-manager = { url = "github:nix-community/home-manager/master";
                      inputs.nixpkgs.follows = "nixpkgs"; }; # Must follow nixpkgs, else will cause conflicts

@@ -2,7 +2,7 @@
 { config, lib, pkgs, pkgs-stable, systemSettings, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
   # Enable scx extra schedulers, only available for linux-cachyos
   chaotic.scx.enable = true; # by default uses rustland
