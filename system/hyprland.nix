@@ -82,8 +82,6 @@ in
       rofi-wayland 
       slurp # screenshots
       swappy # screenshots
-      swayidle # idle manager
-      swaylock-effects # swaylock with effects
       swaynotificationcenter # notification daemon
       swww
       wlsunset # for night mode
@@ -124,8 +122,8 @@ in
       hyprcursor
       # hyprpicker # does not work
       # hyprpaper # alternative to swww
-      # hyprlock # alternative to swaylock
-      # hypridle # alternative to swayidle
+      hyprlock # alternative to swaylock
+      hypridle # alternative to swayidle
       pyprland # hyprland plugin support
     ])
 
