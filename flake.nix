@@ -92,7 +92,9 @@
     # Don't add follows nixpkgs, else will cause conflicts, leading to local rebuilds
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nyx
     devenv.url = "github:cachix/devenv"; # Devenv flake, don't add follows nixpkgs
-    lanzaboote.url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
+    
+    lanzaboote = { url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
+                   inputs.nixpkgs.follows = "nixpkgs"; };
 
     hyprland = { url = "github:hyprwm/Hyprland/v0.39.1"; # Latest Hyprland from official repo
                  inputs.nixpkgs.follows = "nixpkgs"; };
@@ -100,6 +102,9 @@
                  inputs.nixpkgs.follows = "nixpkgs"; };
     hypridle = { url = "github:hyprwm/hypridle"; # Latest Hypridle from official repo
                  inputs.nixpkgs.follows = "nixpkgs"; };
+    pyprland = { url = "github:hyprland-community/pyprland"; # Latest Pyprland from official repo
+                 inputs.nixpkgs.follows = "nixpkgs"; };
+
 
     home-manager = { url = "github:nix-community/home-manager/master";
                      inputs.nixpkgs.follows = "nixpkgs"; }; # Must follow nixpkgs, else will cause conflicts
