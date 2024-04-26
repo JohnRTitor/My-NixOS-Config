@@ -60,4 +60,8 @@
   services.envfs.enable = true;
 
   security.polkit.enable = true; # Enable polkit for elevated prompts
+
+  security.apparmor.enable = true;
+  security.apparmor.enableCache = true;
+  services.dbus.apparmor = "enabled";
 }
