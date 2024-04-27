@@ -1,7 +1,7 @@
 # Configure hyprland window manager
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
-{ lib, pkgs, inputs, ... }:
+{ pkgs, pkgs-edge, inputs, ... }:
 
 let
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
@@ -16,9 +16,13 @@ in
   programs.hyprland = {
     enable = true;
     package = pkgs-hyprland.hyprland;
+    portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
     systemd.setPath.enable = true;
   };
-  programs.waybar.enable = true; # enable waybar launcher
+
+  # hyprland portal is already included, gtk is also needed for compatibility
+  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+
   # Enable GDM with wayland
   services.xserver.displayManager.gdm = {
     enable = true;
@@ -29,17 +33,17 @@ in
     '';
   };
 
-  # hyprland portal is already included, gtk is also needed for compatibility
-  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-
   ## QT theming ##
-  qt.enable = true;
-  qt.style = "kvantum";
-  qt.platformTheme = "qt5ct";
-
+  qt = {
+    enable = true;
+    style = "kvantum";
+    platformTheme = "qt5ct";
+  };
+  
   ## Configure essential programs ##
 
   programs = {
+    waybar.enable = true; # enable waybar launcher
     evince.enable = true; # document viewer
     file-roller.enable = true; # archive manager
     # Xfce file manager
@@ -52,90 +56,93 @@ in
         thunar-volman
       ];
     };
+    nm-applet.enable = true; # network manager applet
   };
 
   services.gnome = {
     sushi.enable = true; # quick previewer for nautilus
     glib-networking.enable = true; # network extensions libs
+    
   };
+  
   services.tumbler.enable = true; # thumbnailer service
 
   ## Configure essential packages ##
 
-  environment.systemPackages =
-    (with pkgs; [
-          
-      # Hyprland Stuff main
-      cava # audio visualizer
-      cliphist # clipboard history
-      grim # screenshots
-      jq # json parser
-      networkmanagerapplet
-      nwg-look # theme switcher
-      openssl # required by Rainbow borders
-      pamixer 
-      pavucontrol # audio control
-      playerctl # media player control
-      polkit_gnome # needed for apps requesting root access
-      python-packages # needed for Weather.py from dotfiles
-      pywal
-      rofi-wayland 
-      slurp # screenshots
-      swappy # screenshots
-      swaynotificationcenter # notification daemon
-      swww
-      wlsunset # for night mode
-      wl-clipboard
-      wlogout
-      yad
+  environment.systemPackages = (with pkgs; [
+    # Hyprland Stuff main
+    cava # audio visualizer
+    cliphist # clipboard history
+    grim # screenshots
+    jq # json parser
+    networkmanagerapplet
+    nwg-look # theme switcher
+    openssl # required by Rainbow borders
+    pamixer 
+    pavucontrol # audio control
+    playerctl # media player control
+    polkit_gnome # needed for apps requesting root access
+    python-packages # needed for Weather.py from dotfiles
+    pywal
+    rofi-wayland 
+    slurp # screenshots
+    swappy # screenshots
+    swaynotificationcenter # notification daemon
+    swww
+    wlsunset # for night mode
+    wl-clipboard
+    wlogout
+    yad
 
-      gsettings-desktop-schemas
-      wlr-randr # xrandr but for wayland
-      ydotool
+    gsettings-desktop-schemas
+    wlr-randr # xrandr but for wayland
+    ydotool
 
-      ## Graphical apps ##
-      gnome.gnome-system-monitor # system monitor
-      gnome.eog # eye of gnome, image viewer
-      kitty # default terminal on hyprland
-      linux-wifi-hotspot # for wifi hotspot
-      (mpv-unwrapped.override { # mpv with more features
-        jackaudioSupport = true;
-        vapoursynthSupport = true;
-      }) # for video playback, needed for some scripts
-      mpvScripts.mpris
-      gnome.nautilus # file manager
-      shotcut # video editor
-      
-      ## QT theming and apps support ##
-      qt5.qtwayland
-      qt6.qmake
-      qt6.qtwayland
-
-      ## Utilities ##
-      desktop-file-utils
-      shared-mime-info
-      xdg-utils
-      xdg-user-dirs
-      xorg.xhost # needed for some packages running x11 like gparted
-
-      ## Hypr ecosystem ##
-      hyprcursor
-      # hyprpicker # does not work
-      # hyprpaper # alternative to swww
-    ])
-
-    ++
-
-    (with pkgs-hyprland; [
-      # list of latest packages from hyprland repo
-      hyprland-protocols
-    ])
+    ## Graphical apps ##
+    gnome.gnome-system-monitor # system monitor
+    gnome.eog # eye of gnome, image viewer
+    kitty # default terminal on hyprland
+    linux-wifi-hotspot # for wifi hotspot
+    (mpv-unwrapped.override { # mpv with more features
+      jackaudioSupport = true;
+      vapoursynthSupport = true;
+    }) # for video playback, needed for some scripts
+    mpvScripts.mpris
+    gnome.nautilus # file manager
+    shotcut # video editor
     
-    ++ [
-      inputs.hyprlock.packages.${pkgs.system}.hyprlock
-      inputs.hypridle.packages.${pkgs.system}.hypridle
-      inputs.pyprland.packages.${pkgs.system}.pyprland
-    ];
+    ## QT theming and apps support ##
+    qt5.qtwayland
+    qt6.qmake
+    qt6.qtwayland
+
+    ## Utilities ##
+    desktop-file-utils
+    shared-mime-info
+    xdg-utils
+    xdg-user-dirs
+    xorg.xhost # needed for some packages running x11 like gparted
+
+    ## Hypr ecosystem ##
+    hyprcursor
+    # hyprpicker # does not work
+    # hyprpaper # alternative to swww
+    # hyprlock
+    # hypridle
+    # pyprland
+  ])
+  
+  ++ (with pkgs-edge; [
+    # list of latest packages from nixpkgs/master repo
+
+  ])
+  
+  ++ [
+    pkgs-hyprland.hyprland-protocols
+    inputs.hyprlock.packages.${pkgs.system}.hyprlock
+    inputs.hypridle.packages.${pkgs.system}.hypridle
+    inputs.pyprland.packages.${pkgs.system}.pyprland
+  ];
 
   # Environment variables to start the session with
   environment.sessionVariables = {

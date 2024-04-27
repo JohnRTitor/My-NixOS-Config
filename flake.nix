@@ -96,7 +96,7 @@
     lanzaboote = { url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
                    inputs.nixpkgs.follows = "nixpkgs"; };
 
-    hyprland = { url = "github:hyprwm/Hyprland/v0.39.1"; # Latest Hyprland from official repo
+    hyprland = { url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
                  inputs.nixpkgs.follows = "nixpkgs"; };
     hyprlock = { url = "github:hyprwm/hyprlock"; # Latest Hyprlock from official repo
                  inputs.nixpkgs.follows = "nixpkgs"; };
