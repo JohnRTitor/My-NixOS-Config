@@ -153,13 +153,7 @@ in
     MOZ_ENABLE_WAYLAND = "1"; # firefox should always run on wayland
     
     SDL_VIDEODRIVER = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1"; # On tiling window managers like hyprland this is needed for java apps
     CLUTTER_BACKEND = "wayland";
-    GDK_BACKEND = "wayland,x11"; # GTK: use wayland if possible, else X11
-    QT_QPA_PLATFORM = "wayland;xcb"; # QT: use wayland if possible, else X11
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
     GTK_USE_PORTAL = "1"; # makes dialogs (file opening) consistent with rest of the ui
     # WLR_RENDERER = "vulkan"; # vulkan not supported in hyprland
   };
