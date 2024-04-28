@@ -11,7 +11,6 @@
         locale = "en_US.UTF-8"; # select locale
         localeoverride = "en_IN";
         stableversion = "24.05";
-        kernel = "cachyos"; # cachyos, xanmod, zen # default: latest generic kernel
         secureboot = true;
         virtualisation = false;
         laptop = false;
@@ -48,12 +47,6 @@
                   allowUnfreePredicate = (_: true); };
       };
 
-      pkgs-chrome = import inputs.chrome-pin {
-        system = pkgs.system;
-        config = { allowUnfree = true;
-                  allowUnfreePredicate = (_: true); };
-      };
-
       # system is built on nixos unstable 
       lib = nixpkgs.lib;
     in {
@@ -75,7 +68,6 @@
         specialArgs = {
           inherit inputs;
           inherit pkgs-edge;
-          inherit pkgs-chrome;
           inherit systemSettings;
           inherit userSettings;
         };
@@ -87,8 +79,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
 
-    chrome-pin.url = "nixpkgs/2e359fb3162c85095409071d131e08252d91a14f"; # Pinning chrome version to 124.0.6312.122
-    
     # Don't add follows nixpkgs, else will cause conflicts, leading to local rebuilds
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nyx
     devenv.url = "github:cachix/devenv"; # Devenv flake, don't add follows nixpkgs
@@ -105,6 +95,8 @@
     pyprland = { url = "github:hyprland-community/pyprland"; # Latest Pyprland from official repo
                  inputs.nixpkgs.follows = "nixpkgs"; };
 
+    browser-previews = { url = "github:r-k-b/browser-previews"; # Latest Chrome stable, beta, and dev
+                         inputs.nixpkgs.follows = "nixpkgs"; };
 
     home-manager = { url = "github:nix-community/home-manager/master";
                      inputs.nixpkgs.follows = "nixpkgs"; }; # Must follow nixpkgs, else will cause conflicts
