@@ -37,13 +37,13 @@ in
   # For programs installed using home manager /etc/profiles/per-user/{user}/share/applications/
   # Chrome PWAs are located in ~/.local/share/applications/
   xdg.mimeApps.defaultApplications = {
-    "text/html" = "google-chrome.desktop";
+    "text/html" = "google-chrome-beta.desktop";
     "inode/directory" = "org.gnome.Nautilus.desktop";
     "application/pdf" = "org.gnome.Evince.desktop";
-    "x-scheme-handler/http" = "google-chrome.desktop";
-    "x-scheme-handler/https" = "google-chrome.desktop";
-    "x-scheme-handler/about" = "google-chrome.desktop";
-    "x-scheme-handler/unknown" = "google-chrome.desktop";
+    "x-scheme-handler/http" = "google-chrome-beta.desktop";
+    "x-scheme-handler/https" = "google-chrome-beta.desktop";
+    "x-scheme-handler/about" = "google-chrome-beta.desktop";
+    "x-scheme-handler/unknown" = "google-chrome-beta.desktop";
   };
   xdg.mimeApps.associations.added = {
     # Text files
@@ -63,6 +63,6 @@ in
     "image/jpeg" = "org.gnome.eog.desktop;";
 
     # PDF
-    "application/pdf" = "org.gnome.Evince.desktop;google-chrome.desktop;";
+    "application/pdf" = "org.gnome.Evince.desktop;google-chrome-beta.desktop;";
   };
 }
