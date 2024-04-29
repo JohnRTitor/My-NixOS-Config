@@ -1,5 +1,5 @@
 # this config file is a wrapper to automatically configure vscode via a config file
-{ config, osConfig, lib, pkgs, inputs, ... }:
+{ config, osConfig, pkgs, inputs, ... }:
 let
   pkgs-vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
   # extract package pname for each package in the list of all installed packages, then put them in a list
@@ -50,6 +50,8 @@ in
       robbowen.synthwave-vscode # SynthWave '84 theme
       pkief.material-icon-theme # Material Icon Theme
       pkief.material-product-icons # Material Product Icons
+
+      esbenp.prettier-vscode # Prettier code formatter
     ];
     userSettings = {
       "workbench.colorTheme" = "SynthWave '84";
@@ -76,6 +78,10 @@ in
         else "";
 
       "dev.containers.dockerPath" = "podman"; # Use podman as the docker path
+
+      # Prettier linting
+      "[html]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
     };
   };
   home.packages = with pkgs; [
