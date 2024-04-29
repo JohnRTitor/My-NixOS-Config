@@ -10,6 +10,6 @@
   home.shellAliases = {
     # See ./shell.nix for definition of execmd
     rebuild = "FLAKE=${config.home.homeDirectory}/nix-conf execmd nh os switch";
-    garbage-collect = "nh clean all";
+    garbage-collect = "execmd nh clean all";
   };
 }

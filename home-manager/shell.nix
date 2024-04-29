@@ -11,6 +11,14 @@ let
     # Custom extraRc from home-manager/shell.nix
     # the below creates a wrapper function to print the command before executing it
     execmd() { echo "Executing: $@" && "$@" ; }
+
+    get-pkgs() { # Construct a get-pkgs alias of nom shell
+        local command="NIXPKGS_ALLOW_UNFREE=1 nom shell --impure"
+        for arg in "$@"; do # loop through all package names given as args
+            command+=" nixpkgs#$arg"
+        done
+        eval "$command"
+    } # now you can run get-pkgs package1 package2 package3 to get a nix shell
   '';
   # Define common session variables which would apply to all shells
   commonSessionVariables = {

@@ -25,5 +25,5 @@
   services.xserver.xkb.variant = "";
   
   # Enable touchpad support if laptop mode is enabled
-  services.xserver.libinput.enable = systemSettings.laptop;
+  services.libinput.enable = systemSettings.laptop;
 }
