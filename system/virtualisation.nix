@@ -1,5 +1,10 @@
 # Configure packages and softwares needed for virtualization
-{ config, pkgs, userSettings, ... }:
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 {
   # Enable Virt Manager
@@ -13,7 +18,7 @@
       "virbr0"
     ];
   };
-  
+
   # Needed for virt-manager to work    
   environment.sessionVariables.GSETTINGS_BACKEND = "keyfile";
 

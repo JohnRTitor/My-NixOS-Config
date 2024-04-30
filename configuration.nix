@@ -2,8 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-
-{ config, lib, pkgs, pkgs-edge, systemSettings, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-edge,
+  systemSettings,
+  userSettings,
+  ...
+}:
 
 {
   imports = [
@@ -19,7 +26,7 @@
     # include APPS settings
     # ./programs/openrgb.nix
     #./programs/kde-connect.nix
-      
+
     # include development environment
     ./dev-environment # check ./dev-environment/default.nix for more details
 

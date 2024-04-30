@@ -1,5 +1,11 @@
 # this config file is a wrapper to automatically configure vscode via a config file
-{ config, osConfig, pkgs, inputs, ... }:
+{
+  config,
+  osConfig,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   pkgs-vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
   # extract package pname for each package in the list of all installed packages, then put them in a list
@@ -9,11 +15,12 @@ in
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
-    package = (pkgs.vscode.override {
-      # if keyring does not work, try either "libsecret" or "gnome"
-      commandLineArgs = '' --password-store=gnome-libsecret'';
-    });
-
+    package = (
+      pkgs.vscode.override {
+        # if keyring does not work, try either "libsecret" or "gnome"
+        commandLineArgs = ''--password-store=gnome-libsecret'';
+      }
+    );
 
     # Since not all extensions are provided via nixpkgs,
     # We are using a vscode marketplace flake
@@ -66,16 +73,20 @@ in
       "git.autofetch" = true; # Periodically fetch from remotes
       "editor.fontFamily" = "'Fira Code Nerd Font', 'Inconsolata LGC Nerd Font', 'Droid Sans Mono', 'monospace'";
       # fonts are defined in the ../../fonts.nix file
-      "editor.fontLigatures" =  true;
+      "editor.fontLigatures" = true;
       "terminal.integrated.fontFamily" = "'JetBrains Nerd Font', 'Inconsolata LGC Nerd Font', monospace";
 
       "direnv.restart.automatic" = true; # Automatically restart direnv if .envrc changes
       "nix.enableLanguageServer" = true;
-      
+
       # Check if nixd or nil is installed and set the server accordingly
-      "nix.serverPath" = if (builtins.elem "nixd" packagesList) then "nixd"
-        else if (builtins.elem "nil" packagesList) then "nil"
-        else "";
+      "nix.serverPath" =
+        if (builtins.elem "nixd" packagesList) then
+          "nixd"
+        else if (builtins.elem "nil" packagesList) then
+          "nil"
+        else
+          "";
 
       "dev.containers.dockerPath" = "podman"; # Use podman as the docker path
 

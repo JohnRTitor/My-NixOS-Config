@@ -94,9 +94,11 @@
     };
 
     shell = {
-      program = if (userSettings.shell == "zsh") then
-                  "/run/current-system/sw/bin/zsh"
-                else "/run/current-system/sw/bin/bash";
+      program =
+        if (userSettings.shell == "zsh") then
+          "/run/current-system/sw/bin/zsh"
+        else
+          "/run/current-system/sw/bin/bash";
     };
 
     window = {

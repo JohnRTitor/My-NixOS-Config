@@ -31,7 +31,10 @@
     xdgOpenUsePortal = true; # use xdg-open with xdg-desktop-portal
   };
   # XDG portal paths to link if useUserPackages=true is enabled in home-manager (flake.nix)
-  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+  environment.pathsToLink = [
+    "/share/xdg-desktop-portal"
+    "/share/applications"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -51,7 +54,7 @@
     settings.KbdInteractiveAuthentication = false;
     #settings.PermitRootLogin = "yes";
   };
-  
+
   # enable time synchronization, flatpak and fwupd
   services.timesyncd.enable = true;
   # services.flatpak.enable = true;

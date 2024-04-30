@@ -1,15 +1,22 @@
 # Configure hyprland window manager
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
-{ pkgs, pkgs-edge, inputs, ... }:
+{
+  pkgs,
+  pkgs-edge,
+  inputs,
+  ...
+}:
 
 let
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
-  python-packages = pkgs.python3.withPackages (ps: with ps; [
-    requests # requests module
-    sh # subprocess module
-    pyquery
-  ]);
+  python-packages = pkgs.python3.withPackages (
+    ps: with ps; [
+      requests # requests module
+      sh # subprocess module
+      pyquery
+    ]
+  );
 in
 {
   # Enable Hyprland Window Manager
@@ -39,11 +46,15 @@ in
     style = "kvantum";
     platformTheme = "qt5ct";
   };
-  
+
   ## Configure essential programs ##
 
+  programs.waybar = {
+    enable = true; # enable waybar launcher
+    package = inputs.waybar.packages.${pkgs.system}.waybar;
+  };
+
   programs = {
-    waybar.enable = true; # enable waybar launcher
     evince.enable = true; # document viewer
     file-roller.enable = true; # archive manager
     # Xfce file manager
@@ -62,87 +73,87 @@ in
   services.gnome = {
     sushi.enable = true; # quick previewer for nautilus
     glib-networking.enable = true; # network extensions libs
-    
   };
-  
+
   services.tumbler.enable = true; # thumbnailer service
 
   ## Configure essential packages ##
 
-  environment.systemPackages = (with pkgs; [
-    # Hyprland Stuff main
-    cava # audio visualizer
-    cliphist # clipboard history
-    grim # screenshots
-    jq # json parser
-    networkmanagerapplet
-    nwg-look # theme switcher
-    openssl # required by Rainbow borders
-    pamixer 
-    pavucontrol # audio control
-    playerctl # media player control
-    polkit_gnome # needed for apps requesting root access
-    python-packages # needed for Weather.py from dotfiles
-    pywal
-    rofi-wayland 
-    slurp # screenshots
-    swappy # screenshots
-    swaynotificationcenter # notification daemon
-    swww
-    wlsunset # for night mode
-    wl-clipboard
-    wlogout
-    yad
+  environment.systemPackages =
+    (with pkgs; [
+      # Hyprland Stuff main
+      cava # audio visualizer
+      cliphist # clipboard history
+      grim # screenshots
+      jq # json parser
+      networkmanagerapplet
+      nwg-look # theme switcher
+      openssl # required by Rainbow borders
+      pamixer
+      pavucontrol # audio control
+      playerctl # media player control
+      polkit_gnome # needed for apps requesting root access
+      python-packages # needed for Weather.py from dotfiles
+      pywal
+      rofi-wayland
+      slurp # screenshots
+      swappy # screenshots
+      swaynotificationcenter # notification daemon
+      swww
+      wlsunset # for night mode
+      wl-clipboard
+      wlogout
+      yad
 
-    gsettings-desktop-schemas
-    wlr-randr # xrandr but for wayland
-    ydotool
+      gsettings-desktop-schemas
+      wlr-randr # xrandr but for wayland
+      ydotool
 
-    ## Graphical apps ##
-    gnome.gnome-system-monitor # system monitor
-    gnome.eog # eye of gnome, image viewer
-    kitty # default terminal on hyprland
-    linux-wifi-hotspot # for wifi hotspot
-    (mpv-unwrapped.override { # mpv with more features
-      jackaudioSupport = true;
-      vapoursynthSupport = true;
-    }) # for video playback, needed for some scripts
-    mpvScripts.mpris
-    gnome.nautilus # file manager
-    shotcut # video editor
-    
-    ## QT theming and apps support ##
-    qt5.qtwayland
-    qt6.qmake
-    qt6.qtwayland
+      ## Graphical apps ##
+      gnome.gnome-system-monitor # system monitor
+      gnome.eog # eye of gnome, image viewer
+      kitty # default terminal on hyprland
+      linux-wifi-hotspot # for wifi hotspot
+      (mpv-unwrapped.override {
+        # mpv with more features
+        jackaudioSupport = true;
+        vapoursynthSupport = true;
+      }) # for video playback, needed for some scripts
+      mpvScripts.mpris
+      gnome.nautilus # file manager
+      shotcut # video editor
 
-    ## Utilities ##
-    desktop-file-utils
-    shared-mime-info
-    xdg-utils
-    xdg-user-dirs
-    xorg.xhost # needed for some packages running x11 like gparted
+      ## QT theming and apps support ##
+      qt5.qtwayland
+      qt6.qmake
+      qt6.qtwayland
 
-    ## Hypr ecosystem ##
-    hyprcursor
-    # hyprpicker # does not work
-    # hyprpaper # alternative to swww
-    # hyprlock
-    # hypridle
-    # pyprland
-  ])
-  
-  ++ (with pkgs-edge; [
-    # list of latest packages from nixpkgs/master repo
+      ## Utilities ##
+      desktop-file-utils
+      shared-mime-info
+      xdg-utils
+      xdg-user-dirs
+      xorg.xhost # needed for some packages running x11 like gparted
 
-  ])
-  
-  ++ [
-    pkgs-hyprland.hyprland-protocols
-    inputs.hyprlock.packages.${pkgs.system}.hyprlock
-    inputs.hypridle.packages.${pkgs.system}.hypridle
-    inputs.pyprland.packages.${pkgs.system}.pyprland
-  ];
+      ## Hypr ecosystem ##
+      hyprcursor
+      # hyprpicker # does not work
+      # hyprpaper # alternative to swww
+      # hyprlock
+      # hypridle
+      # pyprland
+    ])
+
+    ++ (with pkgs-edge; [
+      # list of latest packages from nixpkgs/master repo
+    ])
+
+    ++ [
+      pkgs-hyprland.hyprland-protocols
+      inputs.hyprlock.packages.${pkgs.system}.hyprlock
+      inputs.hypridle.packages.${pkgs.system}.hypridle
+      inputs.pyprland.packages.${pkgs.system}.pyprland
+    ];
 
   # Environment variables to start the session with
   environment.sessionVariables = {
@@ -151,7 +162,7 @@ in
 
     NIXOS_OZONE_WL = "1"; # for electron and chromium apps to run on wayland
     MOZ_ENABLE_WAYLAND = "1"; # firefox should always run on wayland
-    
+
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
     GTK_USE_PORTAL = "1"; # makes dialogs (file opening) consistent with rest of the ui

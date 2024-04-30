@@ -19,14 +19,12 @@
       # "https://mirror.sjtu.edu.cn/nix-channels/store"
       # status: https://mirrors.ustc.edu.cn/status/
       # "https://mirrors.ustc.edu.cn/nix-channels/store"
-      
+
       # default cache server
       "https://cache.nixos.org"
     ];
 
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
+    trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
   };
 
   # DONT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING

@@ -5,10 +5,11 @@
   # Enable adb
   programs.adb.enable = true;
   # Add our primary user to adbusers group
-  users.users.${userSettings.username}.extraGroups = [ "adbusers" "plugdev" ];
+  users.users.${userSettings.username}.extraGroups = [
+    "adbusers"
+    "plugdev"
+  ];
 
   # configure the udev rules
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
+  services.udev.packages = [ pkgs.android-udev-rules ];
 }

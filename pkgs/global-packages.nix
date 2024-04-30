@@ -9,7 +9,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages =
-  # pkgsx86_64_v3-core are optimised packages provided by chaotic nyx repo
+    # pkgsx86_64_v3-core are optimised packages provided by chaotic nyx repo
     (with pkgs; [
 
       # System Packages
@@ -37,23 +37,27 @@
       iftop # for network I/O monitoring
 
       # Tool to run app images and random app binaries
-      (let base = pkgs.appimageTools.defaultFhsEnvArgs; in 
-        pkgs.buildFHSUserEnv (base // {
-          name = "fhs"; # provides fhs command to enter in a FHS environment
-          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-          profile = "export FHS=1";
-          runScript = "$SHELL";
-          extraOutputsToInstall = ["dev"];
-      }))
-
+      (
+        let
+          base = pkgs.appimageTools.defaultFhsEnvArgs;
+        in
+        pkgs.buildFHSUserEnv (
+          base
+          // {
+            name = "fhs"; # provides fhs command to enter in a FHS environment
+            targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config ];
+            profile = "export FHS=1";
+            runScript = "$SHELL";
+            extraOutputsToInstall = [ "dev" ];
+          }
+        )
+      )
     ])
 
     ++
 
-    (with pkgs-edge; [
-      # list of latest packages from nixpkgs master
-      # Can be used to install latest version of some packages
-      
-    ])
-  ;
+      (with pkgs-edge; [
+        # list of latest packages from nixpkgs master
+        # Can be used to install latest version of some packages
+      ]);
 }

@@ -3,10 +3,16 @@
 {
   # Enable support for bcachefs
   boot.supportedFilesystems = [ "bcachefs" ];
-  
+
   fileSystems = {
-    "/".options = [ "defaults" "noatime" ]; # disable access time updates
-    "/boot".options = [ "fmask=0137" "dmask=0027" ]; # restrict access to /boot
+    "/".options = [
+      "defaults"
+      "noatime"
+    ]; # disable access time updates
+    "/boot".options = [
+      "fmask=0137"
+      "dmask=0027"
+    ]; # restrict access to /boot
   };
 
   # Enable zram swap
@@ -21,13 +27,15 @@
     "vm.watermark_scale_factor" = 125;
     "vm.page-cluster" = 0;
   };
-  swapDevices = [ 
+  swapDevices = [
     {
       device = "/dev/disk/by-uuid/713c9bb6-7612-48a9-b207-0bccf046a5ac";
-      options = [ "defaults" "nofail" ];
+      options = [
+        "defaults"
+        "nofail"
+      ];
     } # 16 Gigs swap
   ];
-
 
   # fstrim for SSD
   services.fstrim = {

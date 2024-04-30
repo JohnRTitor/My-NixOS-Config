@@ -1,5 +1,11 @@
 # This conf file is used to configure boot 
-{ config, pkgs, lib, systemSettings, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  systemSettings,
+  ...
+}:
 
 {
   # Enable systemd-boot
@@ -28,10 +34,6 @@
     # black_hud circle_hud cross_hud square_hud
     # circuit connect cuts_alt seal_2 seal_3
     theme = "rings_2";
-    themePackages = with pkgs; [(
-      adi1090x-plymouth-themes.override {
-        selected_themes = [ theme ];
-      }
-    )];
+    themePackages = with pkgs; [ (adi1090x-plymouth-themes.override { selected_themes = [ theme ]; }) ];
   };
 }

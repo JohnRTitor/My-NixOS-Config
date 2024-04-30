@@ -27,8 +27,8 @@ let
     # Add custom bin directories to the PATH
     PATH = "$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin";
   };
-
-in {
+in
+{
   # Define common aliases which would apply to all shells
   home.shellAliases = {
     check-flake = "execmd nix flake check";
@@ -43,9 +43,11 @@ in {
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    bashrcExtra = commonRcExtra + ''
-      # Custom bashrc go here, type below this line
-    '';
+    bashrcExtra =
+      commonRcExtra
+      + ''
+        # Custom bashrc go here, type below this line
+      '';
     sessionVariables = commonSessionVariables // {
       # Add custom session variables for bash
     };
@@ -68,19 +70,21 @@ in {
     };
     # extra lines to add to the zshrc file
     # Enable autosuggest to use history and completion
-    initExtra = commonRcExtra + ''
-      ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
-    '';
+    initExtra =
+      commonRcExtra
+      + ''
+        ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
+      '';
   };
 
   # If starship is enabled, don't enable oh-my-zsh
   programs.zsh.oh-my-zsh = lib.mkIf (config.programs.starship.enable == false) {
     enable = true;
-    plugins = [ 
+    plugins = [
       "git"
       "history"
       "urltools" # provides urlencode, urldecode
-      ];
+    ];
     theme = "duellj";
   };
 }

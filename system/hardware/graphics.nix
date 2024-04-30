@@ -41,7 +41,7 @@
     "radeon.si_support=0"
     "amdgpu.si_support=1"
   ];
-  
+
   # Graphics environment variables
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "radeonsi";

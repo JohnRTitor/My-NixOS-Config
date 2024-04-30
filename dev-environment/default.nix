@@ -1,4 +1,11 @@
-{ config, lib, pkgs, pkgs-edge, userSettings, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-edge,
+  userSettings,
+  ...
+}:
 {
   # Configure the build environment
 
@@ -10,7 +17,7 @@
     # Use devenv instead, it's more flexible
     # and contains a lot of prebuilt packages
     # configured in home manager
-    
+
     # ./deprecated/c-toolchain.nix
     # ./deprecated/php.nix
   ];

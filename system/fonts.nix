@@ -9,7 +9,8 @@
     noto-fonts-cjk
     jetbrains-mono
     font-awesome
-    (nerdfonts.override { # Nerd fonts, must for icons
+    (nerdfonts.override {
+      # Nerd fonts, must for icons
       fonts = [
         "JetBrainsMono" # used in VS code terminal
         "InconsolataLGC" # used in Alacritty, VS code

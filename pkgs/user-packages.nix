@@ -6,7 +6,7 @@
 
 { pkgs, pkgs-edge, ... }:
 {
-  home.packages = 
+  home.packages =
     (with pkgs; [
       # here is some command line tools I use frequently
       # feel free to add your own or remove some of them
@@ -24,7 +24,6 @@
       # zlib
       zstd
 
-
       # utils
       # ripgrep # recursively searches directories for a regex pattern
       # jq # A lightweight and flexible command-line JSON processor
@@ -34,7 +33,7 @@
       ## NETWORKING TOOLS ##
       # mtr # A network diagnostic tool
       # iperf3
-      dnsutils  # `dig` + `nslookup`
+      dnsutils # `dig` + `nslookup`
       # ldns # replacement of `dig`, it provide the command `drill`
       # aria2 # A lightweight multi-protocol & multi-source command-line download utility
       # socat # replacement of openbsd-netcat
@@ -62,7 +61,6 @@
       pciutils # lspci
       usbutils # lsusb
 
-
       ## MISCELLANEOUS ##
       which
       gawk
@@ -77,9 +75,7 @@
 
       # whatsapp-for-linux
       libreoffice-fresh
-      (discord.override {
-        withVencord = true;
-      })
+      (discord.override { withVencord = true; })
       telegram-desktop # latest from chaotic
       deluge
       shotwell # GNOME image editor
@@ -88,10 +84,9 @@
 
     ++
 
-    (with pkgs-edge; [
-      # list of latest packages from nixpkgs master
-      # Can be used to install latest version of some packages
-      # Some packages may not be cached so.. it may take some time to build
-    ])
-  ;
+      (with pkgs-edge; [
+        # list of latest packages from nixpkgs master
+        # Can be used to install latest version of some packages
+        # Some packages may not be cached so.. it may take some time to build
+      ]);
 }

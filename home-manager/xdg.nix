@@ -20,7 +20,7 @@ in
     # can be null since hyprland does not use Desktop
     desktop = "${homeDir}/Desktop"; # null;
     publicShare = "${homeDir}/Public";
-    
+
     extraConfig = {
       # XDG_DOTFILES_DIR = "${homeDir}/.dotfiles";
       XDG_ARCHIVE_DIR = "${homeDir}/Archive";

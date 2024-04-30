@@ -1,4 +1,9 @@
-{ config, pkgs, userSettings, ... }:
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}:
 {
   nix.settings.trusted-users = [ userSettings.username ]; # FIXME: if someday custom cache works without this
 
@@ -15,7 +20,10 @@
     "gccarch-znver4"
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # enable nix command and flakes
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ]; # enable nix command and flakes
   nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
   # Allow unfree packages
