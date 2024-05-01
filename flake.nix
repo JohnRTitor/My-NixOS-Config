@@ -102,6 +102,10 @@
       url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprcursor = {
+      url = "github:hyprwm/hyprcursor"; # Latest Hyprcursor from official repo
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprlock = {
       url = "github:hyprwm/hyprlock"; # Latest Hyprlock from official repo
       inputs.nixpkgs.follows = "nixpkgs";

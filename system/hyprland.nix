@@ -93,7 +93,6 @@ in
       pavucontrol # audio control
       playerctl # media player control
       polkit_gnome # needed for apps requesting root access
-      python-packages # needed for Weather.py from dotfiles
       pywal
       rofi-wayland
       slurp # screenshots
@@ -136,9 +135,9 @@ in
       xorg.xhost # needed for some packages running x11 like gparted
 
       ## Hypr ecosystem ##
-      hyprcursor
+      # hyprcursor
       # hyprpicker # does not work
-      # hyprpaper # alternative to swww
+      # hyprpaper # alternative to swww, but shit
       # hyprlock
       # hypridle
       # pyprland
@@ -149,7 +148,9 @@ in
     ])
 
     ++ [
+      python-packages # needed for Weather.py from dotfiles
       pkgs-hyprland.hyprland-protocols
+      inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
       inputs.hyprlock.packages.${pkgs.system}.hyprlock
       inputs.hypridle.packages.${pkgs.system}.hypridle
       inputs.pyprland.packages.${pkgs.system}.pyprland

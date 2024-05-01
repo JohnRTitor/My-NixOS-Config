@@ -26,6 +26,8 @@
   ]; # enable nix command and flakes
   nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ]; # enable aarch64 cross compilation
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
