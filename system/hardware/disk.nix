@@ -20,13 +20,7 @@
     enable = true;
     memoryPercent = 75;
   };
-  # Settings for zram
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 200;
-    "vm.watermark_boost_factor" = 0;
-    "vm.watermark_scale_factor" = 125;
-    "vm.page-cluster" = 0;
-  };
+
   swapDevices = [
     {
       device = "/dev/disk/by-uuid/713c9bb6-7612-48a9-b207-0bccf046a5ac";
@@ -36,6 +30,16 @@
       ];
     } # 16 Gigs swap
   ];
+
+  boot.kernel.sysctl = {
+    # Setting High swappiness can improve performance with zram
+    "vm.swappiness" = 200;
+    "vm.watermark_boost_factor" = 0;
+    "vm.watermark_scale_factor" = 125;
+    "vm.page-cluster" = 0;
+    # Improve write and read performance
+    "vm.dirty_background_ratio" = 12;
+  };
 
   # fstrim for SSD
   services.fstrim = {
