@@ -154,6 +154,7 @@ in
       inputs.hyprlock.packages.${pkgs.system}.hyprlock
       inputs.hypridle.packages.${pkgs.system}.hypridle
       inputs.pyprland.packages.${pkgs.system}.pyprland
+      inputs.ags.packages.${pkgs.system}.ags
     ];
 
   # Environment variables to start the session with
