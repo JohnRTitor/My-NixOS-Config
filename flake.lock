@@ -266,11 +266,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1714390914,
-        "narHash": "sha256-W5DFIifCjGYJXJzLU3RpqBeqes4zrf0Sr/6rwzTygPU=",
+        "lastModified": 1714719003,
+        "narHash": "sha256-QmbW8glgZ2lk+uYEHVZiFX9Cbv4ARCX/3+6kKfsKf28=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "34e6461fd76b5f51ad5f8214f5cf22c4cd7a196e",
+        "rev": "4d786c35280e94211b2fb7b50036cc6aeddee320",
         "type": "github"
       },
       "original": {
@@ -680,11 +680,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714515075,
-        "narHash": "sha256-azMK7aWH0eUc3IqU4Fg5rwZdB9WZBvimOGG3piqvtsY=",
+        "lastModified": 1714679908,
+        "narHash": "sha256-KzcXzDvDJjX34en8f3Zimm396x6idbt+cu4tWDVS2FI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6d3b6dc9222c12b951169becdf4b0592ee9576ef",
+        "rev": "9036fe9ef8e15a819fa76f47a8b1f287903fb848",
         "type": "github"
       },
       "original": {
@@ -781,11 +781,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1714612681,
-        "narHash": "sha256-Uv+XnqVAXzljkFVkGm92mgrmA2MRiszX8j7TmJUV1uA=",
+        "lastModified": 1714700359,
+        "narHash": "sha256-y5ecarXckRPV+K6cmfcWs/RiyvZbNZDkA5su9gEQ/6I=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "56de72f357222beca94e3d4f8152e2523a22c0b3",
+        "rev": "387127b12ab5df8f8f40e8da7d76f47636562cab",
         "type": "github"
       },
       "original": {
@@ -922,11 +922,11 @@
         "systems": "systems_10"
       },
       "locked": {
-        "lastModified": 1713978374,
-        "narHash": "sha256-jla5Wo0Qt3NEnD0OjNj85BGw0pR4Zlz5uy8AqHH7tuE=",
+        "lastModified": 1714739653,
+        "narHash": "sha256-BYgFaupuTYs0Qe2DNv/ej2R9Y6kvCks5fmHzPHsWYkw=",
         "owner": "hyprwm",
         "repo": "hyprlock",
-        "rev": "415262065fff0a04b229cd00165f346a86a0a73a",
+        "rev": "3cd461405c6e6b6d8f1119257715ad98a7454549",
         "type": "github"
       },
       "original": {
@@ -1190,11 +1190,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714647606,
-        "narHash": "sha256-P8qbdfTBh5yvx+bNlLA4kpOwZ2jzQZfxAp2/Ih8DJsQ=",
+        "lastModified": 1714699387,
+        "narHash": "sha256-3PPA17RJvKjiaOnMSPYXnsg0Pux3GbQ4GXGAjJFOQZw=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "42e84dd480cc3e72b5e03aaacb630ca1795bbf4b",
+        "rev": "e17d01c6d45bb73eda399c2f7f2dff6e2543c9a6",
         "type": "github"
       },
       "original": {
@@ -1246,11 +1246,11 @@
     },
     "nixpkgs-edge": {
       "locked": {
-        "lastModified": 1714649707,
-        "narHash": "sha256-CYVk6WufYtwYPhuwRTQusMjxz/cZQDElBQsKgAfg9vw=",
+        "lastModified": 1714741655,
+        "narHash": "sha256-EI2XZ8B4RX3S8i2kxS4B+32l6CfOj2iizuUx5+PwCYY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2715377a761ea0232d6db8f938d363d06d6e7727",
+        "rev": "df2b6d710a3bb69ebb9dd3749993e064c31b56ce",
         "type": "github"
       },
       "original": {
@@ -1518,11 +1518,11 @@
         "systems": "systems_15"
       },
       "locked": {
-        "lastModified": 1714605189,
-        "narHash": "sha256-9Aue5AoRXp4IeqkCz51y2kGCEcOPoRr05Lw/e54UiOY=",
+        "lastModified": 1714674778,
+        "narHash": "sha256-0NOw66jUsPob0KTrv3JmKVO2FUz3nq4MgtET+jPAoYo=",
         "owner": "hyprland-community",
         "repo": "pyprland",
-        "rev": "f9b2313be898c1fc195df70b835753a725413708",
+        "rev": "f8ead0d1df7c88de53b5c34153280db3e7a96bfc",
         "type": "github"
       },
       "original": {
@@ -1890,11 +1890,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714631500,
-        "narHash": "sha256-yrUm8IX8mZJdpJHrd/Pd/pJYycjppe8YmqtT0yAXSkU=",
+        "lastModified": 1714718861,
+        "narHash": "sha256-mCQdrn0Y3oOVZP/CileWAhuBX6aARBNrfxyqJBB4NxA=",
         "owner": "Alexays",
         "repo": "Waybar",
-        "rev": "79ae530bd29cb561d6f48773e894dd62fe353b7f",
+        "rev": "231d6972d7a023e9358ab7deda509baac49006cb",
         "type": "github"
       },
       "original": {
