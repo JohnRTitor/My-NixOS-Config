@@ -13,6 +13,7 @@
   imports = [
     ./containers.nix
     ./adb-toolchain.nix
+    ./nginx.nix
 
     # Use devenv instead, it's more flexible
     # and contains a lot of prebuilt packages
