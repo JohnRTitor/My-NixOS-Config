@@ -122,6 +122,10 @@
       url = "github:Alexays/Waybar"; # Latest Waybar from official repo
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ags = {
+      url = "github:Aylur/ags"; # Latest Ags from official repo
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     browser-previews = {
       url = "github:nix-community/browser-previews"; # Latest Chrome stable, beta, and dev
