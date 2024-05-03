@@ -1,12 +1,21 @@
-{ config, pkgs, lib, userSettings, ... }:
 {
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  config,
+  pkgs,
+  lib,
+  userSettings,
+  ...
+}:
+{
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   services.nginx.enable = true;
   services.nginx.virtualHosts."johnrtitor.org" = {
-      # addSSL = true;
-      # enableACME = true; # for automatic certificate generation
-      root = "/var/www/johnrtitor.org";
+    # addSSL = true;
+    # enableACME = true; # for automatic certificate generation
+    root = "/var/www/johnrtitor.org";
   };
   # security.acme = {
   #   acceptTerms = true;
