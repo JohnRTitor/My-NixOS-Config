@@ -136,7 +136,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     }; # Must follow nixpkgs, else will cause conflicts
-
+    
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
       inputs.nixpkgs.follows = "nixpkgs";

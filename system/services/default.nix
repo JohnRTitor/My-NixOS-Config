@@ -15,7 +15,10 @@
     excludePackages = [ pkgs.xterm ];
   };
   services.accounts-daemon.enable = true;
-  services.dbus.enable = true;
+  services.dbus = {
+    enable = true;
+    implementation = "broker"; # use new dbus-broker
+  };
   services.udev.enable = true;
   programs.dconf.enable = true;
 
