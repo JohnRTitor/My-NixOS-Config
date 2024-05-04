@@ -69,6 +69,12 @@
       ## PERSONAL ENJOYMENT ##
       ani-cli
 
+      ## MONITORING TOOLS ##
+      btop # for CPU, RAM, and Disk monitoring
+      nvtopPackages.amd # for AMD GPUs
+      iotop # for disk I/O monitoring
+      iftop # for network I/O monitoring
+
       ## GRAPHICAL APPS ##
       # Editors #
       # emacs

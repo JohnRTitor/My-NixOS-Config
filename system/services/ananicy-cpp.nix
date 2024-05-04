@@ -4,6 +4,6 @@
   services.ananicy = {
     enable = true;
     # from nixpkgs: ananicy-rules-cachyos
-    rulesProvider = pkgs.ananicy-cpp-rules;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
   };
 }

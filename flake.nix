@@ -99,15 +99,15 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland"; # Latest Hyprland from official repo
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Latest Hyprland from official repo
+      inputs.nixpkgs.follows = "nixpkgs"; # make sure to follow nixpkgs else it will create multiple copies of deps
     };
     hyprcursor = {
       url = "github:hyprwm/hyprcursor"; # Latest Hyprcursor from official repo
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {
-      url = "github:hyprwm/hyprlock"; # Latest Hyprlock from official repo
+      url = "github:hyprwm/hyprlock/9cca0dbb45941e13322ff95796f486676f061c6e"; # Latest Hyprlock from official repo
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hypridle = {
