@@ -27,6 +27,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    # backupFileExtension = ".hm.bak";
 
     users.${userSettings.username} = import ../home-manager;
     extraSpecialArgs = {

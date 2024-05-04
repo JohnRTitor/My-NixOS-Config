@@ -40,12 +40,6 @@
     ./misc/cachix.nix # absolute location /etc/nixos/cachix.nix
   ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      bcachefs-tools = pkgs-edge.bcachefs-tools;
-    })
-  ];
-
   networking.hostName = systemSettings.hostname; # Define your hostname in flake.nix
 
   # Dont change this without reading documentation

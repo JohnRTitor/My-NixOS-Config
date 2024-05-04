@@ -12,13 +12,13 @@ let
     # the below creates a wrapper function to print the command before executing it
     execmd() { echo "Executing: $@" && "$@" ; }
 
-    get-pkgs() { # Construct a get-pkgs alias of nom shell
+    getpkgs() { # Construct a getpkgs alias of nom shell
         local command="NIXPKGS_ALLOW_UNFREE=1 nom shell --impure"
         for arg in "$@"; do # loop through all package names given as args
             command+=" nixpkgs#$arg"
         done
         eval "$command"
-    } # now you can run get-pkgs package1 package2 package3 to get a nix shell
+    } # now you can run getpkgs package1 package2 package3 to get a nix shell
   '';
   # Define common session variables which would apply to all shells
   commonSessionVariables = {
@@ -33,6 +33,7 @@ in
   home.shellAliases = {
     check-flake = "execmd nix flake check";
     update-flake = "execmd nix flake update";
+    update-flake-input = "nix flake lock --update-input";
     # rebuild = "execmd sudo nixos-rebuild switch"; 
     # garbage-collect = "execmd sudo nix-collect-garbage -d";
     fix-store = "execmd sudo nix-store --verify --check-contents --repair";
