@@ -4,6 +4,17 @@
 {
   # Enable WIFI, Ethernet, ...
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd"; # newer backend
+
+  services.resolved.enable = true; # enable systemd-resolved
+  services.resolved.dnssec = "allow-downgrade"; # enable if available
+  services.resolved.dnsovertls = "opportunistic"; # enable if available
+
+  # DNS servers
+  networking.nameservers = [
+    "1.1.1.1" # Cloudflare DNS
+    "1.0.0.1"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

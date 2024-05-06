@@ -67,7 +67,7 @@ in
         thunar-volman
       ];
     };
-    nm-applet.enable = true; # network manager applet
+    # nm-applet.enable = true; # network manager applet for xorg
   };
 
   services.gnome = {
