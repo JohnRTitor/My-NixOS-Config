@@ -1,7 +1,8 @@
 # This config can be used to configure git via home manager
 { pkgs, userSettings, ... }:
 {
-  programs.git = { # basic configuration of git, please change to your own
+  programs.git = {
+    # basic configuration of git, please change to your own
     enable = true;
     package = pkgs.gitFull;
     userName = userSettings.gitname;
@@ -20,7 +21,8 @@
 
     # difftastic.enable = true; # enables difft command
   };
-  programs.gh = { # GitHub CLI
+  programs.gh = {
+    # GitHub CLI
     enable = true;
     settings.git_protocol = "ssh";
   };
