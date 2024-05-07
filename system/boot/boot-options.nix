@@ -16,7 +16,7 @@
   # bootloader timeout set, also press t repeatedly in the bootmenu to set there
   boot.loader.timeout = 15;
   # use systemd initrd instead of udev
-  # boot.initrd.systemd.enable = true;
+  # boot.initrd.systemd.enable = true; # does not work with bcachefs
 
   # boot.consoleLogLevel = 0; # configure silent boot
   boot.kernelParams = [
