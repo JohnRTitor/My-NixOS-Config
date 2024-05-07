@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (inputs) nixpkgs nixpkgs-edge;
+  inherit (nixpkgs) lib; # use lib from nixpkgs
 
   inherit (import ../preferences.nix) systemSettings userSettings;
 
@@ -30,9 +31,6 @@
       allowUnfreePredicate = (_: true);
     };
   };
-
-  # system is built on nixos unstable 
-  lib = nixpkgs.lib;
 in {
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {

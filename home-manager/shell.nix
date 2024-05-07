@@ -13,7 +13,7 @@ let
     execmd() { echo "Executing: $@" && "$@" ; } # wrapper to print command before executing it
 
     getpkgs() { # Construct a getpkgs wrapper of nom shell
-        local command="NIXPKGS_ALLOW_UNFREE=1 nom shell --impure"
+        local command="env NIXPKGS_ALLOW_UNFREE=1 nom shell --impure"
         for arg in "$@"; do # loop through all package names given as args
             command+=" nixpkgs#$arg"
         done
