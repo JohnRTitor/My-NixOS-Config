@@ -3,7 +3,8 @@
 
   # Main sources and repositories
   inputs = {
-    flake-parts = { # Flake parts for easy flake management
+    flake-parts = {
+      # Flake parts for easy flake management
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
@@ -64,5 +65,5 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {imports = [ ./flake ];};
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } { imports = [ ./flake ]; };
 }

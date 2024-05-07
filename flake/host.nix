@@ -1,8 +1,5 @@
-{
-  inputs,
-  self,
-  ...
-}: let
+{ inputs, self, ... }:
+let
   inherit (inputs) nixpkgs nixpkgs-edge;
 
   # ---- SYSTEM SETTINGS ---- #
@@ -54,20 +51,28 @@
 
   # system is built on nixos unstable 
   lib = nixpkgs.lib;
-in {
+in
+{
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
-      specialArgs = { inherit self inputs pkgs-edge systemSettings userSettings; };
+      specialArgs = {
+        inherit
+          self
+          inputs
+          pkgs-edge
+          systemSettings
+          userSettings
+          ;
+      };
 
-      modules =
-        [
-          ../configuration.nix # main nix configuration
-          inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
+      modules = [
+        ../configuration.nix # main nix configuration
+        inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
 
-          # make home-manager as a module of nixos
-          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          inputs.home-manager.nixosModules.default
-        ] ++ lib.optional systemSettings.secureboot inputs.lanzaboote.nixosModules.lanzaboote;
+        # make home-manager as a module of nixos
+        # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+        inputs.home-manager.nixosModules.default
+      ] ++ lib.optional systemSettings.secureboot inputs.lanzaboote.nixosModules.lanzaboote;
     };
   };
 }
