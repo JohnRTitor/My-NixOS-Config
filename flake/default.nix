@@ -1,9 +1,6 @@
 {
   imports = [
     ./host.nix
-
-    # ./devshells.nix
-    # ./formatter.nix
   ];
 
   # Add more systems here depending on your hosts
@@ -11,4 +8,9 @@
     "x86_64-linux"
     # "aarch64-linux"
   ];
+
+  # Setting this option, allows formatting via `nix fmt`
+  perSystem = {pkgs, ...}: {
+    formatter = pkgs.alejandra;
+  };
 }
