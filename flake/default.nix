@@ -1,6 +1,6 @@
 {
   imports = [
-    ../hosts # Hosts/desktop systems are are defined here
+    ./hosts.nix # NixOS hosts/desktop systems are are defined there
   ];
 
   # Add more systems here depending on your hosts

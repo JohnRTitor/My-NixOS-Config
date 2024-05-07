@@ -61,7 +61,7 @@ in {
 
       modules =
         [
-          ./configuration.nix # main nix configuration
+          ../default-host/configuration.nix # main nix configuration
           inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
 
           # make home-manager as a module of nixos
