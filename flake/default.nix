@@ -1,6 +1,6 @@
 {
   imports = [
-    ../hosts
+    ../hosts # Hosts/desktop systems are are defined here
   ];
 
   # Add more systems here depending on your hosts

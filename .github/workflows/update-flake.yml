@@ -19,6 +19,6 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Reformat *.nix files
-        run:  nix run nixpkgs#nixfmt-rfc-style -- $(find . -type f -name "*.nix" -printf "%P ")
+        run:  nix fmt
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v21
