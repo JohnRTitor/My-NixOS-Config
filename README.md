@@ -13,14 +13,14 @@ You are welcomed to borrow this config fully or in chunks.
 
 ## Usage
 
-Please note that this configuration is not meant to be used as is. It is highly personalized and may not suit your needs. However, you can easily modify it to fit your requirements by changing relevant parameters in `flake.nix`.
+Please note that this configuration is not meant to be used as is. It is highly personalized and may not suit your needs. However, you can easily modify it to fit your requirements by changing relevant parameters in [preferences.nix](./preferences.nix).
 
 For instance, you can change values like username, hostname, language, and timezone.
 
 To regenerate the hardware configuration, use the following command:
 
 ```bash
-sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
+sudo nixos-generate-config --show-hardware-config > ./default-host/hardware-configuration.nix
 ```
 
 ## Commands
