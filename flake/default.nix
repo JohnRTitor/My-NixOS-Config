@@ -1,6 +1,6 @@
 {
   imports = [
-    ./host.nix
+    ../hosts
   ];
 
   # Add more systems here depending on your hosts

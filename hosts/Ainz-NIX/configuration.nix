@@ -18,26 +18,26 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # Include system modules
-    ./system
+    ../../system
 
     # include global/system packages list
-    ./pkgs/global-packages.nix
+    ../../pkgs/global-packages.nix
     # user packages are imported in ./home.nix
 
     # include APPS settings
-    # ./programs/openrgb.nix
-    #./programs/kde-connect.nix
+    # ../../programs/openrgb.nix
+    #../../programs/kde-connect.nix
 
     # include development environment
-    ./dev-environment # check ./dev-environment/default.nix for more details
+    ../../dev-environment # check ./dev-environment/default.nix for more details
 
     # include custom cache server settings (DANGEROUS: this will mess up nix-shell)
-    #./misc/custom-cache-server.nix
+    #../../misc/custom-cache-server.nix
 
     # FIXME: once devenv is updated to use --option binary-caches, remove this
     # just nix.settings.trusted-public-keys and nix.settings.trusted-substituters will be enough
     # for now: if `cachix use <repo>` is used, manually copy to ./misc/cachix dir
-    ./misc/cachix.nix # absolute location /etc/nixos/cachix.nix
+    ../../misc/cachix.nix # absolute location /etc/nixos/cachix.nix
   ];
 
   networking.hostName = systemSettings.hostname; # Define your hostname in flake.nix
