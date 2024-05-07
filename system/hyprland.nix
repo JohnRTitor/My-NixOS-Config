@@ -6,19 +6,17 @@
   pkgs-edge,
   inputs,
   ...
-}:
-
-let
+}: let
   pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
   python-packages = pkgs.python3.withPackages (
-    ps: with ps; [
-      requests # requests module
-      sh # subprocess module
-      pyquery
-    ]
+    ps:
+      with ps; [
+        requests # requests module
+        sh # subprocess module
+        pyquery
+      ]
   );
-in
-{
+in {
   # Enable Hyprland Window Manager
   programs.hyprland = {
     enable = true;
@@ -28,7 +26,7 @@ in
   };
 
   # hyprland portal is already included, gtk is also needed for compatibility
-  xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
 
   # Enable GDM with wayland
   services.xserver.displayManager.gdm = {
@@ -142,11 +140,9 @@ in
       # hypridle
       # pyprland
     ])
-
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs/master repo
     ])
-
     ++ [
       python-packages # needed for Weather.py from dotfiles
       pkgs-hyprland.hyprland-protocols
@@ -175,9 +171,9 @@ in
     # Polkit starting systemd service - needed for apps requesting root access
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";

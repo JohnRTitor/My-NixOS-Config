@@ -6,9 +6,7 @@
   pkgs-stable,
   systemSettings,
   ...
-}:
-
-{
+}: {
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
   # Enable scx extra schedulers, only available for linux-cachyos

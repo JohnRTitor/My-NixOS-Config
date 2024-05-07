@@ -3,7 +3,8 @@
 
   # Main sources and repositories
   inputs = {
-    flake-parts = { # Flake parts for easy flake management
+    flake-parts = {
+      # Flake parts for easy flake management
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
@@ -11,19 +12,26 @@
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
 
-    # Don't add follows nixpkgs, else will cause conflicts, leading to local rebuilds
+    # Don't add follows nixpkgs, else will cause local rebuilds
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nyx
-    devenv.url = "github:cachix/devenv"; # Devenv flake, don't add follows nixpkgs
+    devenv.url = "github:cachix/devenv"; # Devenv flake
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Latest Hyprland from official repo
 
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }; # Must follow nixpkgs, else will cause conflicts
     lanzaboote = {
       url = "github:nix-community/lanzaboote"; # lanzaboote, used for secureboot
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Latest Hyprland from official repo
-      inputs.nixpkgs.follows = "nixpkgs"; # make sure to follow nixpkgs else it will create multiple copies of deps
+    browser-previews = {
+      url = "github:nix-community/browser-previews"; # Latest Chrome stable, beta, and dev
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+
     hyprcursor = {
       url = "github:hyprwm/hyprcursor"; # Latest Hyprcursor from official repo
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,20 +57,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    browser-previews = {
-      url = "github:nix-community/browser-previews"; # Latest Chrome stable, beta, and dev
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    }; # Must follow nixpkgs, else will cause conflicts
-
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # latest vs code extensions flake
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {imports = [ ./flake ];};
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 }

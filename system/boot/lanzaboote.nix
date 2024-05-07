@@ -1,6 +1,5 @@
 # Configure Lanzaboote (secureboot)
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Bootloader - disable systemd in favor of lanzaboote
   boot.loader.systemd-boot.enable = pkgs.lib.mkForce false;
 
@@ -11,5 +10,5 @@
   };
 
   # enable sbctl - a frontend to create, enroll manage keys
-  environment.systemPackages = [ pkgs.sbctl ];
+  environment.systemPackages = [pkgs.sbctl];
 }

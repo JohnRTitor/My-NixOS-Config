@@ -1,7 +1,5 @@
 # This conf file is used to configure locale, region and keymaps
-{ systemSettings, ... }:
-
-{
+{systemSettings, ...}: {
   # Set your time zone.
   time.timeZone = systemSettings.timezone;
 

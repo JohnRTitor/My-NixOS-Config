@@ -3,9 +3,11 @@
 # System/Global packages should be installed in ./system-packages.nix
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../apps/ directories
-
-{ pkgs, pkgs-edge, ... }:
 {
+  pkgs,
+  pkgs-edge,
+  ...
+}: {
   home.packages =
     (with pkgs; [
       # here is some command line tools I use frequently
@@ -81,18 +83,15 @@
 
       # whatsapp-for-linux
       libreoffice-fresh
-      (discord.override { withVencord = true; })
+      (discord.override {withVencord = true;})
       telegram-desktop # latest from chaotic
       deluge
       shotwell # GNOME image editor
       androidStudioPackages.beta
     ])
-
-    ++
-
-      (with pkgs-edge; [
-        # list of latest packages from nixpkgs master
-        # Can be used to install latest version of some packages
-        # Some packages may not be cached so.. it may take some time to build
-      ]);
+    ++ (with pkgs-edge; [
+      # list of latest packages from nixpkgs master
+      # Can be used to install latest version of some packages
+      # Some packages may not be cached so.. it may take some time to build
+    ]);
 }

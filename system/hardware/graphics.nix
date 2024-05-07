@@ -1,7 +1,9 @@
 # Configure graphics and hardware acceleration settings etc.
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Enable OpenGL and Vulkan support
   hardware.opengl = {
     enable = true;
@@ -15,7 +17,7 @@
       libvdpau-va-gl
       libva
     ];
-    # For 32 bit applications 
+    # For 32 bit applications
     extraPackages32 = with pkgs.driversi686Linux; [
       amdvlk
       vaapiVdpau
@@ -30,11 +32,11 @@
   ];
 
   # Also load amdgpu at boot
-  boot.kernelModules = [ "amdgpu" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ amdgpu-pro ];
+  boot.kernelModules = ["amdgpu"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [amdgpu-pro];
 
   # AMDGPU graphics driver for Xorg
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # Disable radeon and enable amdgpu
   boot.kernelParams = [

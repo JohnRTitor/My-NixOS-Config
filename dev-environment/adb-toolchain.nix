@@ -1,7 +1,9 @@
 # This conf file is used to configure adb - android debug bridge
-{ pkgs, userSettings, ... }:
-
 {
+  pkgs,
+  userSettings,
+  ...
+}: {
   # Enable adb
   programs.adb.enable = true;
   # Add our primary user to adbusers group
@@ -11,5 +13,5 @@
   ];
 
   # configure the udev rules
-  services.udev.packages = [ pkgs.android-udev-rules ];
+  services.udev.packages = [pkgs.android-udev-rules];
 }

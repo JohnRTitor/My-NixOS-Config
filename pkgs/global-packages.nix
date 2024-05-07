@@ -3,9 +3,11 @@
 # User specific packages should be installed in ./user-packages.nix
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../programs/ directories
-
-{ pkgs, pkgs-edge, ... }:
 {
+  pkgs,
+  pkgs-edge,
+  ...
+}: {
   environment.systemPackages =
     (with pkgs; [
       # System Packages
@@ -34,16 +36,16 @@
         let
           base = pkgs.appimageTools.defaultFhsEnvArgs;
         in
-        pkgs.buildFHSUserEnv (
-          base
-          // {
-            name = "fhs"; # provides fhs command to enter in a FHS environment
-            targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config ];
-            profile = "export FHS=1";
-            runScript = "$SHELL";
-            extraOutputsToInstall = [ "dev" ];
-          }
-        )
+          pkgs.buildFHSUserEnv (
+            base
+            // {
+              name = "fhs"; # provides fhs command to enter in a FHS environment
+              targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+              profile = "export FHS=1";
+              runScript = "$SHELL";
+              extraOutputsToInstall = ["dev"];
+            }
+          )
       )
     ];
 }

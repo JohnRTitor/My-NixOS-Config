@@ -5,8 +5,7 @@
   pkgs-edge,
   userSettings,
   ...
-}:
-{
+}: {
   # Configure the build environment
 
   # Containers and adb should be available by default

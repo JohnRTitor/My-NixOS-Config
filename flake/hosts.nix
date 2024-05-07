@@ -11,16 +11,14 @@
   # configure pkgs from unstable (default)
   pkgs = import nixpkgs {
     # Add zen4 support
-    localSystem =
-      let
-        featureSupport =
-          arch: nixpkgs.lib.mapAttrs (_: f: f arch) nixpkgs.lib.systems.architectures.predicates;
-      in
-      { system = systemSettings.systemarch; } // featureSupport "znver4";
+    localSystem = let
+      featureSupport = arch: nixpkgs.lib.mapAttrs (_: f: f arch) nixpkgs.lib.systems.architectures.predicates;
+    in
+      {system = systemSettings.systemarch;} // featureSupport "znver4";
 
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
   # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
@@ -28,13 +26,13 @@
     system = pkgs.system;
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 in {
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
-      specialArgs = { inherit self inputs pkgs-edge systemSettings userSettings; };
+      specialArgs = {inherit self inputs pkgs-edge systemSettings userSettings;};
 
       modules =
         [
@@ -44,7 +42,8 @@ in {
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           inputs.home-manager.nixosModules.default
-        ] ++ lib.optional systemSettings.secureboot inputs.lanzaboote.nixosModules.lanzaboote;
+        ]
+        ++ lib.optional systemSettings.secureboot inputs.lanzaboote.nixosModules.lanzaboote;
     };
   };
 }

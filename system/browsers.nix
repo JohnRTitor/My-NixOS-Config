@@ -1,6 +1,9 @@
 # This config file is used to configure browsers
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   # Enable Firefox Wayland
   programs.firefox = {
     enable = true;
@@ -51,8 +54,9 @@
         + ",FluentOverlayScrollbar" # New scrollbar
         + ",FluentScrollbar"
         + ",EnableTabMuting" # Mute tabs from tab context
-        + ",GlobalMediaControlsUpdatedUI" # New media controls, with PIP
-      ;
+        + ",GlobalMediaControlsUpdatedUI"
+        # New media controls, with PIP
+        ;
     })
   ];
 }

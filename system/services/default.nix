@@ -1,7 +1,5 @@
 # Configure system services
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./ananicy-cpp.nix
     ./gnome-keyring.nix
@@ -12,7 +10,7 @@
   services.xserver = {
     enable = true;
     # don't need xterm
-    excludePackages = [ pkgs.xterm ];
+    excludePackages = [pkgs.xterm];
   };
   services.accounts-daemon.enable = true;
   services.dbus = {

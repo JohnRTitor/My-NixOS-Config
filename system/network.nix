@@ -1,7 +1,5 @@
 # Configure networking, firewall, proxy, etc.
-{ ... }:
-
-{
+{...}: {
   # Enable WIFI, Ethernet, ...
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd"; # newer backend

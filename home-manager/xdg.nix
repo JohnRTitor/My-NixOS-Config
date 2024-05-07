@@ -1,12 +1,9 @@
 # This config file is used to configure the XDG user directories and MIME types
 # which is responsible for opening specific files, links in specific apps
 # Imported in home manager ../home.nix
-
-{ config, ... }:
-let
+{config, ...}: let
   homeDir = config.home.homeDirectory;
-in
-{
+in {
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;

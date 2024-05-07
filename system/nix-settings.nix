@@ -3,9 +3,8 @@
   pkgs,
   userSettings,
   ...
-}:
-{
-  nix.settings.trusted-users = [ userSettings.username ]; # FIXME: if someday custom cache works without this
+}: {
+  nix.settings.trusted-users = [userSettings.username]; # FIXME: if someday custom cache works without this
 
   # Features for building
   nix.settings.system-features = [
@@ -26,7 +25,7 @@
   ]; # enable nix command and flakes
   nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ]; # enable aarch64 cross compilation
+  boot.binfmt.emulatedSystems = ["aarch64-linux"]; # enable aarch64 cross compilation
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

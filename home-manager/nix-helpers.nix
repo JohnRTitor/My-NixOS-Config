@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     ## NixPkgs development ##
     nh # provides `nh os switch` commands

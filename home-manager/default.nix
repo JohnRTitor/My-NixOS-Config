@@ -7,9 +7,7 @@
   systemSettings,
   userSettings,
   ...
-}:
-
-{
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = userSettings.username;
@@ -37,7 +35,7 @@
     ]
     ++
     # Import if Virtualization is enabled
-    lib.optionals (systemSettings.virtualisation) [ ./virt-manager.nix ];
+    lib.optionals (systemSettings.virtualisation) [./virt-manager.nix];
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

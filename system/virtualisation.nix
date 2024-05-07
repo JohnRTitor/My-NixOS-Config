@@ -4,9 +4,7 @@
   pkgs,
   userSettings,
   ...
-}:
-
-{
+}: {
   # Enable Virt Manager
   programs.virt-manager.enable = true;
   virtualisation.libvirtd = {
@@ -19,7 +17,7 @@
     ];
   };
 
-  # Needed for virt-manager to work    
+  # Needed for virt-manager to work
   environment.sessionVariables.GSETTINGS_BACKEND = "keyfile";
 
   virtualisation.spiceUSBRedirection.enable = true; # allows VMs to access USB
@@ -30,5 +28,5 @@
 
   # Enable Virtualbox
   virtualisation.virtualbox.host.enable = true;
-  boot.extraModulePackages = with config.boot.kernelPackages; [ virtualbox ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [virtualbox];
 }

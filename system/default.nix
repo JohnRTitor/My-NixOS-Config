@@ -1,5 +1,8 @@
-{ lib, systemSettings, ... }:
 {
+  lib,
+  systemSettings,
+  ...
+}: {
   imports =
     [
       ./nix-settings.nix
@@ -31,11 +34,11 @@
     ]
     ++
     # Configure secure boot with lanzaboote, if secureboot is enabled
-    lib.optionals (systemSettings.secureboot) [ ./boot/lanzaboote.nix ]
+    lib.optionals (systemSettings.secureboot) [./boot/lanzaboote.nix]
     ++
-      # Import if Virtualization is enabled
-      lib.optionals (systemSettings.virtualisation) [ ./virtualisation.nix ]
+    # Import if Virtualization is enabled
+    lib.optionals (systemSettings.virtualisation) [./virtualisation.nix]
     ++
-      # Import if laptop mode is enabled
-      lib.optionals (systemSettings.laptop) [ ./power.nix ];
+    # Import if laptop mode is enabled
+    lib.optionals (systemSettings.laptop) [./power.nix];
 }

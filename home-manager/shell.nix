@@ -1,11 +1,12 @@
 # This config is used to configure the shell environment using home manager
 # You can add custom aliases, session variables, and other shell configurations here
-
 # NOTE: related global shell options like programs.zsh.enable must also be added to configuration.nix
 # Else files may not be sourced properly
-
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   # initial commands to run for all shells
   commonRcExtra = ''
     # Custom extraRc from home-manager/shell.nix
@@ -35,14 +36,13 @@ let
     # Add custom bin directories to the PATH
     PATH = "$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin";
   };
-in
-{
+in {
   # Define common aliases which would apply to all shells
   home.shellAliases = {
     check-flake = "execmd nix flake check";
     update-flake = "execmd nix flake update";
     # update-flake-input = "nix flake lock --update-input";
-    # rebuild = "execmd sudo nixos-rebuild switch"; 
+    # rebuild = "execmd sudo nixos-rebuild switch";
     # garbage-collect = "execmd sudo nix-collect-garbage -d";
     fix-store = "execmd sudo nix-store --verify --check-contents --repair";
     # cfastfetch is just an alias to run compact fastfetch
@@ -57,9 +57,11 @@ in
       + ''
         # Custom bashrc go here, type below this line
       '';
-    sessionVariables = commonSessionVariables // {
-      # Add custom session variables for bash
-    };
+    sessionVariables =
+      commonSessionVariables
+      // {
+        # Add custom session variables for bash
+      };
 
     shellAliases = {
       # set some aliases specific for bash
@@ -71,9 +73,11 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
-    sessionVariables = commonSessionVariables // {
-      # Add custom session variables for zsh
-    };
+    sessionVariables =
+      commonSessionVariables
+      // {
+        # Add custom session variables for zsh
+      };
     shellAliases = {
       # additional aliases to set for zsh
     };

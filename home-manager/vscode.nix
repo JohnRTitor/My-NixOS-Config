@@ -5,13 +5,11 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   pkgs-vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
   # extract package pname for each package in the list of all installed packages, then put them in a list
-  packagesList = (map (x: x.pname) (config.home.packages ++ osConfig.environment.systemPackages));
-in
-{
+  packagesList = map (x: x.pname) (config.home.packages ++ osConfig.environment.systemPackages);
+in {
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
@@ -81,12 +79,11 @@ in
 
       # Check if nixd or nil is installed and set the server accordingly
       "nix.serverPath" =
-        if (builtins.elem "nixd" packagesList) then
-          "nixd"
-        else if (builtins.elem "nil" packagesList) then
-          "nil"
-        else
-          "";
+        if (builtins.elem "nixd" packagesList)
+        then "nixd"
+        else if (builtins.elem "nil" packagesList)
+        then "nil"
+        else "";
 
       "dev.containers.dockerPath" = "podman"; # Use podman as the docker path
 
