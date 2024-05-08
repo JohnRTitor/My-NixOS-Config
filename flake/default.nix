@@ -1,11 +1,14 @@
-{
+let
+  inherit ((import ../preferences.nix).systemSettings) systemarch;
+in {
   imports = [
     ./hosts.nix # NixOS hosts/desktop systems are are defined there
   ];
 
-  # Add more systems here depending on your hosts
+  # systems for which you want to build the `perSystem` attributes
   systems = [
-    "x86_64-linux"
+    systemarch
+    # "x86_64-linux"
     # "aarch64-linux"
   ];
 
