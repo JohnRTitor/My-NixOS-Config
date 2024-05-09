@@ -28,24 +28,6 @@
     options = ["fmask=0137" "dmask=0027"];
   };
 
-  fileSystems."/efi/EFI/Linux" = {
-    device = "/boot/EFI/Linux";
-    fsType = "vfat";
-    options = ["bind"];
-  };
-
-  fileSystems."/efi/EFI/nixos" = {
-    device = "/boot/EFI/nixos";
-    fsType = "vfat";
-    options = ["bind"];
-  };
-
-  fileSystems."/efi" = {
-    device = "/dev/disk/by-uuid/C40C-F289";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
-
   swapDevices = [
     {device = "/dev/disk/by-uuid/713c9bb6-7612-48a9-b207-0bccf046a5ac";}
   ];
