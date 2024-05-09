@@ -56,10 +56,8 @@
     #settings.PermitRootLogin = "yes";
   };
 
-  # enable time synchronization, flatpak and fwupd
-  services.timesyncd.enable = true;
-  # services.flatpak.enable = true;
-  services.fwupd.enable = true;
+  services.timesyncd.enable = true; # For time synchronization
+  services.fwupd.enable = true; # For firmware updates
   # Mitigate issue where like /usr/bin/bash, hardcoded links in scripts not found
   services.envfs.enable = true;
 

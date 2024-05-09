@@ -17,7 +17,8 @@
     # Include system modules
     ../system
 
-    # include global/system packages list
+    # include global/system packages list and settings
+    ../pkgs/settings.nix
     ../pkgs/global-packages.nix
     # user packages are imported in ./home.nix
 
@@ -41,6 +42,6 @@
 
   # Dont change this without reading documentation
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  # May cause data loss
+  # May cause data loss, scary stuff
   system.stateVersion = systemSettings.stableversion; # Did you read the comment?
 }
