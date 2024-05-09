@@ -4,11 +4,14 @@
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../programs/ directories
 {
-  lib,
   pkgs,
   pkgs-edge,
   ...
 }: {
+  imports = [
+    ./fhs-shell.nix
+    ./gparted-wrapper.nix
+  ];
   environment.systemPackages =
     (with pkgs; [
       # System Packages
@@ -30,38 +33,5 @@
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
-    ])
-    ++ [
-      # Tool to run app images and random app binaries
-      (
-        let
-          base = pkgs.appimageTools.defaultFhsEnvArgs;
-        in
-          pkgs.buildFHSUserEnv (
-            base
-            // {
-              name = "fhs"; # provides fhs command to enter in a FHS environment
-              targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-              profile = "export FHS=1";
-              runScript = "$SHELL";
-              extraOutputsToInstall = ["dev"];
-            }
-          )
-      )
-      # Wrapper for GParted to run under wayland
-      (
-        let
-          xhost = lib.getExe pkgs.xorg.xhost;
-          gparted = lib.getExe pkgs.gparted;
-        in
-          pkgs.writeShellScriptBin "gparted" ''
-            if [[ $EUID -ne 0 ]]; then
-              echo "Should be launched as root! Exiting......."
-              exit 1
-            fi
-            ${xhost} +local:root && \
-            exec ${gparted} "$@"
-          ''
-      )
-    ];
+    ]);
 }
