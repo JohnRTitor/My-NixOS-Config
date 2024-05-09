@@ -1,9 +1,5 @@
 # Configure disks and zram
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Enable support for bcachefs
   boot.supportedFilesystems = ["bcachefs"];
 

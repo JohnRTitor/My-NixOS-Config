@@ -1,10 +1,7 @@
 # This config file is used to configure the kernel
 {
   config,
-  lib,
   pkgs,
-  pkgs-stable,
-  systemSettings,
   ...
 }: {
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
