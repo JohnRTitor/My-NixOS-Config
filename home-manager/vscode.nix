@@ -44,6 +44,7 @@ in {
       github.vscode-pull-request-github # GitHub Pull Requests
       github.vscode-github-actions # GitHub Actions
       donjayamanne.githistory # Git History
+      eamodio.gitlens # GitLens
 
       ## MISCELLANEOUS ##
       ms-azuretools.vscode-docker # Docker
@@ -94,6 +95,7 @@ in {
       # Prettier linting
       "[html]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[markdown]"."editor.defaultFormatter" = "DavidAnson.vscode-markdownlint";
     };
   };
   home.packages = with pkgs; [
