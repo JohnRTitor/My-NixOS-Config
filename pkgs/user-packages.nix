@@ -84,10 +84,11 @@
       # whatsapp-for-linux
       libreoffice-fresh
       (discord.override {withVencord = true;})
-      telegram-desktop # latest from chaotic
+      telegram-desktop_git # latest from chaotic
       deluge
       shotwell # GNOME image editor
       androidStudioPackages.beta
+      jetbrains.phpstorm
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master

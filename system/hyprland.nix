@@ -7,21 +7,20 @@
   inputs,
   ...
 }: let
-  pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
   python-packages = pkgs.python3.withPackages (
     ps:
       with ps; [
-        requests # requests module
+        requests
         sh # subprocess module
-        pyquery
+        pyquery # needed for hyprland-dots Weather script
       ]
   );
 in {
+  # use the hyprland package from the hyprland flake
+  imports = [inputs.hyprland.nixosModules.default];
   # Enable Hyprland Window Manager
   programs.hyprland = {
     enable = true;
-    package = pkgs-hyprland.hyprland;
-    portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
     systemd.setPath.enable = true;
   };
 
@@ -91,7 +90,7 @@ in {
       pavucontrol # audio control
       playerctl # media player control
       polkit_gnome # needed for apps requesting root access
-      pywal
+      pywal # for automatic color schemes from wallpaper
       rofi-wayland
       slurp # screenshots
       swappy # screenshots
@@ -145,12 +144,12 @@ in {
     ])
     ++ [
       python-packages # needed for Weather.py from dotfiles
-      pkgs-hyprland.hyprland-protocols
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
       inputs.hyprlock.packages.${pkgs.system}.hyprlock
       inputs.hypridle.packages.${pkgs.system}.hypridle
       inputs.pyprland.packages.${pkgs.system}.pyprland
       inputs.ags.packages.${pkgs.system}.ags
+      inputs.wallust.packages.${pkgs.system}.wallust
     ];
 
   # Environment variables to start the session with
