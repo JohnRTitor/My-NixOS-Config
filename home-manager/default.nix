@@ -33,9 +33,8 @@
 
       ./services.nix # services
     ]
-    ++
-    # Import if Virtualization is enabled
-    lib.optionals (systemSettings.virtualisation) [./virt-manager.nix];
+    ++ lib.optionals osConfig.programs.thunar.enable [./thunar.nix]
+    ++ lib.optionals systemSettings.virtualisation [./virt-manager.nix];
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

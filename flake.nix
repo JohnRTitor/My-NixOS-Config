@@ -53,8 +53,10 @@
       url = "github:hyprland-community/pyprland"; # Pyprland, a plugin manager for Hyprland made in Python
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    wallust.url = "git+https://codeberg.org/JohnRTitor/wallust?ref=dev";
+    wallust = {
+      url = "git+https://codeberg.org/JohnRTitor/wallust?ref=dev";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package

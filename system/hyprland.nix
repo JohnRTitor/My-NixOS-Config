@@ -55,15 +55,15 @@ in {
     evince.enable = true; # document viewer
     file-roller.enable = true; # archive manager
     # Xfce file manager
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [
-        exo
-        mousepad # text editor
-        thunar-archive-plugin # archive manager
-        thunar-volman
-      ];
-    };
+    # thunar = {
+    #   enable = true;
+    #   plugins = with pkgs.xfce; [
+    #     exo
+    #     mousepad # text editor
+    #     thunar-archive-plugin # archive manager
+    #     thunar-volman
+    #  ];
+    # };
     # nm-applet.enable = true; # network manager applet for xorg
   };
 
@@ -117,6 +117,7 @@ in {
       }) # for video playback, needed for some scripts
       mpvScripts.mpris
       gnome.nautilus # file manager
+      gnome-text-editor # text editor
       shotcut # video editor
 
       ## QT theming and apps support ##
@@ -135,19 +136,16 @@ in {
       # hyprcursor
       # hyprpicker # does not work
       # hyprpaper # alternative to swww, but shit
-      # hyprlock
-      # hypridle
-      # pyprland
-    ])
-    ++ (with pkgs-edge; [
-      # list of latest packages from nixpkgs/master repo
+      hyprlock
+      hypridle
+      pyprland
     ])
     ++ [
       python-packages # needed for Weather.py from dotfiles
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
-      inputs.hyprlock.packages.${pkgs.system}.hyprlock
-      inputs.hypridle.packages.${pkgs.system}.hypridle
-      inputs.pyprland.packages.${pkgs.system}.pyprland
+      # inputs.hyprlock.packages.${pkgs.system}.hyprlock
+      # inputs.hypridle.packages.${pkgs.system}.hypridle
+      # inputs.pyprland.packages.${pkgs.system}.pyprland
       inputs.ags.packages.${pkgs.system}.ags
       inputs.wallust.packages.${pkgs.system}.wallust
     ];
