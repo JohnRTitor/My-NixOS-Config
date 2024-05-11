@@ -54,6 +54,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    wallust.url = "git+https://codeberg.org/JohnRTitor/wallust?ref=dev";
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package
       inputs.nixpkgs.follows = "nixpkgs";
