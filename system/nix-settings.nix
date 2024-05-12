@@ -4,6 +4,7 @@
   userSettings,
   ...
 }: {
+  nix.package = pkgs.nixVersions.latest; # Use latest nix
   nix.settings.trusted-users = [userSettings.username]; # FIXME: if someday custom cache works without this
 
   # Features for building
