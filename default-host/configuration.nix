@@ -38,6 +38,20 @@
     ../misc/cachix.nix # absolute location /etc/nixos/cachix.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs.overrideAttrs (oldAttrs: {
+        patches = [
+          (pkgs.fetchpatch {
+            # FIXME: remove when https://github.com/koverstreet/bcachefs-tools/pull/263 is merged
+            url = "https://github.com/koverstreet/bcachefs-tools/pull/263.patch";
+            hash = "sha256-M5FhW5ZWQdfXbLzb/Rr+rNtLLPRIdlOBnxQzDpnoyyw=";
+          })
+        ];
+      });
+    })
+  ];
+
   networking.hostName = systemSettings.hostname; # Define your hostname in flake.nix
 
   # Dont change this without reading documentation
