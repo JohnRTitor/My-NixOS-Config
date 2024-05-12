@@ -62,11 +62,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1715382758,
-        "narHash": "sha256-Y2NrLMQXN46gIKulctZ3s6mWS8+8hPY/BiVBHOCiVdU=",
+        "lastModified": 1715468496,
+        "narHash": "sha256-Qg7P5C40ZkTUyBf0NPi3LLS+QmvSh/4Up8AVX33dRmo=",
         "owner": "nix-community",
         "repo": "browser-previews",
-        "rev": "b708b8a89e26bf4c5d68ebcc3e1f751d9d59bfe0",
+        "rev": "bf1e044868316861f4504b264e763ace166542e4",
         "type": "github"
       },
       "original": {
@@ -814,11 +814,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1715435024,
-        "narHash": "sha256-NnVypzsaN4jiRi2E+CyfaDwbCPn+naOx+VxTW7N1hHs=",
+        "lastModified": 1715468612,
+        "narHash": "sha256-pA0lpLJ3a+EhOCpEdksx5UlzXTcOaZzISppKKLYwAeg=",
         "ref": "refs/heads/main",
-        "rev": "b6a7fb9e9125e56bf742f68e0ec46f52d5c34f4c",
-        "revCount": 4667,
+        "rev": "33a7b7bb6b307d6e4a093f75ffdda0419cd7ffaf",
+        "revCount": 4671,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1284,11 +1284,11 @@
     },
     "nixpkgs-edge": {
       "locked": {
-        "lastModified": 1715445447,
-        "narHash": "sha256-WrQmj6fjXiSgj3311fkIOmNQh6Svq2zFd4M98fD85MQ=",
+        "lastModified": 1715476116,
+        "narHash": "sha256-FGMHUSh4rRh88QmjDPjvp46gTipCwM5Jqd2JC5jy9uo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6c1d199a2659207e389e97166e2b4354c6558f53",
+        "rev": "12b3c434ad39b5f8a59ba686b84df4782faa9b3a",
         "type": "github"
       },
       "original": {
@@ -1994,11 +1994,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1715355669,
-        "narHash": "sha256-WpqnjJ9Jr0qqAQHhU4EEQbva+S+c3GfH970Sn30Hai8=",
+        "lastModified": 1715474760,
+        "narHash": "sha256-mRvBUItQgkxJwPGG5i4DzpcpC+NcyImPyJYYt7NkMik=",
         "ref": "dev",
-        "rev": "651eac60afdd380d441b70eca7a0886f46d22a95",
-        "revCount": 942,
+        "rev": "685a612594f42ca5ff7172501d734df5432c18f0",
+        "revCount": 943,
         "type": "git",
         "url": "https://codeberg.org/JohnRTitor/wallust"
       },
