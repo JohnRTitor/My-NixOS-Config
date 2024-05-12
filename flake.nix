@@ -16,8 +16,6 @@
     devenv.url = "github:cachix/devenv"; # Devenv, for setting up development environments using devenv.nix
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
 
-    bcachefs-tools.url = "github:koverstreet/bcachefs-tools";
-
     home-manager = {
       url = "github:nix-community/home-manager/master"; # Home Manager, manage user configuration and home directories like a pro
       inputs.nixpkgs.follows = "nixpkgs"; # Must follow nixpkgs, else will cause conflicts with the system
