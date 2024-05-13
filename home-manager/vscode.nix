@@ -54,6 +54,7 @@ in {
       rolandgreim.sharecode # Pastebin/Gist support
       ritwickdey.liveserver # launch local html web server
       mkhl.direnv # direnv support
+      oderwat.indent-rainbow # colorful indentation
       # arrterian.nix-env-selector # not needed at the moment
 
       ## THEMING ##
