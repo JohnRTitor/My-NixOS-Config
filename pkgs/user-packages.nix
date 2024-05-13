@@ -84,7 +84,6 @@
       # whatsapp-for-linux
       libreoffice-fresh
       (discord.override {withVencord = true;})
-      telegram-desktop_git # latest from chaotic
       deluge
       shotwell # GNOME image editor
       androidStudioPackages.beta

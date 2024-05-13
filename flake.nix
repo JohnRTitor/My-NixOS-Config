@@ -62,6 +62,7 @@
       url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 }

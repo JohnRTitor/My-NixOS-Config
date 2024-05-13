@@ -20,14 +20,6 @@
         done
         eval "execmd $command"
     } # now you can run `getpkgs package1 package2 package3` to get a nix shell
-
-    update-flake-input() { # Construct a wrapper of nix flake lock --update-input
-      local command="nix flake lock"
-      for arg in "$@"; do
-        command+=" --update-input $arg"
-      done
-      eval "execmd $command"
-    } # now you can run `update-flake-input nixpkgs hyprland chaotic` to update all of these inputs at once
   '';
   # Define common session variables which would apply to all shells
   commonSessionVariables = {

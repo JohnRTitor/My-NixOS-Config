@@ -11,7 +11,10 @@
         ];
     };
   };
-  # services.flatpak.enable = true; # enable flatpak support
+  services.flatpak.enable = true; # enable flatpak support
+  services.flatpak.packages = [
+    "io.github.tdesktop_x64.TDesktop" # 64Gram
+  ];
   # Enable aarch64-linux cross-compilation and running those binaries
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
 }
