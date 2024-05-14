@@ -63,6 +63,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+    bcachefs-tools.url = "github:koverstreet/bcachefs-tools";
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 }
