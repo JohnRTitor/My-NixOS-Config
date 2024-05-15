@@ -6,8 +6,12 @@
 {
   pkgs,
   pkgs-edge,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
+  ];
   home.packages =
     (with pkgs; [
       # here is some command line tools I use frequently
@@ -84,14 +88,20 @@
       # whatsapp-for-linux
       libreoffice-fresh
       (discord.override {withVencord = true;})
-      deluge
+      deluge # Torrent client
       shotwell # GNOME image editor
       androidStudioPackages.beta
       jetbrains.phpstorm
+      gnome.gnome-logs # GNOME log viewer
+      warp # file transfer, also install android app
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
       # Some packages may not be cached so.. it may take some time to build
     ]);
+  services.flatpak.packages = [
+    # Flatpak packages to be installed on a per user basis
+    "io.github.tdesktop_x64.TDesktop" # 64Gram
+  ];
 }

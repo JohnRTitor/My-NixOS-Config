@@ -145,11 +145,11 @@
         "yafas": "yafas"
       },
       "locked": {
-        "lastModified": 1715693589,
-        "narHash": "sha256-mTOOHsa0+CaX8fFrEFgr/+8AX9liVxAdpaU1cyA1VMM=",
+        "lastModified": 1715779363,
+        "narHash": "sha256-7xZ8UXV3/8PsUeekBZY/o8Lagi5mOMKMiIufda1A0ts=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "24bfe6361ea7d5496026bea22986cbf15c9b0c7c",
+        "rev": "ccbdce844a8e70b64d714159c558a52b13c8881d",
         "type": "github"
       },
       "original": {
@@ -1043,11 +1043,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715417624,
-        "narHash": "sha256-Wp3vGZRQYVrEveB9UXXZRDvRFrkw6rXXXLxj/6sbg7M=",
+        "lastModified": 1715748970,
+        "narHash": "sha256-CEDUVyPbnWGLG6wx0IjTnUb3U9NPKtIalQd6T6I4Bwc=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "8fef078acb3206be58ae5892a32d6ed75b695647",
+        "rev": "1dd285a38b3f6be8c6f1148841e7c6f12a0acdec",
         "type": "github"
       },
       "original": {
@@ -1069,11 +1069,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1715529584,
-        "narHash": "sha256-y2XgFHnLpeItAHsyrEWLEHXGRRBe8I/30YU69m9rhso=",
+        "lastModified": 1715717667,
+        "narHash": "sha256-8jlUZer3z8gZWDp/gVFDq6XRe3icELp6hRclbSHl94U=",
         "owner": "martinvonz",
         "repo": "jj",
-        "rev": "256988de65de2fe38eb9a963001f51f138f5cb6f",
+        "rev": "c9b44f382824301e6c0fdd6f4cbc52bb00c50995",
         "type": "github"
       },
       "original": {
@@ -1132,11 +1132,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715574919,
-        "narHash": "sha256-WXZ27tFG26uVphCQEKVDghyLXCLQnA6fYGnhHGSago4=",
+        "lastModified": 1715746449,
+        "narHash": "sha256-JwgeIcNgF9zr7f+TRvjjPC40t5fKlJruzCZpyuSQ/FY=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "e06776c5d4673de8c2e6c9932cec0c0d761836a8",
+        "rev": "b87fba2182a0b187c0d991f48d305387d0bea5e3",
         "type": "github"
       },
       "original": {
@@ -1338,11 +1338,11 @@
     },
     "nixpkgs-edge": {
       "locked": {
-        "lastModified": 1715694040,
-        "narHash": "sha256-6+R8I2aIDCbzcH9TkpzMPA8PmWGTWQY0/xQs8LOaC70=",
+        "lastModified": 1715797492,
+        "narHash": "sha256-ZJ5q8Wzj+sCBrZUHjkCbiPYMdxcJ08/HuKhdckfvw38=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fd89cbcf6fee140ed703349bc96dfcb7d2b73393",
+        "rev": "3eebbc5fe26801ff612f2cdd4566e76651dc8106",
         "type": "github"
       },
       "original": {
@@ -2083,18 +2083,18 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1715576992,
+        "lastModified": 1715635363,
         "narHash": "sha256-waJpftMvIRKno0SSFLm4Ti1WtsNnDcvm80lyH/lLJVU=",
         "ref": "dev",
-        "rev": "2ba7947bb8b7f9224231a9ba379e572b75d49d86",
-        "revCount": 944,
+        "rev": "6ab659f5fe74988d029a9733cf4f1aa1a3d79952",
+        "revCount": 941,
         "type": "git",
-        "url": "https://codeberg.org/JohnRTitor/wallust"
+        "url": "https://codeberg.org/explosion-mental/wallust"
       },
       "original": {
         "ref": "dev",
         "type": "git",
-        "url": "https://codeberg.org/JohnRTitor/wallust"
+        "url": "https://codeberg.org/explosion-mental/wallust"
       }
     },
     "waybar": {

@@ -54,7 +54,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wallust = {
-      url = "git+https://codeberg.org/JohnRTitor/wallust?ref=dev";
+      url = "git+https://codeberg.org/explosion-mental/wallust?ref=dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

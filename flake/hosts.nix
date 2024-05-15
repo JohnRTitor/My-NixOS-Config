@@ -42,9 +42,8 @@ in {
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           inputs.home-manager.nixosModules.default
-          inputs.nix-flatpak.nixosModules.nix-flatpak
         ]
-        ++ lib.optional systemSettings.secureboot inputs.lanzaboote.nixosModules.lanzaboote;
+        ++ lib.optionals systemSettings.secureboot [inputs.lanzaboote.nixosModules.lanzaboote];
     };
   };
 }

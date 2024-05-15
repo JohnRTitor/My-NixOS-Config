@@ -48,7 +48,7 @@ in {
     "application/x-shellscript" = "org.gnome.TextEditor.desktop;";
     "application/json" = "org.gnome.TextEditor.desktop;code.desktop;";
     "application/xml" = "org.gnome.TextEditor.desktop;";
-    "application/x-executable" = "Alacritty.desktop";
+    "application/x-executable" = "kitty-open.desktop;Alacritty.desktop;";
     # Open directory with apps
     "inode/directory" = "code.desktop;org.gnome.Nautilus.desktop;thunar.desktop;nnn.desktop;org.gnome.baobab.desktop;";
     # Telegram
@@ -56,8 +56,8 @@ in {
     "x-xdg-protocol-tg" = "org.telegram.desktop.desktop;";
 
     # Images
-    "image/png" = "org.gnome.eog.desktop;";
-    "image/jpeg" = "org.gnome.eog.desktop;";
+    "image/png" = "org.gnome.Loupe.desktop ;";
+    "image/jpeg" = "org.gnome.Loupe.desktop ;";
 
     # PDF
     "application/pdf" = "org.gnome.Evince.desktop;google-chrome-beta.desktop;";

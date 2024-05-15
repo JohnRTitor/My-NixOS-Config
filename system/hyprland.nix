@@ -107,7 +107,7 @@ in {
 
       ## Graphical apps ##
       gnome.gnome-system-monitor # system monitor
-      gnome.eog # eye of gnome, image viewer
+      loupe # image viewer
       kitty # default terminal on hyprland
       linux-wifi-hotspot # for wifi hotspot
       (mpv-unwrapped.override {

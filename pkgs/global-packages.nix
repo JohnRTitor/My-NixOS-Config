@@ -6,9 +6,11 @@
 {
   pkgs,
   pkgs-edge,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.nix-flatpak.nixosModules.nix-flatpak
     ./fhs-shell.nix
     ./gparted-wrapper.nix
   ];
@@ -34,4 +36,7 @@
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
     ]);
+  services.flatpak.packages = [
+    # Flatpak packages to be installed systemwide
+  ];
 }
