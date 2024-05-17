@@ -21,4 +21,7 @@
     # ./deprecated/c-toolchain.nix
     ./deprecated/php.nix
   ];
+  environment.systemPackages = with pkgs; [
+    rustup
+  ];
 }

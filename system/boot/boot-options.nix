@@ -26,12 +26,15 @@
   ];
 
   # plymouth theme for splash screen
-  boot.plymouth = rec {
+  boot.plymouth = {
     enable = true;
     # theme = "breeze"; # default
     # black_hud circle_hud cross_hud square_hud
     # circuit connect cuts_alt seal_2 seal_3
-    theme = "rings_2";
-    themePackages = with pkgs; [(adi1090x-plymouth-themes.override {selected_themes = [theme];})];
+    theme = "matrix";
+    themePackages = with pkgs; [
+      (adi1090x-plymouth-themes.override {selected_themes = ["rings_2"];})
+      (callPackage ../../pkgs/matrix-plymouth-theme.nix {})
+    ];
   };
 }

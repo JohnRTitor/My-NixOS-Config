@@ -90,8 +90,8 @@
       (discord.override {withVencord = true;})
       deluge # Torrent client
       shotwell # GNOME image editor
+      jetbrains-toolbox
       androidStudioPackages.beta
-      jetbrains.phpstorm
       gnome.gnome-logs # GNOME log viewer
       warp # file transfer, also install android app
     ])
