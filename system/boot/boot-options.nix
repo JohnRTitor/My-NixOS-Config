@@ -1,9 +1,7 @@
 # This conf file is used to configure boot
 {
-  config,
   pkgs,
-  lib,
-  systemSettings,
+  pkgs-edge,
   ...
 }: {
   # Enable systemd-boot
@@ -32,9 +30,9 @@
     # black_hud circle_hud cross_hud square_hud
     # circuit connect cuts_alt seal_2 seal_3
     theme = "matrix";
-    themePackages = with pkgs; [
-      (adi1090x-plymouth-themes.override {selected_themes = ["rings_2"];})
-      (callPackage ../../pkgs/matrix-plymouth-theme.nix {})
+    themePackages = [
+      (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["rings_2"];})
+      pkgs-edge.plymouth-matrix-theme
     ];
   };
 }

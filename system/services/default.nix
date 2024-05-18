@@ -66,4 +66,12 @@
   security.apparmor.enable = true;
   security.apparmor.enableCache = true;
   services.dbus.apparmor = "enabled";
+
+  console = {
+    font = "ter-124b";
+    keyMap = "us";
+    packages = with pkgs; [
+      terminus_font
+    ];
+  };
 }
