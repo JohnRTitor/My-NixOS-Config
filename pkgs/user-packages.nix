@@ -87,7 +87,7 @@
 
       # whatsapp-for-linux
       libreoffice-fresh
-      (discord.override {withVencord = true;})
+      vesktop
       deluge # Torrent client
       shotwell # GNOME image editor
       jetbrains-toolbox

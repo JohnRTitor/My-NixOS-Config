@@ -41,6 +41,8 @@ in {
     "x-scheme-handler/https" = "google-chrome-beta.desktop";
     "x-scheme-handler/about" = "google-chrome-beta.desktop";
     "x-scheme-handler/unknown" = "google-chrome-beta.desktop";
+    "image/png" = "org.gnome.Loupe.desktop;";
+    "image/jpeg" = "org.gnome.Loupe.desktop;";
   };
   xdg.mimeApps.associations.added = {
     # Text files
@@ -56,8 +58,8 @@ in {
     "x-xdg-protocol-tg" = "org.telegram.desktop.desktop;";
 
     # Images
-    "image/png" = "org.gnome.Loupe.desktop ;";
-    "image/jpeg" = "org.gnome.Loupe.desktop ;";
+    "image/png" = "org.gnome.Loupe.desktop;";
+    "image/jpeg" = "org.gnome.Loupe.desktop;";
 
     # PDF
     "application/pdf" = "org.gnome.Evince.desktop;google-chrome-beta.desktop;";

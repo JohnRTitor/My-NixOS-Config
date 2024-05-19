@@ -27,6 +27,7 @@
       ./devenv.nix # development environment
       ./nnn.nix # nnn - terminal file manager
       ./eza.nix # eza - modern replacement for ls
+      ./zoxide.nix # zoxide - smarter cd
       ./thunar.nix
 
       ./nix-helpers.nix
