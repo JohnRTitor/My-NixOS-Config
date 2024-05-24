@@ -2,6 +2,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [fastfetch];
 
-  home.file.".config/fastfetch/config.jsonc".source = ./config.jsonc;
+  # home.file.".config/fastfetch/config.jsonc".source = ./config.jsonc; # superseded by Hyprland-Dots
   home.file.".config/fastfetch/config-compact.jsonc".source = ./config-compact.jsonc;
 }

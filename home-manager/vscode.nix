@@ -82,6 +82,7 @@ in {
 
       "direnv.restart.automatic" = true; # Automatically restart direnv if .envrc changes
       "nix.enableLanguageServer" = true;
+      "github.copilot.editor.enableAutoCompletions" = true;
 
       # Check if nixd or nil is installed and set the server accordingly
       "nix.serverPath" =

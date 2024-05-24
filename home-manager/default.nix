@@ -25,12 +25,10 @@
       ./fastfetch/fastfetch.nix
       ./vscode.nix
       ./devenv.nix # development environment
-      ./nnn.nix # nnn - terminal file manager
-      ./eza.nix # eza - modern replacement for ls
-      ./zoxide.nix # zoxide - smarter cd
+      ./cli-tools.nix # Useful CLI tools
       ./thunar.nix
 
-      ./nix-helpers.nix
+      ./nix-tools.nix
 
       ./services.nix # services
     ]
