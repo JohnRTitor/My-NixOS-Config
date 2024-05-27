@@ -48,6 +48,5 @@
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "radeonsi";
     VDPAU_DRIVER = "radeonsi";
-    __GLX_VENDOR_LIBRARY_NAME = "amdgpu";
   };
 }

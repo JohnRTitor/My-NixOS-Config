@@ -136,15 +136,15 @@ in {
       # hyprcursor
       # hyprpicker # does not work
       # hyprpaper # alternative to swww, but shit
-      hyprlock
-      hypridle
+      # hyprlock
+      # hypridle
       pyprland
     ])
     ++ [
       python-packages # needed for Weather.py from dotfiles
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
-      # inputs.hyprlock.packages.${pkgs.system}.hyprlock
-      # inputs.hypridle.packages.${pkgs.system}.hypridle
+      inputs.hyprlock.packages.${pkgs.system}.hyprlock
+      inputs.hypridle.packages.${pkgs.system}.hypridle
       # inputs.pyprland.packages.${pkgs.system}.pyprland
       inputs.ags.packages.${pkgs.system}.ags
       inputs.wallust.packages.${pkgs.system}.wallust
@@ -180,4 +180,5 @@ in {
       };
     };
   };
+  security.pam.services.hyprlock = {};
 }

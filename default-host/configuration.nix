@@ -40,15 +40,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs-tools.overrideAttrs (oldAttrs: {
-        patches = [
-          (pkgs.fetchpatch {
-            # FIXME: remove when https://github.com/koverstreet/bcachefs-tools/pull/263 is merged
-            url = "https://github.com/koverstreet/bcachefs-tools/pull/263.patch";
-            hash = "sha256-M5FhW5ZWQdfXbLzb/Rr+rNtLLPRIdlOBnxQzDpnoyyw=";
-          })
-        ];
-      });
+      bcachefs-tools = pkgs-edge.bcachefs-tools;
     })
   ];
 

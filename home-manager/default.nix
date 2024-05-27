@@ -22,7 +22,6 @@
       ./git.nix # git config
       ./starship.nix # starship config
       ./alacritty.nix
-      ./fastfetch/fastfetch.nix
       ./vscode.nix
       ./devenv.nix # development environment
       ./cli-tools.nix # Useful CLI tools
