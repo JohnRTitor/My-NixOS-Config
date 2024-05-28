@@ -1,5 +1,10 @@
 # This conf file is used to configure boot
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # Enable systemd-boot
   boot.loader.systemd-boot.enable = true;
   # Bootspec needed for secureboot

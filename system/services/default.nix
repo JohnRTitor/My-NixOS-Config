@@ -1,9 +1,17 @@
 # Configure system services
-{pkgs, ...}: {
-  imports = [
-    ./ananicy-cpp.nix
-    ./gnome-keyring.nix
-  ];
+{
+  lib,
+  pkgs,
+  systemSettings,
+  ...
+}: {
+  imports =
+    [
+      ./ananicy-cpp.nix
+      ./console-tty.nix
+      ./gnome-keyring.nix
+    ]
+    ++ lib.optionals systemSettings.containers [./containers.nix];
 
   ## Essential services ##
   # Enable xserver with xwayland
@@ -67,11 +75,5 @@
   security.apparmor.enableCache = true;
   services.dbus.apparmor = "enabled";
 
-  console = {
-    font = "ter-124b";
-    keyMap = "us";
-    packages = with pkgs; [
-      terminus_font
-    ];
-  };
+  services.colord.enable = true; # For color management
 }

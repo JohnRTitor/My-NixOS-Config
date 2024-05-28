@@ -19,7 +19,17 @@
     })
     roboto
     lohit-fonts.bengali # Bengali fonts
+    ultimate-oldschool-pc-font-pack
   ];
   fonts.fontDir.enable = true;
   fonts.fontconfig.subpixel.rgba = "rgb"; # Subpixel rendering
+
+  # Console fonts
+  console = {
+    font = "ter-124b";
+    keyMap = "us";
+    packages = with pkgs; [
+      terminus_font
+    ];
+  };
 }

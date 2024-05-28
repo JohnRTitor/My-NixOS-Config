@@ -28,9 +28,6 @@
       ## URL FETCH TOOLS ##
       curl
       wget
-
-      ## EDITOR ##
-      vim
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master

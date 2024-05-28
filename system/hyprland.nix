@@ -64,20 +64,31 @@ in {
     package = inputs.waybar.packages.${pkgs.system}.waybar;
   };
 
+  programs.hyprlock = {
+    enable = true; # enable Hyprlock screen locker
+    package = pkgs.hyprlock; # inputs.hyprlock.packages.${pkgs.system}.hyprlock;
+  };
+
+  services.hypridle = {
+    enable = true; # enable Hypridle idle manager, needed for Hyprlock
+    package = pkgs.hypridle; # inputs.hypridle.packages.${pkgs.system}.hypridle;
+  };
+
   programs = {
     evince.enable = true; # document viewer
     file-roller.enable = true; # archive manager
-    # Xfce file manager
-    # thunar = {
-    #   enable = true;
-    #   plugins = with pkgs.xfce; [
-    #     exo
-    #     mousepad # text editor
-    #     thunar-archive-plugin # archive manager
-    #     thunar-volman
-    #  ];
-    # };
-    # nm-applet.enable = true; # network manager applet for xorg
+    /*
+    thunar = {# Xfce file manager
+      enable = true;
+      plugins = with pkgs.xfce; [
+        exo
+        mousepad # text editor
+        thunar-archive-plugin # archive manager
+        thunar-volman
+      ];
+    };
+    nm-applet.enable = true; # network manager applet for xorg
+    */
   };
 
   services.gnome = {
@@ -103,7 +114,7 @@ in {
       pavucontrol # audio control
       playerctl # media player control
       polkit_gnome # needed for apps requesting root access
-      pywal # for automatic color schemes from wallpaper
+      # pywal # for automatic color schemes from wallpaper
       rofi-wayland
       slurp # screenshots
       swappy # screenshots
@@ -149,15 +160,11 @@ in {
       # hyprcursor
       # hyprpicker # does not work
       # hyprpaper # alternative to swww, but shit
-      hyprlock
-      hypridle
       pyprland
     ])
     ++ [
       python-packages # needed for Weather.py from dotfiles
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
-      # inputs.hyprlock.packages.${pkgs.system}.hyprlock
-      # inputs.hypridle.packages.${pkgs.system}.hypridle
       # inputs.pyprland.packages.${pkgs.system}.pyprland
       inputs.ags.packages.${pkgs.system}.ags
       inputs.wallust.packages.${pkgs.system}.wallust
@@ -174,7 +181,6 @@ in {
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
     GTK_USE_PORTAL = "1"; # makes dialogs (file opening) consistent with rest of the ui
-    # WLR_RENDERER = "vulkan"; # vulkan not supported in hyprland
   };
 
   systemd = {
@@ -193,5 +199,4 @@ in {
       };
     };
   };
-  security.pam.services.hyprlock = {};
 }
