@@ -1,9 +1,17 @@
 # Configure system services
-{pkgs, ...}: {
-  imports = [
-    ./ananicy-cpp.nix
-    ./gnome-keyring.nix
-  ];
+{
+  lib,
+  pkgs,
+  systemSettings,
+  ...
+}: {
+  imports =
+    [
+      ./ananicy-cpp.nix
+      ./console-tty.nix
+      ./gnome-keyring.nix
+    ]
+    ++ lib.optionals systemSettings.containers [./containers.nix];
 
   ## Essential services ##
   # Enable xserver with xwayland
@@ -31,6 +39,21 @@
     enable = true;
     xdgOpenUsePortal = true; # use xdg-open with xdg-desktop-portal
   };
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+      /*
+      GNOME = [
+        "com.raggesilver.BlackBox.desktop"
+        "org.gnome.Terminal.desktop"
+      ];
+      */
+    };
+  };
+
   # XDG portal paths to link if useUserPackages=true is enabled in home-manager (flake.nix)
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"
@@ -67,11 +90,5 @@
   security.apparmor.enableCache = true;
   services.dbus.apparmor = "enabled";
 
-  console = {
-    font = "ter-124b";
-    keyMap = "us";
-    packages = with pkgs; [
-      terminus_font
-    ];
-  };
+  services.colord.enable = true; # For color management
 }

@@ -17,7 +17,10 @@
   # Enable zram swap
   zramSwap = {
     enable = true;
-    memoryPercent = 75;
+    # this means that maximum 200% worth of physical memory size
+    # can be utilised in zram, by using compression
+    # this does not mean 200% of actual physical memory is used
+    memoryPercent = 200;
   };
 
   swapDevices = [
@@ -37,7 +40,9 @@
     "vm.watermark_scale_factor" = 125;
     "vm.page-cluster" = 0;
     # Improve write and read performance
-    "vm.dirty_background_ratio" = 12;
+    # by caching pages in RAM
+    # may cause OOM on large package builds
+    # "vm.dirty_background_ratio" = 12;
   };
 
   # fstrim for SSD

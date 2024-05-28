@@ -9,6 +9,7 @@
     stableversion = "24.05";
     secureboot = true;
     virtualisation = false;
+    containers = false;
     laptop = false;
   };
 

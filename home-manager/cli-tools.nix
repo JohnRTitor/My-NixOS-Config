@@ -1,19 +1,13 @@
+/*
+Configure CLI tools here
+Bash Integration is disabled for some as they alias to existing commands
+And scripts may not work the high customised setup
+*/
 {pkgs, ...}: {
-  # Configure nnn - the terminal file manager
-  programs.nnn = {
-    enable = true;
-    package = pkgs.nnn.override {withNerdIcons = true;};
-    extraPackages = with pkgs; [
-      ffmpegthumbnailer
-      mediainfo
-      sxiv
-    ];
-  };
+  # A better cat command
+  programs.bat.enable = true;
 
-  # Configure fzf - a command-line fuzzy finder
-  programs.fzf.enable = true;
-
-  # Configure eza - a modern replacement for ls
+  # eza, a modern replacement for ls
   programs.eza = {
     enable = true;
     icons = true;
@@ -27,11 +21,33 @@
     enableBashIntegration = false;
   };
 
-  # Configure zoxide - A smarter cd command which learns your habits as you go
+  # fastfetch, a neofetch like tool to fetch system information
+  programs.fastfetch.enable = true;
+
+  # fzf, a command-line fuzzy finder
+  programs.fzf.enable = true;
+
+  # nnn, the terminal file manager
+  programs.nnn = {
+    enable = true;
+    package = pkgs.nnn.override {withNerdIcons = true;};
+    extraPackages = with pkgs; [
+      ffmpegthumbnailer
+      mediainfo
+      sxiv
+    ];
+  };
+
+  # zoxide, A smarter cd command which learns your habits as you go
   programs.zoxide = {
     enable = true;
     options = [
       "--cmd cd" # Replace cd with zoxide
     ];
+    enableBashIntegration = false;
   };
+
+  home.packages = with pkgs; [
+    tree # List directory recursively in tree structure
+  ];
 }

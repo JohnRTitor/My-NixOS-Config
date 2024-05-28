@@ -9,7 +9,7 @@ in {
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
-    cups-pdf.enable = true; # Enable PDF printing.
+    # cups-pdf.enable = true; # Enable seperate PDF printing virtual printer
     openFirewall = true; # Open ports for printing
   };
   # Enable Avahi to discover printers, and LAN devices
