@@ -87,7 +87,6 @@
 
       # whatsapp-for-linux
       libreoffice-fresh
-      vesktop
       deluge # Torrent client
       shotwell # GNOME image editor
       jetbrains-toolbox
@@ -103,7 +102,8 @@
   services.flatpak.packages = [
     # Flatpak packages to be installed on a per user basis
     "io.github.tdesktop_x64.TDesktop" # 64Gram
-    "im.riot.Riot"
+    "im.riot.Riot" # Element Matrix Client
+    "dev.vencord.Vesktop" # Vesktop
   ];
 
   programs.fastfetch.enable = true;
