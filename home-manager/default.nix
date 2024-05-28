@@ -17,10 +17,9 @@
     [
       # system packages are imported in ./configuration.nix
       ../pkgs/user-packages.nix # user specific packages
-      ./shell.nix # shell (bash, zsh) config
+      ./shell # shell (bash, zsh) and starship config
       ./xdg.nix # xdg config
       ./git.nix # git config
-      ./starship.nix # starship config
       ./alacritty.nix
       ./vscode.nix
       ./devenv.nix # development environment
