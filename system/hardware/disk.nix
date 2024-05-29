@@ -17,7 +17,10 @@
   # Enable zram swap
   zramSwap = {
     enable = true;
-    memoryPercent = 75;
+    # this means that maximum 300% worth of physical memory size
+    # can be utilised in zram, by using compression
+    # this does not mean 300% of actual physical memory is used
+    memoryPercent = 200;
   };
 
   swapDevices = [

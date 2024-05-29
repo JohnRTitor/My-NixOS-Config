@@ -14,7 +14,6 @@
     # Don't add follows nixpkgs, else will cause local rebuilds
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nyx, especially CachyOS kernel
     devenv.url = "github:cachix/devenv"; # Devenv, for setting up development environments using devenv.nix
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
 
     home-manager = {
       url = "github:nix-community/home-manager/master"; # Home Manager, manage user configuration and home directories like a pro
@@ -24,11 +23,16 @@
       url = "github:nix-community/lanzaboote"; # Lanzaboote module used for Secure-Boot implementation
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    browser-previews = {
-      url = "github:nix-community/browser-previews"; # Latest Chrome stable, beta, and dev
+
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=4cdddcfe466cb21db81af0ac39e51cc15f574da9"; # Hyprland, a Wayland WM, use git submodules too
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.xdph.follows = "xdph";
+    };
+    xdph = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     waybar = {
       url = "github:Alexays/Waybar"; # It's that bar you see on the top on Hyprland/Sway
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +62,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    browser-previews = {
+      url = "github:nix-community/browser-previews"; # Latest Chrome stable, beta, and dev
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package
       inputs.nixpkgs.follows = "nixpkgs";
