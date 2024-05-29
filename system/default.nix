@@ -41,4 +41,9 @@
     ++
     # Import if laptop mode is enabled
     lib.optionals (systemSettings.laptop) [./power.nix];
+
+    programs.neovim = {
+      enable = true; # Enable Neovim
+      vimAlias = true; # Enable vim alias
+    };
 }
