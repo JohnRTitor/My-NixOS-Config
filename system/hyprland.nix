@@ -7,6 +7,7 @@
   inputs,
   ...
 }: let
+  pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
   python-packages = pkgs.python3.withPackages (
     ps:
       with ps; [
@@ -16,12 +17,24 @@
       ]
   );
 in {
-  # use the hyprland package from the hyprland flake
-  imports = [inputs.hyprland.nixosModules.default];
   # Enable Hyprland Window Manager
   programs.hyprland = {
     enable = true;
     systemd.setPath.enable = true;
+    package =
+      (pkgs-hyprland.hyprland.override {stdenv = pkgs.clangStdenv;}).overrideAttrs
+      (prevAttrs: {
+        patches =
+          (prevAttrs.patches or [])
+          ++ [
+            (pkgs.fetchpatch {
+              name = "enable-lto-cmake.patch";
+              url = "https://github.com/hyprwm/Hyprland/pull/5874/commits/efd0a869fffe3ad6d3ffc4b4907ef68d1ef115a7.patch";
+              hash = "sha256-UFFB1K/funTh5aggliyYmAzIhcQ1TKSvt79aViFGzN4=";
+            })
+          ];
+      });
+    portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
   };
 
   # hyprland portal is already included, gtk is also needed for compatibility
@@ -136,15 +149,15 @@ in {
       # hyprcursor
       # hyprpicker # does not work
       # hyprpaper # alternative to swww, but shit
-      # hyprlock
-      # hypridle
+      hyprlock
+      hypridle
       pyprland
     ])
     ++ [
       python-packages # needed for Weather.py from dotfiles
       inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
-      inputs.hyprlock.packages.${pkgs.system}.hyprlock
-      inputs.hypridle.packages.${pkgs.system}.hypridle
+      # inputs.hyprlock.packages.${pkgs.system}.hyprlock
+      # inputs.hypridle.packages.${pkgs.system}.hypridle
       # inputs.pyprland.packages.${pkgs.system}.pyprland
       inputs.ags.packages.${pkgs.system}.ags
       inputs.wallust.packages.${pkgs.system}.wallust
