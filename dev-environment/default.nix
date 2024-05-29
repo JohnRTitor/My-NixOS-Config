@@ -10,7 +10,6 @@
 
   # Containers and adb should be available by default
   imports = [
-    ./containers.nix
     ./adb-toolchain.nix
     # ./nginx.nix # disable temporarily
 

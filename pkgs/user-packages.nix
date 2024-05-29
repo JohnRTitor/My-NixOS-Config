@@ -49,7 +49,6 @@
       ## MISCELLANEOUS ##
       # cowsay
       # file
-      # tree
 
       ## Productivity ##
       # hugo # static site generator

@@ -90,7 +90,7 @@ in {
         then "nixd"
         else if (builtins.elem "nil" packagesList)
         then "nil"
-        else "";
+        else null;
 
       "dev.containers.dockerPath" = "podman"; # Use podman as the docker path
 

@@ -31,9 +31,8 @@
     vulkan-tools # vulkan graphics library tools
   ];
 
-  # Also load amdgpu at boot
-  boot.kernelModules = ["amdgpu"];
-  boot.extraModulePackages = with config.boot.kernelPackages; [amdgpu-pro];
+  # Also load amdgpu at stage 1 of boot, to get better resolution
+  boot.initrd.kernelModules = ["amdgpu"];
 
   # AMDGPU graphics driver for Xorg
   services.xserver.videoDrivers = ["amdgpu"];
