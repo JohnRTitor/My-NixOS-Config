@@ -1,6 +1,12 @@
 name: update-flake-lock
 on:
-  workflow_dispatch: # allows manual triggering
+  workflow_dispatch:
+    inputs:
+      bumpWhat:
+        description: Which flake input? (leave blank for all)
+        required: false
+        type: string
+
   schedule:
     - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
     # - cron: '0 0 * * *' # runs everyday at 00:00
@@ -22,3 +28,5 @@ jobs:
         run:  nix fmt
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v21
+        with:
+          inputs: ${{ inputs.bumpWhat }}
