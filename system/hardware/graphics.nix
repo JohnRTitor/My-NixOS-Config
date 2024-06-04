@@ -37,10 +37,12 @@
   # AMDGPU graphics driver for Xorg
   services.xserver.videoDrivers = ["amdgpu"];
 
-  # Disable radeon and enable amdgpu
+  # Enable AMDGPU and disable Radeonsi
   boot.kernelParams = [
-    "radeon.si_support=0"
     "amdgpu.si_support=1"
+    "amdgpu.cik_support=1"
+    "radeon.si_support=0"
+    "radeon.cik_support=0"
   ];
 
   # Graphics environment variables

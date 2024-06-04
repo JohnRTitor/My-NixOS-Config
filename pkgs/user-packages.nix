@@ -88,7 +88,8 @@
       libreoffice-fresh
       deluge # Torrent client
       shotwell # GNOME image editor
-      jetbrains-toolbox
+      # jetbrains.phpstorm
+      # jetbrains.rust-rover
       androidStudioPackages.beta
       gnome.gnome-logs # GNOME log viewer
       warp # file transfer, also install android app
@@ -97,7 +98,16 @@
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
       # Some packages may not be cached so.. it may take some time to build
+      (jetbrains.plugins.addPlugins jetbrains.phpstorm [
+        "github-copilot"
+        "nixidea"
+      ])
+      (jetbrains.plugins.addPlugins jetbrains.rust-rover [
+        "github-copilot"
+        "nixidea"
+      ])
     ]);
+
   services.flatpak.packages = [
     # Flatpak packages to be installed on a per user basis
     "io.github.tdesktop_x64.TDesktop" # 64Gram

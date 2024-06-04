@@ -20,6 +20,11 @@
     # don't need xterm
     excludePackages = [pkgs.xterm];
   };
+
+  # Enable scx extra schedulers, only available for linux-cachyos
+  chaotic.scx.enable = true; # by default uses rustland
+  # chaotic.scx.scheduler = "scx_lavd";
+
   services.accounts-daemon.enable = true;
   services.dbus = {
     enable = true;

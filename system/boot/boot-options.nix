@@ -14,6 +14,7 @@
   boot.loader.timeout = 15;
   # use systemd initrd instead of udev
   boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.dbus.enable = true;
 
   # boot.consoleLogLevel = 0; # configure silent boot
   boot.kernelParams = [
