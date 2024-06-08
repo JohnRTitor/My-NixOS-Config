@@ -36,12 +36,7 @@
     # just nix.settings.trusted-public-keys and nix.settings.trusted-substituters will be enough
     # for now: if `cachix use <repo>` is used, manually copy to ./misc/cachix dir
     ../misc/cachix.nix # absolute location /etc/nixos/cachix.nix
-  ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs-tools;
-    })
+    ../modules-overlays
   ];
 
   networking.hostName = systemSettings.hostname; # Define your hostname in flake.nix

@@ -38,6 +38,7 @@ in {
         [
           ../default-host/configuration.nix # main nix configuration
           inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
+          inputs.nur.nixosModules.nur
 
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`

@@ -824,35 +824,6 @@
         "type": "github"
       }
     },
-    "hyprcursor_2": {
-      "inputs": {
-        "hyprlang": [
-          "hyprland",
-          "hyprlang"
-        ],
-        "nixpkgs": [
-          "hyprland",
-          "nixpkgs"
-        ],
-        "systems": [
-          "hyprland",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1713612213,
-        "narHash": "sha256-zJboXgWNpNhKyNF8H/3UYzWkx7w00TOCGKi3cwi+tsw=",
-        "owner": "hyprwm",
-        "repo": "hyprcursor",
-        "rev": "cab4746180f210a3c1dd3d53e45c510e309e90e1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hyprwm",
-        "repo": "hyprcursor",
-        "type": "github"
-      }
-    },
     "hypridle": {
       "inputs": {
         "hyprlang": "hyprlang_2",
@@ -877,7 +848,9 @@
     },
     "hyprland": {
       "inputs": {
-        "hyprcursor": "hyprcursor_2",
+        "hyprcursor": [
+          "hyprcursor"
+        ],
         "hyprlang": "hyprlang_3",
         "hyprwayland-scanner": "hyprwayland-scanner",
         "nixpkgs": [
@@ -1557,6 +1530,21 @@
         "type": "indirect"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1718387178,
+        "narHash": "sha256-qm2gBUI7y/eblOgbl8qLgOzz3EXozA5X1/ePdJ8TDKA=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "f34951337ff9c0a8d466ecbc40e0262d7138130f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -1724,6 +1712,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-edge": "nixpkgs-edge",
+        "nur": "nur",
         "pyprland": "pyprland",
         "wallust": "wallust",
         "waybar": "waybar",
