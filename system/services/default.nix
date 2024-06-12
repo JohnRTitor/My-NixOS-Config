@@ -8,6 +8,7 @@
   imports =
     [
       ./ananicy-cpp.nix
+      ./apparmor.nix
       ./console-tty.nix
       ./gnome-keyring.nix
     ]
@@ -90,10 +91,6 @@
   services.envfs.enable = true;
 
   security.polkit.enable = true; # Enable polkit for elevated prompts
-
-  security.apparmor.enable = true;
-  security.apparmor.enableCache = true;
-  services.dbus.apparmor = "enabled";
 
   services.colord.enable = true; # For color management
 }
