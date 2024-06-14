@@ -33,10 +33,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=4cdddcfe466cb21db81af0ac39e51cc15f574da9"; # Hyprland, a Wayland WM, use git submodules too
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.xdph.follows = "xdph";
-      inputs.hyprcursor.follows = "hyprcursor";
     };
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
