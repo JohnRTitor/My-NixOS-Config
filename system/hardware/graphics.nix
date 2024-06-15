@@ -19,8 +19,6 @@ in {
     # Extra drivers
     extraPackages =
       (with pkgs; [
-        rocmPackages.clr.icd
-        amdvlk # AMD Vulkan driver
         vaapiVdpau
         libvdpau-va-gl
         libva
@@ -32,7 +30,6 @@ in {
       ]);
     # For 32 bit applications
     extraPackages32 = with pkgs.driversi686Linux; [
-      amdvlk
       vaapiVdpau
       libvdpau-va-gl
     ];
@@ -43,6 +40,10 @@ in {
     vdpauinfo # vdpau graphics library tools
     vulkan-tools # vulkan graphics library tools
   ];
+
+  hardware.amdgpu.initrd.enable = true;
+  hardware.amdgpu.legacySupport.enable = true;
+  hardware.amdgpu.opencl.enable = true;
 
   hardware.amdgpu.amdvlk = {
     enable = true;
@@ -57,19 +58,9 @@ in {
     };
   };
 
-  # Also load amdgpu at stage 1 of boot, to get better resolution
-  boot.initrd.kernelModules = ["amdgpu"];
-
-  # AMDGPU graphics driver for Xorg
-  services.xserver.videoDrivers = ["amdgpu"];
-
-  # Enable AMDGPU and disable Radeonsi
-  boot.kernelParams = [
-    "amdgpu.si_support=1"
-    "amdgpu.cik_support=1"
-    "radeon.si_support=0"
-    "radeon.cik_support=0"
-  ];
+  # Use modesetting driver for Xorg, its better and updated
+  # AMDGPU graphics driver for Xorg is deprecated
+  services.xserver.videoDrivers = ["modesetting"];
 
   # Graphics environment variables
   environment.sessionVariables = {

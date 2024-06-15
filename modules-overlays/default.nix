@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    # ./amdvlk.nix - import modules here to test
+    #./amdgpu.nix # import modules here to test
   ];
 
   nixpkgs.overlays = [

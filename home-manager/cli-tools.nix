@@ -42,7 +42,9 @@ And scripts may not work the high customised setup
   programs.zoxide = {
     enable = true;
     options = [
-      "--cmd cd" # Replace cd with zoxide
+      # don't enable cd alias, as conflicts may occur sometimes
+      # you might be redirected to a directory you didn't intend to
+      # "--cmd cd" # Replace cd with zoxide
     ];
     enableBashIntegration = false;
   };
