@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{pkgs, pkgs-edge, ...}: {
   # Enable Ananicy CPP for better system performance
   services.ananicy = {
     enable = true;
+    package = pkgs-edge.ananicy-cpp;
     # from nixpkgs: ananicy-rules-cachyos
     rulesProvider = pkgs.ananicy-cpp-rules.overrideAttrs (prevAttrs: {
       patches = [

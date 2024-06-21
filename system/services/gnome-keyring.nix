@@ -4,4 +4,5 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm-password.enableGnomeKeyring = true; # load gnome-keyring at startup
   programs.seahorse.enable = true; # enable the graphical frontend for managing
+  # NOTE: GNOME keyring does not enable a ssh agent/GPG agent in NixOS
 }
