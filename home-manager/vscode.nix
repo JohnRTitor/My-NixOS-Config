@@ -14,10 +14,7 @@ in {
     enable = true;
     enableUpdateCheck = false;
     package = (
-      pkgs.vscode.override {
-        # if keyring does not work, try either "libsecret" or "gnome"
-        commandLineArgs = ''--password-store=gnome-libsecret'';
-      }
+      pkgs.callPackage ../pkgs/vscode-repackaged.nix { }
     );
 
     # Since not all extensions are provided via nixpkgs,

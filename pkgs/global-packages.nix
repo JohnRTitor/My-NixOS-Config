@@ -11,8 +11,6 @@
 }: {
   imports = [
     inputs.nix-flatpak.nixosModules.nix-flatpak
-    ./fhs-shell.nix
-    ./gparted-wrapper.nix
   ];
   environment.systemPackages =
     (with pkgs; [
@@ -28,6 +26,9 @@
       ## URL FETCH TOOLS ##
       curl
       wget
+
+      (callPackage ./fhs-shell.nix {})
+      (callPackage ./gparted-wrapper.nix {})
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master
