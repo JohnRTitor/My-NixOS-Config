@@ -27,16 +27,8 @@ And scripts may not work the high customised setup
   # fzf, a command-line fuzzy finder
   programs.fzf.enable = true;
 
-  # nnn, the terminal file manager
-  programs.nnn = {
-    enable = true;
-    package = pkgs.nnn.override {withNerdIcons = true;};
-    extraPackages = with pkgs; [
-      ffmpegthumbnailer
-      mediainfo
-      sxiv
-    ];
-  };
+  # Fast terminal file manager written in Rust
+  programs.yazi.enable = true;
 
   # zoxide, A smarter cd command which learns your habits as you go
   programs.zoxide = {
@@ -52,4 +44,17 @@ And scripts may not work the high customised setup
   home.packages = with pkgs; [
     tree # List directory recursively in tree structure
   ];
+
+  /*
+  # nnn, the terminal file manager
+  programs.nnn = {
+    enable = true;
+    package = pkgs.nnn.override {withNerdIcons = true;};
+    extraPackages = with pkgs; [
+      ffmpegthumbnailer
+      mediainfo
+      sxiv
+    ];
+  };
+  */
 }

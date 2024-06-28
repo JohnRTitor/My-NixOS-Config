@@ -18,7 +18,7 @@ in {
     # Extra drivers
     extraPackages =
       (with pkgs; [
-        vaapiVdpau
+        libva-vdpau-driver
         libvdpau-va-gl
         libva
       ])
@@ -29,7 +29,7 @@ in {
       ]);
     # For 32 bit applications
     extraPackages32 = with pkgs.driversi686Linux; [
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };

@@ -84,20 +84,7 @@
       # Editors #
       # emacs
 
-      # whatsapp-for-linux
-      libreoffice-fresh
-      deluge # Torrent client
-      shotwell # GNOME image editor
-      # jetbrains.phpstorm
-      # jetbrains.rust-rover
-      androidStudioPackages.beta
-      gnome.gnome-logs # GNOME log viewer
-      warp # file transfer, also install android app
-    ])
-    ++ (with pkgs-edge; [
-      # list of latest packages from nixpkgs master
-      # Can be used to install latest version of some packages
-      # Some packages may not be cached so.. it may take some time to build
+      # IDEs #
       (jetbrains.plugins.addPlugins jetbrains.phpstorm [
         "github-copilot"
         "nixidea"
@@ -106,6 +93,20 @@
         "github-copilot"
         "nixidea"
       ])
+
+      # whatsapp-for-linux
+      libreoffice-fresh
+      deluge # Torrent client
+      shotwell # GNOME image editor
+      gnome.gnome-logs # GNOME log viewer
+      warp # file transfer, also install android app
+      clapper
+    ])
+    ++ (with pkgs-edge; [
+      # list of latest packages from nixpkgs master
+      # Can be used to install latest version of some packages
+      # Some packages may not be cached so.. it may take some time to build
+      android-studio-full
     ]);
 
   services.flatpak.packages = [

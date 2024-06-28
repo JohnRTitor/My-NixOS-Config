@@ -2,6 +2,8 @@
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
 {
+  config,
+  lib,
   pkgs,
   pkgs-edge,
   inputs,
@@ -20,7 +22,7 @@ in {
   # Enable Hyprland Window Manager
   programs.hyprland = {
     enable = true;
-    systemd.setPath.enable = true;
+    systemd.setPath.enable = lib.versionOlder config.programs.hyprland.package.version "0.41.2";
     package =
       (pkgs-hyprland.hyprland.override {stdenv = pkgs.clangStdenv;}).overrideAttrs
       (prevAttrs: {

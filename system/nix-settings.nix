@@ -4,7 +4,7 @@
   userSettings,
   ...
 }: {
-  nix.package = pkgs.nixVersions.latest; # Use latest nix
+  nix.package = pkgs.lix; # pkgs.nixVersions.latest; # Use latest nix
   nix.settings.trusted-users = [userSettings.username]; # FIXME: if someday custom cache works without this
 
   # Features for building
@@ -29,4 +29,5 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
+  nixpkgs.config.android_sdk.accept_license = true;
 }
