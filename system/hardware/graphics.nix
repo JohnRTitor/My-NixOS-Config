@@ -7,6 +7,27 @@
 }: let
   nur-amdgpu = config.nur.repos.materus;
 in {
+  hardware.amdgpu = {
+    initrd.enable = true;
+    legacySupport.enable = true;
+    # disabled to use a mix of pocl and rocm below
+    opencl.enable = false;
+  };
+
+  hardware.amdgpu.amdvlk = {
+    enable = true;
+    support32Bit.enable = true;
+    supportExperimental.enable = true;
+    settings = {
+      AllowVkPipelineCachingToDisk = 1;
+      ShaderCacheMode = 1;
+      IFH = 0;
+      EnableVmAlwaysValid = 1;
+      IdleAfterSubmitGpuMask = 0;
+    };
+  };
+
+  # AMDGPU-PRO firmware
   hardware.firmware = with nur-amdgpu; [
     amdgpu-pro-libs.firmware.vcn
     amdgpu-pro-libs.firmware
@@ -19,6 +40,7 @@ in {
     # Extra drivers
     extraPackages =
       (with pkgs; [
+        # LIBVA and VDPAU are hardware acceleration drivers
         libva-vdpau-driver
         libvdpau-va-gl
         libva
@@ -45,23 +67,6 @@ in {
     vdpauinfo # vdpau graphics library tools
     vulkan-tools # vulkan graphics library tools
   ];
-
-  hardware.amdgpu.initrd.enable = true;
-  hardware.amdgpu.legacySupport.enable = true;
-  hardware.amdgpu.opencl.enable = false;
-
-  hardware.amdgpu.amdvlk = {
-    enable = true;
-    support32Bit.enable = true;
-    supportExperimental.enable = true;
-    settings = {
-      AllowVkPipelineCachingToDisk = 1;
-      ShaderCacheMode = 1;
-      IFH = 0;
-      EnableVmAlwaysValid = 1;
-      IdleAfterSubmitGpuMask = 0;
-    };
-  };
 
   # Use modesetting driver for Xorg, its better and updated
   # AMDGPU graphics driver for Xorg is deprecated

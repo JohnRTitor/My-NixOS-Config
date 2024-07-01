@@ -115,7 +115,6 @@ in {
       pamixer
       pavucontrol # audio control
       playerctl # media player control
-      polkit_gnome # needed for apps requesting root access
       # pywal # for automatic color schemes from wallpaper
       rofi-wayland
       slurp # screenshots
@@ -188,20 +187,12 @@ in {
   # Run XDG autostart, this is needed for a DE-less setup like Hyprland
   services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
-  systemd = {
-    # Polkit starting systemd service - needed for apps requesting root access
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
+  systemd.user.services."pantheon-polkit-agent" = {
+    description = "Pantheon Polkit Agent";
+    wantedBy = [ "graphical-session.target" ];
+    upheldBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    script = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit";
   };
+  
 }

@@ -63,5 +63,6 @@ in {
 
     # PDF
     "application/pdf" = "org.gnome.Evince.desktop;google-chrome-beta.desktop;";
+    "text/html" = "google-chrome-beta.desktop;org.gnome.TextEditor.desktop;";
   };
 }

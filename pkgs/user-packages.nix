@@ -85,6 +85,7 @@
       # emacs
 
       # IDEs #
+      android-studio-full
       (jetbrains.plugins.addPlugins jetbrains.phpstorm [
         "github-copilot"
         "nixidea"
@@ -106,7 +107,6 @@
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
       # Some packages may not be cached so.. it may take some time to build
-      android-studio-full
     ]);
 
   services.flatpak.packages = [
