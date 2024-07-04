@@ -2,6 +2,7 @@
 {
   config,
   pkgs,
+  pkgs-edge,
   ...
 }: let
   nur-amdgpu = config.nur.repos.materus;
@@ -21,6 +22,10 @@ in {
         libva-vdpau-driver
         libvdpau-va-gl
         libva
+        rocmPackages.clr.icd # OpenCL for AMD GPUs
+      ])
+      ++ (with pkgs-edge; [
+        pocl # OpenCL for CPU
       ])
       ++ (with nur-amdgpu; [
         amdgpu-pro-libs.opengl
@@ -35,6 +40,7 @@ in {
   };
   environment.systemPackages = with pkgs; [
     ## GRAPHICS UTILS ##
+    clinfo # OpenCL hardware information
     libva-utils # libva graphics library tools
     vdpauinfo # vdpau graphics library tools
     vulkan-tools # vulkan graphics library tools
@@ -42,7 +48,7 @@ in {
 
   hardware.amdgpu.initrd.enable = true;
   hardware.amdgpu.legacySupport.enable = true;
-  hardware.amdgpu.opencl.enable = true;
+  hardware.amdgpu.opencl.enable = false;
 
   hardware.amdgpu.amdvlk = {
     enable = true;
