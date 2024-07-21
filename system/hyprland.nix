@@ -22,9 +22,8 @@ in {
   # Enable Hyprland Window Manager
   programs.hyprland = {
     enable = true;
-    systemd.setPath.enable = lib.versionOlder config.programs.hyprland.package.version "0.41.2";
     package =
-      (pkgs-hyprland.hyprland.override {stdenv = pkgs.clangStdenv;}).overrideAttrs
+      (pkgs.hyprland.override {stdenv = pkgs.clangStdenv;}).overrideAttrs
       (prevAttrs: {
         patches =
           (prevAttrs.patches or [])
@@ -34,9 +33,10 @@ in {
               url = "https://github.com/hyprwm/Hyprland/pull/5874/commits/efd0a869fffe3ad6d3ffc4b4907ef68d1ef115a7.patch";
               hash = "sha256-UFFB1K/funTh5aggliyYmAzIhcQ1TKSvt79aViFGzN4=";
             })
+            ./add-env-vars-to-export.patch
           ];
       });
-    portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
   # hyprland portal is already included, gtk is also needed for compatibility
@@ -79,18 +79,6 @@ in {
   programs = {
     evince.enable = true; # document viewer
     file-roller.enable = true; # archive manager
-    /*
-    thunar = {# Xfce file manager
-      enable = true;
-      plugins = with pkgs.xfce; [
-        exo
-        mousepad # text editor
-        thunar-archive-plugin # archive manager
-        thunar-volman
-      ];
-    };
-    nm-applet.enable = true; # network manager applet for xorg
-    */
   };
 
   services.gnome = {
@@ -115,15 +103,17 @@ in {
       pamixer
       pavucontrol # audio control
       playerctl # media player control
-      # pywal # for automatic color schemes from wallpaper
+      pantheon.pantheon-agent-polkit # polkit agent for root prompt
+      # POLKIT service is manually started
+      # as defined in Hyprland-Dots repo
       rofi-wayland
       slurp # screenshots
       swappy # screenshots
       swaynotificationcenter # notification daemon
       swww
       wlsunset # for night mode
-      wl-clipboard
-      wlogout
+      wl-clipboard # clipboard manager
+      wlogout # logout dialog
       yad
 
       gsettings-desktop-schemas
@@ -131,8 +121,7 @@ in {
       ydotool
 
       ## Graphical apps ##
-      gnome.gnome-system-monitor # system monitor
-      loupe # image viewer
+
       kitty # default terminal on hyprland
       linux-wifi-hotspot # for wifi hotspot
       (mpv-unwrapped.override {
@@ -141,14 +130,6 @@ in {
         vapoursynthSupport = true;
       }) # for video playback, needed for some scripts
       mpvScripts.mpris
-      gnome.nautilus # file manager
-      gnome-text-editor # text editor
-      shotcut # video editor
-
-      ## QT theming and apps support ##
-      qt5.qtwayland
-      qt6.qmake
-      qt6.qtwayland
 
       ## Utilities ##
       desktop-file-utils
@@ -157,24 +138,29 @@ in {
       xdg-user-dirs
       xorg.xhost # needed for some packages running x11 like gparted
 
+      ## GNOME Suite ##
+      gnome.nautilus # file manager
+      gnome-text-editor # text editor
+      shotcut # video editor
+      gnome.gnome-system-monitor # system monitor
+      loupe # image viewer
+
       ## Hypr ecosystem ##
-      # hyprcursor
-      # hyprpicker # does not work
-      # hyprpaper # alternative to swww, but shit
-      pyprland
+      hyprcursor
+      pyprland # hyprland plugin, dropdown term, etc
+      ags # widgets pipup
     ])
     ++ [
       python-packages # needed for Weather.py from dotfiles
-      inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
+      # inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
       # inputs.pyprland.packages.${pkgs.system}.pyprland
-      inputs.ags.packages.${pkgs.system}.ags
+      # inputs.ags.packages.${pkgs.system}.ags
       inputs.wallust.packages.${pkgs.system}.wallust
     ];
 
   # Environment variables to start the session with
   environment.sessionVariables = {
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
-    # WLR_NO_HARDWARE_CURSORS = "1"; # cursor not visible, needed for nvidia
 
     NIXOS_OZONE_WL = "1"; # for electron and chromium apps to run on wayland
     MOZ_ENABLE_WAYLAND = "1"; # firefox should always run on wayland
@@ -186,13 +172,4 @@ in {
 
   # Run XDG autostart, this is needed for a DE-less setup like Hyprland
   services.xserver.desktopManager.runXdgAutostartIfNone = true;
-
-  systemd.user.services."pantheon-polkit-agent" = {
-    description = "Pantheon Polkit Agent";
-    wantedBy = [ "graphical-session.target" ];
-    upheldBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    script = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit";
-  };
-  
 }

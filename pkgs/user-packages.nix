@@ -85,7 +85,7 @@
       # emacs
 
       # IDEs #
-      android-studio-full
+      android-studio
       (jetbrains.plugins.addPlugins jetbrains.phpstorm [
         "github-copilot"
         "nixidea"

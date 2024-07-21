@@ -1,7 +1,6 @@
 # This conf file is used to configure audio and sound related settings
 {...}: {
   # Enable sound with pipewire, don't enable pulseaudio.
-  sound.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true; # alsa support

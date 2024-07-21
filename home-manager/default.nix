@@ -24,7 +24,7 @@
       ./vscode.nix
       ./devenv.nix # development environment
       ./cli-tools.nix # Useful CLI tools
-      ./thunar.nix
+      # ./thunar.nix
 
       ./nix-tools.nix
 

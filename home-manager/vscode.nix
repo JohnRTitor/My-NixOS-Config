@@ -14,7 +14,7 @@ in {
     enable = true;
     enableUpdateCheck = false;
     package = (
-      pkgs.callPackage ../pkgs/vscode-repackaged.nix { }
+      pkgs.callPackage ../pkgs/vscode-repackaged.nix {}
     );
 
     # Since not all extensions are provided via nixpkgs,

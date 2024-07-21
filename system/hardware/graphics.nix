@@ -45,8 +45,6 @@ in {
         libvdpau-va-gl
         libva
         rocmPackages.clr.icd # OpenCL for AMD GPUs
-      ])
-      ++ (with pkgs-edge; [
         pocl # OpenCL for CPU
       ])
       ++ (with nur-amdgpu; [

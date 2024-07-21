@@ -23,7 +23,7 @@ in {
       specialArgs = {inherit self inputs systemSettings userSettings;};
       modules =
         [
-          {_module.args = { inherit pkgs-edge; };}
+          {_module.args = {inherit pkgs-edge;};}
           ../default-host/configuration.nix # main nix configuration
           inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
           inputs.nur.nixosModules.nur

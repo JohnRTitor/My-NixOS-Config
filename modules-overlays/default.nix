@@ -1,6 +1,7 @@
 {
   libs,
   pkgs,
+  pkgs-edge,
   inputs,
   ...
 }: {
@@ -10,7 +11,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs-tools;
+      # bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs-tools;
     })
   ];
 }
