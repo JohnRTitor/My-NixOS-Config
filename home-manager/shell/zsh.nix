@@ -15,16 +15,17 @@ in {
       // {
         # Add custom session variables for zsh
       };
+
+    autosuggestion.strategy = [
+      "history"
+      "completion"
+      "match_prev_cmd"
+    ];
     shellAliases = {
       # additional aliases to set for zsh
     };
     # extra lines to add to the zshrc file
-    # Enable autosuggest to use history and completion
-    initExtra =
-      commonRcExtra
-      + ''
-        ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
-      '';
+    initExtra = commonRcExtra;
   };
 
   # If starship is enabled, don't enable oh-my-zsh
