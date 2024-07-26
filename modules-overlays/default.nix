@@ -7,6 +7,7 @@
 }: {
   imports = [
     #./amdgpu.nix # import modules here to test
+    ./uwsm/module.nix
   ];
 
   nixpkgs.overlays = [
@@ -14,4 +15,7 @@
       # bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs-tools;
     })
   ];
+
+  programs.uwsm.enable = true;
+  programs.uwsm.package = pkgs.callPackage ./uwsm/package.nix { };
 }
