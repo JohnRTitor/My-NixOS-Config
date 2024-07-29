@@ -25,7 +25,7 @@
 
   # Enable scx extra schedulers, only available for linux-cachyos
   chaotic.scx.enable = true; # by default uses rustland
-  # chaotic.scx.scheduler = "scx_lavd";
+  chaotic.scx.scheduler = "scx_bpfland";
 
   services.accounts-daemon.enable = true;
   services.dbus = {
