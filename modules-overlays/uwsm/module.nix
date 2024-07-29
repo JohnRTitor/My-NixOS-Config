@@ -6,8 +6,6 @@
 }:
 let
   cfg = config.programs.uwsm;
-  hyprlandCfg = config.programs.hyprland;
-  swayCfg = config.programs.sway;
 in
 {
   options.programs.uwsm = {
@@ -15,45 +13,24 @@ in
       Wayland compositors into a set of Systemd units on the fly
     '';
     package = lib.mkPackageOption pkgs "uwsm" {};
-    hyprlandSupport = lib.mkEnableOption null // {
-      default = cfg.enable && hyprlandCfg.enable;
-    };
-    swaySupport = lib.mkEnableOption null // {
-      default = cfg.enable && swayCfg.enable;
-    };
-    
-    finalPackage = lib.mkOption {
-      type = lib.types.package;
-      readOnly = true;
-      default = cfg.package.override {
-        hyprland = hyprlandCfg.package;
-        sway = swayCfg.package;
-        inherit (cfg) hyprlandSupport swaySupport;
-      };
-      defaultText = lib.literalExpression
-        "`programs.uwsm.package` with applied configuration";
-      description = ''
-        The uwsm package after applying configuration.
-      '';
-    };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.finalPackage ];
-    systemd.packages = [ cfg.finalPackage ];
+    environment.systemPackages = [ cfg.package ];
+    systemd.packages = [ cfg.package ];
     services.dbus.implementation = "broker";
 
-    services.displayManager.sessionPackages = lib.optionals cfg.hyprlandSupport [
+    services.displayManager.sessionPackages = lib.optionals config.programs.hyprland.enable [
       (pkgs.callPackage ./uwsm-wm-wrapper.nix {
-        uwsm = cfg.finalPackage;
+        uwsm = cfg.package;
         wmName = "Hyprland";
-        wmCmd = "hyprland";
+        wmCmd = "/run/current-system/sw/bin/Hyprland";
       })
-    ] ++ lib.optionals cfg.swaySupport [
+    ] ++ lib.optionals config.programs.sway.enable [
       (pkgs.callPackage ./uwsm-wm-wrapper.nix {
-        uwsm = cfg.finalPackage;
+        uwsm = cfg.package;
         wmName = "Sway";
-        wmCmd = "sway";
+        wmCmd = "/run/current-system/sw/bin/sway";
       })
     ];
   };
