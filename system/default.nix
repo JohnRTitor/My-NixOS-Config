@@ -31,6 +31,8 @@
       ./printing.nix
       # include essential services
       ./services
+      # include specializations
+      ./safe-specialization.nix
     ]
     ++
     # Configure secure boot with lanzaboote, if secureboot is enabled
@@ -42,8 +44,5 @@
     # Import if laptop mode is enabled
     lib.optionals (systemSettings.laptop) [./power.nix];
 
-  programs.neovim = {
-    enable = true; # Enable Neovim
-    vimAlias = true; # Enable vim alias
-  };
+  system.nixos.tags = lib.mkDefault [ "cachyos" ];
 }
