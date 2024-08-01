@@ -22,8 +22,12 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v25
         with:
+          install_url: https://nixos.org/nix/install
           extra_nix_config: |
+            auto-optimise-store = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes
+            accept-flake-config = true
       - name: Reformat *.nix files
         run:  nix fmt
       - name: Update flake.lock

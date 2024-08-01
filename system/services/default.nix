@@ -27,6 +27,8 @@
   chaotic.scx.enable = true; # by default uses rustland
   chaotic.scx.scheduler = "scx_bpfland";
 
+  # Accounts daemon is needed to remember passwords and other account information
+  # by display manager and other services
   services.accounts-daemon.enable = true;
   services.dbus = {
     enable = true;
@@ -50,7 +52,7 @@
     enable = true;
     settings = {
       default = [
-        "kitty.desktop"
+        "${pkgs.kitty}/share/applications/kitty.desktop"
       ];
       /*
       GNOME = [
@@ -89,5 +91,5 @@
 
   security.polkit.enable = true; # Enable polkit for elevated prompts
 
-  services.colord.enable = true; # For color management
+  # services.colord.enable = true; # For color management
 }
