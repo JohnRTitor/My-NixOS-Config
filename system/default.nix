@@ -44,5 +44,5 @@
     # Import if laptop mode is enabled
     lib.optionals (systemSettings.laptop) [./power.nix];
 
-  system.nixos.tags = lib.mkDefault [ "cachyos" ];
+  system.nixos.tags = lib.mkDefault ["cachyos"];
 }
