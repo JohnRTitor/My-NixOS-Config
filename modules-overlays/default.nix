@@ -17,5 +17,5 @@
   ];
 
   programs.uwsm.enable = true;
-  programs.uwsm.package = pkgs.callPackage ./uwsm/package.nix { };
+  programs.uwsm.package = pkgs-edge.uwsm;
 }
