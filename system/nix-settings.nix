@@ -5,6 +5,7 @@
   ...
 }: {
   nix.package = pkgs.lix; # pkgs.nixVersions.latest; # Use latest nix
+  # DONOT DISABLE THIS
   nix.settings.trusted-users = [userSettings.username]; # FIXME: if someday custom cache works without this
 
   # Features for building
@@ -24,7 +25,8 @@
     "nix-command"
     "flakes"
   ]; # enable nix command and flakes
-  nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
+  # auto optimise sometimes corrupts, DANGEROUS
+  # nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -58,13 +58,17 @@ in {
       libvdpau-va-gl
     ];
   };
-  environment.systemPackages = with pkgs; [
-    ## GRAPHICS UTILS ##
-    clinfo # OpenCL hardware information
-    libva-utils # libva graphics library tools
-    vdpauinfo # vdpau graphics library tools
-    vulkan-tools # vulkan graphics library tools
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      ## GRAPHICS UTILS ##
+      clinfo # OpenCL hardware information
+      libva-utils # libva graphics library tools
+      vdpauinfo # vdpau graphics library tools
+      vulkan-tools # vulkan graphics library tools
+    ])
+    ++ (with nur-amdgpu; [
+      amdgpu-pro-libs.prefixes
+    ]);
 
   # Use modesetting driver for Xorg, its better and updated
   # AMDGPU graphics driver for Xorg is deprecated
