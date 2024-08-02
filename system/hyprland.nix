@@ -139,10 +139,10 @@ in {
       xorg.xhost # needed for some packages running x11 like gparted
 
       ## GNOME Suite ##
-      gnome.nautilus # file manager
+      nautilus # file manager
       gnome-text-editor # text editor
       shotcut # video editor
-      gnome.gnome-system-monitor # system monitor
+      gnome-system-monitor # system monitor
       loupe # image viewer
 
       ## Hypr ecosystem ##

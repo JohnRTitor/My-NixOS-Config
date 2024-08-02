@@ -19,6 +19,8 @@
   # boot.consoleLogLevel = 0; # configure silent boot
   boot.kernelParams = [
     "nohibernate" # disable hibernate, can't on zram swap, also skips lockscreen/login manager so not secure
+    "systemd.unified_cgroup_hierachy=0"
+    "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1"
     # "acpi_enforce_resources=lax" # openrgb
     # "quiet"
     # "udev.log_level=3"
