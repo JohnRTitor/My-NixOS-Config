@@ -8,18 +8,17 @@
   mk_uwsm_desktop_entry = opts: (pkgs.writeTextFile {
     name = lib.traceVal "${opts.name}";
     text = lib.traceVal ''
-        [Desktop Entry]
-        Name=${opts.compositor_pretty_name} (with UWSM)
-        Comment=${opts.compositor_comment}
-        Exec=${lib.getExe cfg.package} start -S -- "${opts.compositor_bin_path}"
-        Type=Application
-      '';
+      [Desktop Entry]
+      Name=${opts.compositor_pretty_name} (with UWSM)
+      Comment=${opts.compositor_comment}
+      Exec=${lib.getExe cfg.package} start -S -- "${opts.compositor_bin_path}"
+      Type=Application
+    '';
     destination = "/share/wayland-sessions/${opts.name}_uwsm.desktop";
     derivationArgs = {
       passthru.providedSessions = ["${opts.name}_uwsm"];
     };
   });
-
 in {
   options.programs.uwsm = {
     enable = lib.mkEnableOption ''      uwsm, which wraps standalone
