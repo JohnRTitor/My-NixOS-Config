@@ -15,5 +15,8 @@ in {
   # Setting this option, allows formatting via `nix fmt`
   perSystem = {pkgs, ...}: {
     formatter = pkgs.alejandra;
+    packages = {
+      fhs-shell = pkgs.callPackage ../pkgs/fhs-shell.nix {};
+    };
   };
 }

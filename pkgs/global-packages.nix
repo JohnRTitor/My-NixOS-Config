@@ -4,6 +4,7 @@
 # Some packages/apps maybe handled by config options
 # They are scattered in ../system/ ../home-manager/ and ../programs/ directories
 {
+  self,
   pkgs,
   pkgs-edge,
   inputs,
@@ -27,13 +28,15 @@
       curl
       wget
 
-      (callPackage ./fhs-shell.nix {})
       (callPackage ./gparted-wrapper.nix {})
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
-    ]);
+    ])
+    ++ [
+      self.packages.${pkgs.system}.fhs-shell
+    ];
   services.flatpak.packages = [
     # Flatpak packages to be installed systemwide
   ];

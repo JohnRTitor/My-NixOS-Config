@@ -1,5 +1,6 @@
 # This conf file is used to configure user accounts in the system
 {
+  self,
   pkgs,
   pkgs-edge,
   systemSettings,
@@ -33,10 +34,7 @@
 
     users.${userSettings.username} = import ../home-manager;
     extraSpecialArgs = {
-      inherit inputs;
-      inherit pkgs-edge;
-      inherit systemSettings;
-      inherit userSettings;
+      inherit self inputs pkgs-edge systemSettings userSettings;
     };
   };
 }
