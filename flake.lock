@@ -144,11 +144,11 @@
         "yafas": "yafas"
       },
       "locked": {
-        "lastModified": 1722771754,
-        "narHash": "sha256-NXE43sBXHB5kto5dSH9afFUxug7W8bBZg75UHbydX5E=",
+        "lastModified": 1722881247,
+        "narHash": "sha256-I9Bgzd06eoGAbTQwmH2lXewQBO2sLpBLT0ZMufJXN/8=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "69263a943d93c7af4429924ef66f3f64e5555089",
+        "rev": "52d1c45ad83409d0cfcd955e5ba2213969570f7c",
         "type": "github"
       },
       "original": {
@@ -223,11 +223,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1722605649,
-        "narHash": "sha256-T5dzUFRb2ocZ+LB2qBZufewdUFQs0pB4fnLKIWBLd9Y=",
+        "lastModified": 1722937792,
+        "narHash": "sha256-gyudaKQ8oBk13wIRGNWEkoiw6F+RMsZxHXxCsyHtIic=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "a07842582c030fdf2ccf07d3b1402b2a46908856",
+        "rev": "bc9926e2cbef29c927b0a959bed5eeba2b55d648",
         "type": "github"
       },
       "original": {
@@ -637,11 +637,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722462338,
-        "narHash": "sha256-ss0G8t8RJVDewA3MyqgAlV951cWRK6EtVhVKEZ7J5LU=",
+        "lastModified": 1722630065,
+        "narHash": "sha256-QfM/9BMRkCmgWzrPDK+KbgJOUlSJnfX4OvsUupEUZvA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6e090576c4824b16e8759ebca3958c5b09659ee8",
+        "rev": "afc892db74d65042031a093adb6010c4c3378422",
         "type": "github"
       },
       "original": {
@@ -759,11 +759,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1722800434,
-        "narHash": "sha256-0lvzOT3dQWlQ+zyOAhKTxFd9BWZw380ILDNpoGdtekA=",
+        "lastModified": 1722880701,
+        "narHash": "sha256-hAGsRq9YIuT6lC8p1ukd5uDRjgpjCcVb9PxrdNeO3jE=",
         "ref": "refs/heads/main",
-        "rev": "2b520571e897be2a0e88c8692da607b062000038",
-        "revCount": 5051,
+        "rev": "0e86808e5912823f1c6bea1b6d5fcae297fc9f57",
+        "revCount": 5052,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1116,11 +1116,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721993749,
-        "narHash": "sha256-dGqEQ68GNGmA8+HHzHEqAcW2uGu/AX+sRWcMO99UM8s=",
+        "lastModified": 1722666143,
+        "narHash": "sha256-uTr3LiytFHFUYmIrhs5NoGlm5DCJxQlfyaZEKCU/DS8=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "3bd059992912139d6a12e86ba418f933ec368ef2",
+        "rev": "bcfe9dc708c92590fec676692b3ed79443eda819",
         "type": "github"
       },
       "original": {
@@ -1276,11 +1276,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722821408,
-        "narHash": "sha256-FMCo35ZmMfvAcae+9neKfu6QzXjU3WL6vW2OFMXx6wI=",
+        "lastModified": 1722907736,
+        "narHash": "sha256-drU5kbx9EtTqg7rXc6ni0LZuZQy7l/wVgsQ8PSYl5Qw=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "f25962fbd632afea744dc7e6868f24d2e73ccedb",
+        "rev": "b3c49142939ba6072cb8bdd6109e36d1b70a055a",
         "type": "github"
       },
       "original": {
@@ -1334,11 +1334,11 @@
     },
     "nixpkgs-edge": {
       "locked": {
-        "lastModified": 1722848546,
-        "narHash": "sha256-WT8B5OybcPJ1+laT2CvDce8VnSkeM8L3eDOpm1faMcA=",
+        "lastModified": 1722937200,
+        "narHash": "sha256-lYCUbjSFyS1Az+Y89C7mBoNtN6mBHaF61ibqlHPgRPM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "98f40166eb8c593e9072d208fa818e30b3775ccd",
+        "rev": "b67ad15b55b62d56e1cd93da71cdecfa248e2e3b",
         "type": "github"
       },
       "original": {
@@ -1445,11 +1445,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1722630782,
-        "narHash": "sha256-hMyG9/WlUi0Ho9VkRrrez7SeNlDzLxalm9FwY7n/Noo=",
+        "lastModified": 1722813957,
+        "narHash": "sha256-IAoYyYnED7P8zrBFMnmp7ydaJfwTnwcnqxUElC1I26Y=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d04953086551086b44b6f3c6b7eeb26294f207da",
+        "rev": "cb9a96f23c491c081b38eab96d22fa958043c9fa",
         "type": "github"
       },
       "original": {
@@ -1476,11 +1476,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1722847605,
-        "narHash": "sha256-mRizfib4z219JxKuROb4ZXXZR2E3v8hiq3RcdI8W5yQ=",
+        "lastModified": 1722936537,
+        "narHash": "sha256-Ux0Ko4h7mSTbU4y7t5d7bovxtpJ+iByEomDvAPg/JUQ=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2c6780f99382c0a4282f4e1320b52b4e75bda1c8",
+        "rev": "4f0cf621f5753d763dfac977f150c98ed9ed202e",
         "type": "github"
       },
       "original": {
@@ -1989,11 +1989,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722820187,
-        "narHash": "sha256-tGpTebOLn6PrNtdPaAl8u1RdYMaGGKA1WJxrKkoeHbc=",
+        "lastModified": 1722886010,
+        "narHash": "sha256-vZTHlonepK1cyxHhGu3bVBuOmExPtRFrAnYp71Jfs8c=",
         "ref": "dev",
-        "rev": "0eb721c3548d614c1708cf633d241ae6a3624bf7",
-        "revCount": 1035,
+        "rev": "2fe6f577cbd16847f32969c7d18c59556fdc9c2b",
+        "revCount": 1041,
         "type": "git",
         "url": "https://codeberg.org/explosion-mental/wallust"
       },

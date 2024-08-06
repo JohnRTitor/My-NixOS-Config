@@ -1,10 +1,11 @@
 {
   config,
   pkgs,
+  pkgs-edge,
   userSettings,
   ...
 }: {
-  nix.package = pkgs.lix; # pkgs.nixVersions.latest; # Use latest nix
+  nix.package = pkgs-edge.nixVersions.latest; # Use latest nix
   # DONOT DISABLE THIS
   nix.settings.trusted-users = [userSettings.username]; # FIXME: if someday custom cache works without this
 
