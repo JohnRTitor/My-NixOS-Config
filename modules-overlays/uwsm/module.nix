@@ -6,12 +6,12 @@
 }: let
   cfg = config.programs.uwsm;
   mk_uwsm_desktop_entry = opts: (pkgs.writeTextFile {
-    name = lib.traceVal "${opts.name}";
-    text = lib.traceVal ''
+    name = "${opts.name}";
+    text = ''
       [Desktop Entry]
       Name=${opts.compositor_pretty_name} (with UWSM)
       Comment=${opts.compositor_comment}
-      Exec=${lib.getExe cfg.package} start -S -- "${opts.compositor_bin_path}"
+      Exec=${lib.getExe cfg.package} start -S -F "${opts.compositor_bin_path}"
       Type=Application
     '';
     destination = "/share/wayland-sessions/${opts.name}_uwsm.desktop";
@@ -30,6 +30,9 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [cfg.package];
     systemd.packages = [cfg.package];
+    environment.pathsToLink = [ "/share/uwsm" ];
+
+    # UWSM recommends dBus broker for better compatibility
     services.dbus.implementation = "broker";
 
     services.displayManager.sessionPackages =

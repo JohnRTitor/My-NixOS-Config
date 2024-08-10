@@ -10,7 +10,10 @@
   ...
 }: let
   hyprlandFlake = true;
-  pkgs-hyprland = if hyprlandFlake then inputs.hyprland.packages.${pkgs.system} else pkgs;
+  pkgs-hyprland =
+    if hyprlandFlake
+    then inputs.hyprland.packages.${pkgs.system}
+    else pkgs;
   python-packages = pkgs.python3.withPackages (
     ps:
       with ps; [
@@ -26,7 +29,8 @@ in {
     package =
       (pkgs-hyprland.hyprland.override {
         #stdenv = pkgs.clangStdenv;
-      }).overrideAttrs
+      })
+      .overrideAttrs
       (prevAttrs: {
         patches =
           (prevAttrs.patches or [])

@@ -10,9 +10,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    inputs.nix-flatpak.nixosModules.nix-flatpak
-  ];
   environment.systemPackages =
     (with pkgs; [
       # System Packages

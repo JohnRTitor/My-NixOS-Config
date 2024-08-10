@@ -1,5 +1,6 @@
 # Configure system services
 {
+  config,
   lib,
   pkgs,
   systemSettings,
@@ -24,7 +25,7 @@
   };
 
   # Enable scx extra schedulers, only available for linux-cachyos
-  chaotic.scx.enable = true; # by default uses rustland
+  chaotic.scx.enable = (config.boot.kernelPackages.kernel.passthru.config.CONFIG_SCHED_CLASS_EXT or null) == "y"; # by default uses rustland
   chaotic.scx.scheduler = "scx_bpfland";
 
   # Accounts daemon is needed to remember passwords and other account information
