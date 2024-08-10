@@ -9,7 +9,8 @@
   inputs,
   ...
 }: let
-  pkgs-hyprland = inputs.hyprland.packages.${pkgs.system};
+  hyprlandFlake = true;
+  pkgs-hyprland = if hyprlandFlake then inputs.hyprland.packages.${pkgs.system} else pkgs;
   python-packages = pkgs.python3.withPackages (
     ps:
       with ps; [
@@ -23,20 +24,18 @@ in {
   programs.hyprland = {
     enable = true;
     package =
-      (pkgs.hyprland.override {stdenv = pkgs.clangStdenv;}).overrideAttrs
+      (pkgs-hyprland.hyprland.override {
+        #stdenv = pkgs.clangStdenv;
+      }).overrideAttrs
       (prevAttrs: {
         patches =
           (prevAttrs.patches or [])
           ++ [
-            (pkgs.fetchpatch {
-              name = "enable-lto-cmake.patch";
-              url = "https://github.com/hyprwm/Hyprland/pull/5874/commits/efd0a869fffe3ad6d3ffc4b4907ef68d1ef115a7.patch";
-              hash = "sha256-UFFB1K/funTh5aggliyYmAzIhcQ1TKSvt79aViFGzN4=";
-            })
+            # ./enable-lto.patch
             ./add-env-vars-to-export.patch
           ];
       });
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
   };
 
   # hyprland portal is already included, gtk is also needed for compatibility

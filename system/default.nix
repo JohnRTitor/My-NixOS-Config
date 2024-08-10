@@ -24,7 +24,7 @@
       # include fonts settings
       ./fonts.nix
       # include Hyprland settings
-      ./hyprland.nix
+      ./hyprland
       # Include browsers settings
       ./browsers.nix
       # include printing settings
