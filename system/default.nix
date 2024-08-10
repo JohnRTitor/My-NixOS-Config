@@ -12,10 +12,7 @@
       # include user account settings
       ./users.nix
       # include hardware settings
-      ./hardware/audio.nix
-      ./hardware/bluetooth.nix
-      ./hardware/disk.nix
-      ./hardware/graphics.nix
+      ./hardware
       # ./hardware/tpm.nix
       # include network settings
       ./network.nix

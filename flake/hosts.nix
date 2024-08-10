@@ -17,20 +17,42 @@
       android_sdk.accept_license = true;
     };
   };
+
+  specialArgs = {inherit self inputs pkgs-edge systemSettings userSettings;};
 in {
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
-      specialArgs = {inherit self inputs systemSettings userSettings;};
+      inherit specialArgs;
       modules =
         [
-          {_module.args = {inherit pkgs-edge;};}
           ../default-host/configuration.nix # main nix configuration
           inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
-          inputs.nur.nixosModules.nur
+          inputs.nur.nixosModules.nur # NUR - NixOS user repository
+          inputs.ucodenix.nixosModules.ucodenix # ucodeNix - CPU microcode updates
+          inputs.nix-flatpak.nixosModules.nix-flatpak # nix-flatpak, allows flatpak declaratively
 
-          # make home-manager as a module of nixos
-          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          inputs.home-manager.nixosModules.default
+          # install home-manager as NixOS module
+          # so that it automatically gets deployed when running `nixos-rebuild switch`
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              # backupFileExtension = ".hm.bak";
+              extraSpecialArgs =
+                specialArgs
+                // {
+                  # extra arguments for home-manager
+                };
+            };
+
+            home-manager.users.${userSettings.username} = {
+              imports = [
+                ../home-manager
+                inputs.nix-flatpak.homeManagerModules.nix-flatpak
+              ];
+            };
+          }
         ]
         ++ lib.optionals systemSettings.secureboot [inputs.lanzaboote.nixosModules.lanzaboote];
     };

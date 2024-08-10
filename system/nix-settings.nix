@@ -26,8 +26,8 @@
     "nix-command"
     "flakes"
   ]; # enable nix command and flakes
-  # auto optimise sometimes corrupts, DANGEROUS
-  # nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
+  
+  nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
