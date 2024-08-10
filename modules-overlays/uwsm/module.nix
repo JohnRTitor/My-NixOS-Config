@@ -30,7 +30,7 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [cfg.package];
     systemd.packages = [cfg.package];
-    environment.pathsToLink = [ "/share/uwsm" ];
+    environment.pathsToLink = ["/share/uwsm"];
 
     # UWSM recommends dBus broker for better compatibility
     services.dbus.implementation = "broker";
