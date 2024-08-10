@@ -9,9 +9,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-  ];
   home.packages =
     (with pkgs; [
       # here is some command line tools I use frequently

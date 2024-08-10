@@ -4,14 +4,11 @@
   lib,
   pkgs,
   pkgs-edge,
+  inputs,
   systemSettings,
   userSettings,
   ...
 }: {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = userSettings.username;
-  home.homeDirectory = "/home/" + userSettings.username;
 
   imports =
     [

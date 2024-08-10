@@ -71,6 +71,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+
+    ucodenix.url = "github:e-tho/ucodenix";
     browser-previews = {
       url = "github:nix-community/browser-previews"; # Latest Chrome stable, beta, and dev
       inputs.nixpkgs.follows = "nixpkgs";
