@@ -39,9 +39,11 @@ in {
               useGlobalPkgs = true;
               useUserPackages = true;
               # backupFileExtension = ".hm.bak";
-              extraSpecialArgs = specialArgs // {
-                # extra arguments for home-manager
-              };
+              extraSpecialArgs =
+                specialArgs
+                // {
+                  # extra arguments for home-manager
+                };
             };
 
             home-manager.users.${userSettings.username} = {

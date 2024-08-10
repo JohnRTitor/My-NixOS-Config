@@ -9,7 +9,6 @@
   userSettings,
   ...
 }: {
-
   imports =
     [
       # system packages are imported in ./configuration.nix

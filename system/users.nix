@@ -26,5 +26,4 @@
       then pkgs.zsh
       else pkgs.bash;
   };
-
 }
