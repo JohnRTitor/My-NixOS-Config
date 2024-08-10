@@ -34,13 +34,13 @@ in {
   # For programs installed using home manager /etc/profiles/per-user/{user}/share/applications/
   # Chrome PWAs are located in ~/.local/share/applications/
   xdg.mimeApps.defaultApplications = {
-    "text/html" = "google-chrome-beta.desktop";
+    "text/html" = "google-chrome.desktop";
     "inode/directory" = "org.gnome.Nautilus.desktop";
     "application/pdf" = "org.gnome.Evince.desktop";
-    "x-scheme-handler/http" = "google-chrome-beta.desktop";
-    "x-scheme-handler/https" = "google-chrome-beta.desktop";
-    "x-scheme-handler/about" = "google-chrome-beta.desktop";
-    "x-scheme-handler/unknown" = "google-chrome-beta.desktop";
+    "x-scheme-handler/http" = "google-chrome.desktop";
+    "x-scheme-handler/https" = "google-chrome.desktop";
+    "x-scheme-handler/about" = "google-chrome.desktop";
+    "x-scheme-handler/unknown" = "google-chrome.desktop";
     "image/png" = "org.gnome.Loupe.desktop;";
     "image/jpeg" = "org.gnome.Loupe.desktop;";
   };
@@ -62,7 +62,7 @@ in {
     "image/jpeg" = "org.gnome.Loupe.desktop;";
 
     # PDF
-    "application/pdf" = "org.gnome.Evince.desktop;google-chrome-beta.desktop;";
-    "text/html" = "google-chrome-beta.desktop;org.gnome.TextEditor.desktop;";
+    "application/pdf" = "org.gnome.Evince.desktop;google-chrome.desktop;";
+    "text/html" = "google-chrome.desktop;org.gnome.TextEditor.desktop;";
   };
 }

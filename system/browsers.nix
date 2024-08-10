@@ -1,6 +1,7 @@
 # This config file is used to configure browsers
 {
   pkgs,
+  pkgs-edge,
   inputs,
   ...
 }: {
@@ -14,8 +15,8 @@
     };
   };
 
-  environment.systemPackages = with inputs.browser-previews.packages.${pkgs.system}; [
-    (google-chrome-beta.override {
+  environment.systemPackages = with pkgs-edge; [
+    (google-chrome.override {
       # enable video encoding and hardware acceleration, along with several
       # suitable for my configuration
       # change it if you have any issues
