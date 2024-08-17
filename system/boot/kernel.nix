@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     # zenpower is used for reading temperature, voltage, current and power

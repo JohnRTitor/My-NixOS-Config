@@ -97,6 +97,7 @@
       deluge # Torrent client
       shotwell # GNOME image editor
       gnome.gnome-logs # GNOME log viewer
+      mission-center # Taskmanager clone
       warp # file transfer, also install android app
       clapper
     ])
