@@ -15,7 +15,4 @@
       bcachefs-tools = inputs.bcachefs-tools.packages.${pkgs.system}.bcachefs-tools;
     })
   ];
-
-  programs.uwsm.enable = true;
-  programs.uwsm.package = pkgs-edge.uwsm;
 }

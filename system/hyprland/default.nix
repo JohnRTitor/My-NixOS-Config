@@ -9,11 +9,11 @@
   inputs,
   ...
 }: let
-  hyprlandFlake = true;
+  hyprlandFlake = false;
   pkgs-hyprland =
     if hyprlandFlake
     then inputs.hyprland.packages.${pkgs.system}
-    else pkgs;
+    else pkgs-edge;
   python-packages = pkgs.python3.withPackages (
     ps:
       with ps; [
@@ -23,19 +23,23 @@
       ]
   );
 in {
+  imports = [
+    ./session.nix
+  ];
+
   # Enable Hyprland Window Manager
   programs.hyprland = {
     enable = true;
     package =
       (pkgs-hyprland.hyprland.override {
-        #stdenv = pkgs.clangStdenv;
+        stdenv = pkgs.clangStdenv;
       })
       .overrideAttrs
       (prevAttrs: {
         patches =
           (prevAttrs.patches or [])
           ++ [
-            # ./enable-lto.patch
+            ./enable-lto.patch
             ./add-env-vars-to-export.patch
           ];
       });
@@ -44,16 +48,6 @@ in {
 
   # hyprland portal is already included, gtk is also needed for compatibility
   xdg.portal.extraPortals = with pkgs; [xdg-desktop-portal-gtk];
-
-  # Enable GDM with wayland
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-    banner = ''
-                      Welcome Traveler, Behold!
-      You are about to enter the realm of Hyprland
-    '';
-  };
 
   ## QT theming ##
   qt = {
@@ -66,7 +60,7 @@ in {
 
   programs.waybar = {
     enable = true; # enable waybar launcher
-    package = inputs.waybar.packages.${pkgs.system}.waybar;
+    package = pkgs.waybar; # inputs.waybar.packages.${pkgs.system}.waybar;
   };
 
   programs.hyprlock = {
@@ -109,11 +103,12 @@ in {
       pantheon.pantheon-agent-polkit # polkit agent for root prompt
       # POLKIT service is manually started
       # as defined in Hyprland-Dots repo
-      rofi-wayland
+      rofi-wayland # app launcher
       slurp # screenshots
       swappy # screenshots
       swaynotificationcenter # notification daemon
-      swww
+      swww # wallpaper daemon
+      wallust # pywal alternative, graphical pallete generator
       wlsunset # for night mode
       wl-clipboard # clipboard manager
       wlogout # logout dialog
@@ -158,7 +153,7 @@ in {
       # inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
       # inputs.pyprland.packages.${pkgs.system}.pyprland
       # inputs.ags.packages.${pkgs.system}.ags
-      inputs.wallust.packages.${pkgs.system}.wallust
+      # inputs.wallust.packages.${pkgs.system}.wallust
     ];
 
   # Environment variables to start the session with
@@ -172,7 +167,4 @@ in {
     CLUTTER_BACKEND = "wayland";
     GTK_USE_PORTAL = "1"; # makes dialogs (file opening) consistent with rest of the ui
   };
-
-  # Run XDG autostart, this is needed for a DE-less setup like Hyprland
-  services.xserver.desktopManager.runXdgAutostartIfNone = true;
 }
