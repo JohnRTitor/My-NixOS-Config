@@ -1677,6 +1677,7 @@
         "nur": "nur",
         "pyprland": "pyprland",
         "ucodenix": "ucodenix",
+        "uwsm-test-nixpkgs": "uwsm-test-nixpkgs",
         "wallust": "wallust",
         "waybar": "waybar",
         "xdph": "xdph_2"
@@ -2051,6 +2052,22 @@
       "original": {
         "owner": "e-tho",
         "repo": "ucodenix",
+        "type": "github"
+      }
+    },
+    "uwsm-test-nixpkgs": {
+      "locked": {
+        "lastModified": 1724160440,
+        "narHash": "sha256-+DekKrQE2Sa0lXe76mCV8M8+T1//Iz3q808m7/1kvks=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "bd721ef65fe9167ad8352c8449eb3a4847c8a16b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "refs/pull/335625/merge",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },

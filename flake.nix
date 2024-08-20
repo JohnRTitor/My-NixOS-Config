@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
+    uwsm-test-nixpkgs.url = "github:NixOS/nixpkgs/refs/pull/335625/merge";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts"; # Flake parts for easy flake management
