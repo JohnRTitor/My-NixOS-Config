@@ -7,7 +7,6 @@
 }: {
   imports = [
     #./amdgpu.nix # import modules here to test
-    "${inputs.uwsm-test-nixpkgs}/nixos/modules/programs/wayland/uwsm.nix"
   ];
 
   nixpkgs.overlays = [

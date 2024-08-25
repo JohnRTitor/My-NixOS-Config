@@ -1,5 +1,8 @@
-{pkgs, pkgs-edge, ...}:
 {
+  pkgs,
+  pkgs-edge,
+  ...
+}: {
   # Enable GDM with wayland
   services.xserver.displayManager.gdm = {
     enable = true;

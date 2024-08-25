@@ -25,7 +25,7 @@
       curl
       wget
 
-      (callPackage ./gparted-wrapper.nix {})
+      #(callPackage ./gparted-wrapper.nix {})
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master
@@ -36,5 +36,6 @@
     ];
   services.flatpak.packages = [
     # Flatpak packages to be installed systemwide
+    "com.github.tchx84.Flatseal" # Customising permission of Flatpaks
   ];
 }

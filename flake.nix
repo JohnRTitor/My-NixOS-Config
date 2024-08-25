@@ -4,8 +4,8 @@
   # Main sources and repositories
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
-    nixpkgs-edge.url = "nixpkgs/master"; # Only used for bleeding edge packages
-    uwsm-test-nixpkgs.url = "github:NixOS/nixpkgs/refs/pull/335625/merge";
+    nixpkgs-edge.url = "nixpkgs/nixos-unstable-small"; # For latest packages
+    nixpkgs-master.url = "nixpkgs/master"; # Testing branch of nixpkgs
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts"; # Flake parts for easy flake management
@@ -33,10 +33,7 @@
       url = "github:Aylur/ags"; # Aylur GTK Shell, a widget manager/toolkit
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
     xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +43,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprlock = {
-      url = "github:hyprwm/hyprlock/9cca0dbb45941e13322ff95796f486676f061c6e"; # Beautiful lockscreen for Hyprland
+      url = "github:hyprwm/hyprlock"; # Beautiful lockscreen for Hyprland
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hypridle = {

@@ -3,7 +3,7 @@
   self,
   ...
 }: let
-  inherit (inputs) nixpkgs nixpkgs-edge;
+  inherit (inputs) nixpkgs nixpkgs-edge nixpkgs-master;
   inherit (nixpkgs) lib; # use lib from nixpkgs
 
   inherit (import ../preferences.nix) systemSettings userSettings;
@@ -18,7 +18,16 @@
     };
   };
 
-  specialArgs = {inherit self inputs pkgs-edge systemSettings userSettings;};
+  pkgs-master = import nixpkgs-master {
+    system = systemSettings.systemarch;
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+      android_sdk.accept_license = true;
+    };
+  };
+
+  specialArgs = {inherit self inputs pkgs-edge pkgs-master systemSettings userSettings;};
 in {
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {
