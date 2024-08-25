@@ -21,46 +21,49 @@ in {
     # We are using a vscode marketplace flake
     # But we are still allowing extensions to be installed from VS code GUI
     # disabling mutableExtensionsDir will mess up things
-    extensions = with pkgs-vscode-extensions.vscode-marketplace; [
-      ## Language support ##
-      jnoortheen.nix-ide # Nix language support
-      ms-python.python # Python language support
-      ms-vscode.cpptools # C/C++ language support
-      ms-vscode.cpptools-extension-pack # C/C++ extension pack
-      tamasfe.even-better-toml # TOML language support
-      bmewburn.vscode-intelephense-client # PHP language support
+    extensions =
+      (with pkgs-vscode-extensions.vscode-marketplace; [
+        ## Language support ##
+        jnoortheen.nix-ide # Nix language support
+        ms-python.python # Python language support
+        ms-vscode.cpptools-extension-pack # C/C++ extension pack
+        tamasfe.even-better-toml # TOML language support
+        bmewburn.vscode-intelephense-client # PHP language support
 
-      ## Linters ##
-      esbenp.prettier-vscode # Prettier code formatter
-      davidanson.vscode-markdownlint # Markdown Linting
+        ## Linters ##
+        esbenp.prettier-vscode # Prettier code formatter
+        davidanson.vscode-markdownlint # Markdown Linting
 
-      ## GIT Tools ##
-      github.copilot # GitHub Copilot
-      github.copilot-chat # GitHub Copilot Chat
-      github.codespaces # GitHub Codespaces
-      github.vscode-pull-request-github # GitHub Pull Requests
-      github.vscode-github-actions # GitHub Actions
-      donjayamanne.githistory # Git History
-      eamodio.gitlens # GitLens
+        ## GIT Tools ##
+        github.copilot # GitHub Copilot
+        github.copilot-chat # GitHub Copilot Chat
+        github.codespaces # GitHub Codespaces
+        github.vscode-pull-request-github # GitHub Pull Requests
+        github.vscode-github-actions # GitHub Actions
+        donjayamanne.githistory # Git History
+        eamodio.gitlens # GitLens
 
-      ## MISCELLANEOUS ##
-      ms-azuretools.vscode-docker # Docker
-      ms-vscode-remote.remote-containers # Dev Containers
-      ms-vscode-remote.remote-ssh # Remote SSH
+        ## MISCELLANEOUS ##
+        ms-azuretools.vscode-docker # Docker
+        ms-vscode-remote.remote-containers # Dev Containers
+        ms-vscode-remote.remote-ssh # Remote SSH
 
-      rolandgreim.sharecode # Pastebin/Gist support
-      ritwickdey.liveserver # launch local html web server
-      mkhl.direnv # direnv support
-      oderwat.indent-rainbow # colorful indentation
-      # arrterian.nix-env-selector # not needed at the moment
+        rolandgreim.sharecode # Pastebin/Gist support
+        ritwickdey.liveserver # launch local html web server
+        mkhl.direnv # direnv support
+        oderwat.indent-rainbow # colorful indentation
+        # arrterian.nix-env-selector # not needed at the moment
 
-      ## THEMING ##
-      # dracula-theme.theme-dracula # Dracula theme
-      # enkia.tokyo-night # Tokyo Night theme
-      robbowen.synthwave-vscode # SynthWave '84 theme
-      pkief.material-icon-theme # Material Icon Theme
-      pkief.material-product-icons # Material Product Icons
-    ];
+        ## THEMING ##
+        # dracula-theme.theme-dracula # Dracula theme
+        # enkia.tokyo-night # Tokyo Night theme
+        robbowen.synthwave-vscode # SynthWave '84 theme
+        pkief.material-icon-theme # Material Icon Theme
+        pkief.material-product-icons # Material Product Icons
+      ])
+      ++ (with pkgs.vscode-extensions; [
+        ms-vscode.cpptools # C/C++ language support, only available via nixpkgs
+      ]);
     userSettings = {
       "workbench.colorTheme" = "SynthWave '84";
       # "Tokyo Night"; # "Dracula"; # "Default Dark Modern"; # ^ Set the default theme
