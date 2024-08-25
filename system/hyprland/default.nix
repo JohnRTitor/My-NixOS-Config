@@ -2,6 +2,7 @@
 # this config file contains package, portal and services declaration
 # made specifically for hyprland
 {
+  self,
   config,
   lib,
   pkgs,
@@ -9,19 +10,11 @@
   inputs,
   ...
 }: let
-  hyprlandFlake = false;
+  hyprlandFlake = true;
   pkgs-hyprland =
     if hyprlandFlake
     then inputs.hyprland.packages.${pkgs.system}
     else pkgs-edge;
-  python-packages = pkgs.python3.withPackages (
-    ps:
-      with ps; [
-        requests
-        sh # subprocess module
-        pyquery # needed for hyprland-dots Weather script
-      ]
-  );
 in {
   imports = [
     ./session.nix
@@ -32,14 +25,14 @@ in {
     enable = true;
     package =
       (pkgs-hyprland.hyprland.override {
-        stdenv = pkgs.clangStdenv;
+        #stdenv = pkgs.clangStdenv;
       })
       .overrideAttrs
       (prevAttrs: {
         patches =
           (prevAttrs.patches or [])
           ++ [
-            ./enable-lto.patch
+            #./enable-lto.patch
             ./add-env-vars-to-export.patch
           ];
       });
@@ -149,7 +142,7 @@ in {
       ags # widgets pipup
     ])
     ++ [
-      python-packages # needed for Weather.py from dotfiles
+      self.packages.${pkgs.system}.weather-python-script # weather script
       # inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
       # inputs.pyprland.packages.${pkgs.system}.pyprland
       # inputs.ags.packages.${pkgs.system}.ags

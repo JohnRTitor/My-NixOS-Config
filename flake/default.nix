@@ -17,6 +17,7 @@ in {
     formatter = pkgs.alejandra;
     packages = {
       fhs-shell = pkgs.callPackage ../pkgs/fhs-shell.nix {};
+      weather-python-script = pkgs.callPackage ../pkgs/weather-python-script.nix {};
     };
   };
 }
