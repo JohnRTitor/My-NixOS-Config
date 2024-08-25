@@ -26,7 +26,7 @@
     "nix-command"
     "flakes"
   ]; # enable nix command and flakes
-  
+
   nix.settings.auto-optimise-store = true; # enable space optimisation by hardlinking
 
   # Allow unfree packages
