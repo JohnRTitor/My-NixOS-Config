@@ -14,36 +14,36 @@ in ((pkgs.vscode.override {
     commandLineArgs = ''--password-store=gnome-libsecret'';
   })
   .overrideAttrs {
-    desktopItem = makeDesktopItem {
-      name = executableName;
-      desktopName = longName;
-      comment = "Code Editing. Redefined.";
-      genericName = "Text Editor";
-      exec = "${envVars} ${executableName} %F";
-      icon = "vs${executableName}";
-      startupNotify = true;
-      startupWMClass = shortName;
-      categories = ["Utility" "TextEditor" "Development" "IDE"];
-      mimeTypes = ["text/plain" "inode/directory"];
-      keywords = ["vscode"];
-      actions.new-empty-window = {
-        name = "New Empty Window";
-        exec = "${executableName} --new-window %F";
+    desktopItems = [
+      (makeDesktopItem {
+        name = executableName;
+        desktopName = longName;
+        comment = "Code Editing. Redefined.";
+        genericName = "Text Editor";
+        exec = "${envVars} ${executableName} %F";
         icon = "vs${executableName}";
-      };
-    };
-
-    urlHandlerDesktopItem = makeDesktopItem {
-      name = executableName + "-url-handler";
-      desktopName = longName + " - URL Handler";
-      comment = "Code Editing. Redefined.";
-      genericName = "Text Editor";
-      exec = envVars + executableName + " --open-url %U";
-      icon = "vs${executableName}";
-      startupNotify = true;
-      categories = ["Utility" "TextEditor" "Development" "IDE"];
-      mimeTypes = ["x-scheme-handler/vs${executableName}"];
-      keywords = ["vscode"];
-      noDisplay = true;
-    };
+        startupNotify = true;
+        startupWMClass = shortName;
+        categories = ["Utility" "TextEditor" "Development" "IDE"];
+        keywords = ["vscode"];
+        actions.new-empty-window = {
+          name = "New Empty Window";
+          exec = "${executableName} --new-window %F";
+          icon = "vs${executableName}";
+        };
+      })
+      (makeDesktopItem {
+        name = executableName + "-url-handler";
+        desktopName = longName + " - URL Handler";
+        comment = "Code Editing. Redefined.";
+        genericName = "Text Editor";
+        exec = envVars + executableName + " --open-url %U";
+        icon = "vs${executableName}";
+        startupNotify = true;
+        categories = ["Utility" "TextEditor" "Development" "IDE"];
+        mimeTypes = ["x-scheme-handler/vs${executableName}"];
+        keywords = ["vscode"];
+        noDisplay = true;
+      })
+    ];
   })
