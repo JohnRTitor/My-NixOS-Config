@@ -24,8 +24,8 @@ in ((pkgs.vscode.override {
         icon = "vs${executableName}";
         startupNotify = true;
         startupWMClass = shortName;
-        categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-        keywords = [ "vscode" ];
+        categories = ["Utility" "TextEditor" "Development" "IDE"];
+        keywords = ["vscode"];
         actions.new-empty-window = {
           name = "New Empty Window";
           exec = "${executableName} --new-window %F";
@@ -40,9 +40,9 @@ in ((pkgs.vscode.override {
         exec = envVars + executableName + " --open-url %U";
         icon = "vs${executableName}";
         startupNotify = true;
-        categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-        mimeTypes = [ "x-scheme-handler/vs${executableName}" ];
-        keywords = [ "vscode" ];
+        categories = ["Utility" "TextEditor" "Development" "IDE"];
+        mimeTypes = ["x-scheme-handler/vs${executableName}"];
+        keywords = ["vscode"];
         noDisplay = true;
       })
     ];
