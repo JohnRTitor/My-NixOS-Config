@@ -13,12 +13,7 @@
   environment.systemPackages =
     (with pkgs; [
       # System Packages
-      # firewalld
       git # obviously
-      glib # for gsettings to work
-      gpgme # gnupg # for encryption and auth keys
-      libappindicator
-      libnotify
       openssh # for ssh
 
       ## URL FETCH TOOLS ##
@@ -34,8 +29,5 @@
     ++ [
       self.packages.${pkgs.system}.fhs-shell
     ];
-  services.flatpak.packages = [
-    # Flatpak packages to be installed systemwide
-    "com.github.tchx84.Flatseal" # Customising permission of Flatpaks
-  ];
+  services.flatpak.packages = (import ./flatpak-packages.nix).systemPackages;
 }

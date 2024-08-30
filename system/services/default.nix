@@ -4,6 +4,7 @@
   lib,
   pkgs,
   systemSettings,
+  servicesSettings,
   ...
 }: {
   imports =
@@ -14,7 +15,7 @@
       ./gnome-keyring.nix
       ./gnupg-ssh.nix
     ]
-    ++ lib.optionals systemSettings.containers [./containers.nix];
+    ++ lib.optionals servicesSettings.containers [./containers.nix];
 
   ## Essential services ##
   # Enable xserver with xwayland

@@ -8,8 +8,6 @@
     localeoverride = "en_IN";
     stableversion = "24.05";
     secureboot = true;
-    virtualisation = false;
-    containers = false;
     laptop = false;
   };
 
@@ -21,5 +19,14 @@
     gitemail = "50095635+JohnRTitor@users.noreply.github.com"; # git email
     gpgkey = "29B0514F4E3C1CC0"; # gpg key
     shell = "zsh"; # user default shell # choose either zsh or bash
+  };
+
+  servicesSettings = {
+    adb = false;
+    avahi = false;
+    nginx = false;
+    containers = false;
+    tpm = false;
+    virtualisation = false;
   };
 }

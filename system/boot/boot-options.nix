@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  servicesSettings,
   ...
 }: {
   # Enable systemd-boot
@@ -17,13 +18,23 @@
   boot.initrd.systemd.dbus.enable = true;
 
   # boot.consoleLogLevel = 0; # configure silent boot
-  boot.kernelParams = [
-    "nohibernate" # disable hibernate, can't on zram swap, also skips lockscreen/login manager so not secure
-    # "acpi_enforce_resources=lax" # openrgb
-    # "quiet"
-    # "udev.log_level=3"
-    # "lockdown=integrity"
-  ];
+  boot.kernelParams =
+    [
+      "nohibernate" # disable hibernate, can't on zram swap, also skips lockscreen/login manager so not secure
+      # "acpi_enforce_resources=lax" # openrgb
+      # "quiet"
+      # "udev.log_level=3"
+      # "lockdown=integrity"
+
+      # Masking the following units reduces boot time
+      # vconsole fails most of the time anyway
+      "systemd.mask=systemd-vconsole-setup.service"
+    ]
+    ++ lib.optionals (!servicesSettings.tpm) [
+      # if tpm service is disabled lets mask the service
+      # this also reduces boot time
+      "systemd.mask=dev-tpmrm0.device"
+    ];
 
   # plymouth theme for splash screen
   boot.plymouth = {
@@ -33,7 +44,7 @@
     # circuit connect cuts_alt seal_2 seal_3
     theme = "matrix";
     themePackages = [
-      (pkgs.adi1090x-plymouth-themes.override {selected_themes = ["rings_2"];})
+      #(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["rings_2"];})
       pkgs.plymouth-matrix-theme
     ];
   };

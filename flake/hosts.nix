@@ -6,7 +6,7 @@
   inherit (inputs) nixpkgs nixpkgs-edge nixpkgs-master;
   inherit (nixpkgs) lib; # use lib from nixpkgs
 
-  inherit (import ../preferences.nix) systemSettings userSettings;
+  inherit (import ../preferences.nix) systemSettings userSettings servicesSettings;
 
   # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
   pkgs-edge = import nixpkgs-edge {
@@ -27,7 +27,7 @@
     };
   };
 
-  specialArgs = {inherit self inputs pkgs-edge pkgs-master systemSettings userSettings;};
+  specialArgs = {inherit self inputs pkgs-edge pkgs-master systemSettings userSettings servicesSettings;};
 in {
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {

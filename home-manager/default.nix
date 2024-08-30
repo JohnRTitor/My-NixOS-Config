@@ -7,6 +7,7 @@
   inputs,
   systemSettings,
   userSettings,
+  servicesSettings,
   ...
 }: {
   imports =
@@ -27,7 +28,7 @@
       ./services.nix # services
     ]
     ++ lib.optionals osConfig.programs.thunar.enable [./thunar.nix]
-    ++ lib.optionals systemSettings.virtualisation [./virt-manager.nix];
+    ++ lib.optionals servicesSettings.virtualisation [./virt-manager.nix];
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

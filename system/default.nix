@@ -1,6 +1,7 @@
 {
   lib,
   systemSettings,
+  servicesSettings,
   ...
 }: {
   imports =
@@ -36,7 +37,7 @@
     lib.optionals (systemSettings.secureboot) [./boot/lanzaboote.nix]
     ++
     # Import if Virtualization is enabled
-    lib.optionals (systemSettings.virtualisation) [./virtualisation.nix]
+    lib.optionals (servicesSettings.virtualisation) [./virtualisation.nix]
     ++
     # Import if laptop mode is enabled
     lib.optionals (systemSettings.laptop) [./power.nix];

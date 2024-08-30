@@ -9,7 +9,7 @@
   services.resolved.dnsovertls = "opportunistic"; # enable if available
 
   # DNS servers
-  networking.nameservers = [
+  networking.networkmanager.insertNameservers = [
     "1.1.1.1" # Cloudflare DNS
     "1.0.0.1"
   ];

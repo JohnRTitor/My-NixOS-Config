@@ -15,17 +15,17 @@
       # feel free to add your own or remove some of them
 
       ## ARCHIVING TOOLS ##
-      zip
-      unzip
+      # zip
+      # unzip
       # p7zip
-      gnutar
+      # gnutar
       # gzip
       # xz
       # bzip2
       # lz4
       # lzo
       # zlib
-      zstd
+      # zstd
 
       # utils
       # ripgrep # recursively searches directories for a regex pattern
@@ -36,7 +36,7 @@
       ## NETWORKING TOOLS ##
       # mtr # A network diagnostic tool
       # iperf3
-      dnsutils # `dig` + `nslookup`
+      # dnsutils # `dig` + `nslookup`
       # ldns # replacement of `dig`, it provide the command `drill`
       # aria2 # A lightweight multi-protocol & multi-source command-line download utility
       # socat # replacement of openbsd-netcat
@@ -57,11 +57,11 @@
       # lsof # list open files
 
       ## SYSTEM TOOLS ##
-      sysstat
-      lm_sensors # for `sensors` command
-      ethtool
-      pciutils # lspci
-      usbutils # lsusb
+      # sysstat
+      # lm_sensors # for `sensors` command
+      # ethtool
+      # pciutils # lspci
+      # usbutils # lsusb
 
       ## MISCELLANEOUS ##
       which
@@ -69,13 +69,13 @@
       gnused
 
       ## PERSONAL ENJOYMENT ##
-      ani-cli
+      # ani-cli # watch anime in terminal!
 
       ## MONITORING TOOLS ##
       btop # for CPU, RAM, and Disk monitoring
       nvtopPackages.amd # for AMD GPUs
-      iotop # for disk I/O monitoring
-      iftop # for network I/O monitoring
+      #iotop # for disk I/O monitoring
+      #iftop # for network I/O monitoring
 
       ## GRAPHICAL APPS ##
       # Editors #
@@ -107,10 +107,5 @@
       # Some packages may not be cached so.. it may take some time to build
     ]);
 
-  services.flatpak.packages = [
-    # Flatpak packages to be installed on a per user basis
-    "io.github.tdesktop_x64.TDesktop" # 64Gram
-    "im.riot.Riot" # Element Matrix Client
-    "dev.vencord.Vesktop" # Vesktop
-  ];
+  services.flatpak.packages = (import ./flatpak-packages.nix).userPackages;
 }
