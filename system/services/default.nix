@@ -10,12 +10,12 @@
   imports =
     [
       ./ananicy-cpp.nix
-      ./apparmor.nix
       ./console-tty.nix
       ./gnome-keyring.nix
       ./gnupg-ssh.nix
     ]
-    ++ lib.optionals servicesSettings.containers [./containers.nix];
+    ++ lib.optionals servicesSettings.containers [./containers.nix]
+    ++ lib.optionals servicesSettings.apparmor [./apparmor.nix];
 
   ## Essential services ##
   # Enable xserver with xwayland
@@ -38,12 +38,6 @@
   };
   services.udev.enable = true;
   programs.dconf.enable = true;
-
-  # include zsh support, bash is enabled by default
-  # this only includes zsh package
-  programs.zsh.enable = true;
-  # zsh is also enabled for user, conditionally at ./users.nix
-  # set the user shell in ../flake.nix
 
   ## Configure XDG portal ##
   xdg.portal = {

@@ -31,6 +31,8 @@
       ./services
       # include specializations
       ./safe-specialization.nix
+
+      ./shell
     ]
     ++
     # Configure secure boot with lanzaboote, if secureboot is enabled

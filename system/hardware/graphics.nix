@@ -9,7 +9,6 @@
 in {
   hardware.amdgpu = {
     initrd.enable = true;
-    legacySupport.enable = true;
     # disabled to use a mix of pocl and rocm below
     opencl.enable = false;
   };
@@ -61,10 +60,13 @@ in {
   environment.systemPackages =
     (with pkgs; [
       ## GRAPHICS UTILS ##
+      /*
+         NOT NEEDED UNLESS WE NEED TESTING
       clinfo # OpenCL hardware information
       libva-utils # libva graphics library tools
       vdpauinfo # vdpau graphics library tools
       vulkan-tools # vulkan graphics library tools
+      */
     ])
     ++ (with nur-amdgpu; [
       amdgpu-pro-libs.prefixes

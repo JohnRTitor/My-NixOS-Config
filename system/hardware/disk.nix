@@ -1,8 +1,5 @@
 # Configure disks and zram
 {pkgs, ...}: {
-  # Enable support for bcachefs
-  boot.supportedFilesystems = ["bcachefs"];
-
   fileSystems = {
     "/".options = [
       "defaults"
@@ -13,7 +10,6 @@
       "dmask=0027"
     ]; # restrict access to /boot
   };
-
   # Enable zram swap
   zramSwap = {
     enable = true;

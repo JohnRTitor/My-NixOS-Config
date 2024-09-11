@@ -20,4 +20,6 @@
     ]
     ++ lib.optionals servicesSettings.adb [./adb-toolchain.nix]
     ++ lib.optionals servicesSettings.nginx [./nginx.nix];
+
+  programs.java.enable = true;
 }

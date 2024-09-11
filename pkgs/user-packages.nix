@@ -72,8 +72,6 @@
       # ani-cli # watch anime in terminal!
 
       ## MONITORING TOOLS ##
-      btop # for CPU, RAM, and Disk monitoring
-      nvtopPackages.amd # for AMD GPUs
       #iotop # for disk I/O monitoring
       #iftop # for network I/O monitoring
 
@@ -83,11 +81,7 @@
 
       # IDEs #
       android-studio
-      (jetbrains.plugins.addPlugins jetbrains.phpstorm [
-        "github-copilot"
-        "nixidea"
-      ])
-      (jetbrains.plugins.addPlugins jetbrains.rust-rover [
+      (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [
         "github-copilot"
         "nixidea"
       ])

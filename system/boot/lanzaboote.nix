@@ -13,6 +13,7 @@
     pkiBundle = "/etc/secureboot";
   };
 
-  # enable sbctl - a frontend to create, enroll manage keys
-  environment.systemPackages = [pkgs.sbctl];
+  # sbctl - a frontend to create, enroll manage keys
+  # just need once for importing secureboot keys
+  # environment.systemPackages = [pkgs.sbctl];
 }

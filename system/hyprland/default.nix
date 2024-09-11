@@ -140,6 +140,10 @@ in {
       hyprcursor
       pyprland # hyprland plugin, dropdown term, etc
       ags # widgets pipup
+
+      ## MONITORING TOOLS ##
+      btop # for CPU, RAM, and Disk monitoring
+      nvtopPackages.amd # for AMD GPUs
     ])
     ++ [
       self.packages.${pkgs.system}.weather-python-script # weather script

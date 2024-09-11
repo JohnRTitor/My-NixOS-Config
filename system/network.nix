@@ -2,6 +2,7 @@
 {...}: {
   # Enable WIFI, Ethernet, ...
   networking.networkmanager.enable = true;
+  /*
   networking.networkmanager.wifi.backend = "iwd"; # newer backend
 
   services.resolved.enable = true; # enable systemd-resolved
@@ -13,6 +14,7 @@
     "1.1.1.1" # Cloudflare DNS
     "1.0.0.1"
   ];
+  */
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
