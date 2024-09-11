@@ -53,17 +53,17 @@ in {
 
   programs.waybar = {
     enable = true; # enable waybar launcher
-    package = pkgs.waybar; # inputs.waybar.packages.${pkgs.system}.waybar;
+    package = pkgs.waybar;
   };
 
   programs.hyprlock = {
     enable = true; # enable Hyprlock screen locker
-    package = pkgs.hyprlock; # inputs.hyprlock.packages.${pkgs.system}.hyprlock;
+    package = pkgs.hyprlock;
   };
 
   services.hypridle = {
     enable = true; # enable Hypridle idle manager, needed for Hyprlock
-    package = pkgs.hypridle; # inputs.hypridle.packages.${pkgs.system}.hypridle;
+    package = pkgs.hypridle;
   };
 
   programs = {
@@ -147,10 +147,6 @@ in {
     ])
     ++ [
       self.packages.${pkgs.system}.weather-python-script # weather script
-      # inputs.hyprcursor.packages.${pkgs.system}.hyprcursor
-      # inputs.pyprland.packages.${pkgs.system}.pyprland
-      # inputs.ags.packages.${pkgs.system}.ags
-      # inputs.wallust.packages.${pkgs.system}.wallust
     ];
 
   # Environment variables to start the session with
