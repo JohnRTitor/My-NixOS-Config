@@ -6,7 +6,7 @@
     timezone = "Asia/Kolkata"; # select timezone
     locale = "en_US.UTF-8"; # select locale
     localeoverride = "en_IN";
-    stableversion = "24.05";
+    stableversion = "24.11";
     secureboot = true;
     laptop = false;
   };
@@ -28,5 +28,7 @@
     containers = false;
     tpm = false;
     virtualisation = false;
+    printing = false;
+    apparmor = false;
   };
 }

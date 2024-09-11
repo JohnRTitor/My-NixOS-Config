@@ -1,19 +1,5 @@
 # Configure disks and zram
 {pkgs, ...}: {
-  # Enable support for bcachefs
-  boot.supportedFilesystems = ["bcachefs"];
-
-  fileSystems = {
-    "/".options = [
-      "defaults"
-      "noatime"
-    ]; # disable access time updates
-    "/boot".options = [
-      "fmask=0137"
-      "dmask=0027"
-    ]; # restrict access to /boot
-  };
-
   # Enable zram swap
   zramSwap = {
     enable = true;

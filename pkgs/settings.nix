@@ -1,23 +1,33 @@
-{pkgs, ...}: {
-  # Enable aarch64-linux cross-compilation and running those binaries
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+# This config file is used to define system/global packages
+# this file is imported ../configuration.nix
+# User specific packages should be installed in ./user-packages.nix
+# Some packages/apps maybe handled by config options
+# They are scattered in ../system/ ../home-manager/ and ../programs/ directories
+{
+  self,
+  pkgs,
+  pkgs-edge,
+  inputs,
+  ...
+}: {
+  environment.systemPackages =
+    (with pkgs; [
+      # System Packages
+      git # obviously
+      openssh # for ssh
 
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-    package = pkgs.appimage-run.override {
-      # Extra libraries and packages for Appimage run
-      extraPkgs = pkgs:
-        with pkgs; [
-          ffmpeg
-          imagemagick
-        ];
-    };
-  };
+      ## URL FETCH TOOLS ##
+      curl
+      wget
 
-  # enable flatpak support
-  # flatpak configured via nix-flatpak flake modules
-  # which allows installing flatpak packages declaratively
-  # install flatpak packages in ./global-packages.nix or ./user-packages.nix
-  services.flatpak.enable = true;
+      #(callPackage ./gparted-wrapper.nix {})
+    ])
+    ++ (with pkgs-edge; [
+      # list of latest packages from nixpkgs master
+      # Can be used to install latest version of some packages
+    ])
+    ++ [
+      self.packages.${pkgs.system}.fhs-shell
+    ];
+  services.flatpak.packages = (import ./flatpak-packages.nix).systemPackages;
 }

@@ -10,12 +10,12 @@
   imports =
     [
       ./ananicy-cpp.nix
-      ./apparmor.nix
       ./console-tty.nix
       ./gnome-keyring.nix
       ./gnupg-ssh.nix
     ]
-    ++ lib.optionals servicesSettings.containers [./containers.nix];
+    ++ lib.optionals servicesSettings.containers [./containers.nix]
+    ++ lib.optionals servicesSettings.apparmor [./apparmor.nix];
 
   ## Essential services ##
   # Enable xserver with xwayland

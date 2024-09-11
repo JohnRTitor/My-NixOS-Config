@@ -64,11 +64,6 @@
     };
 
     ## MISC PACKAGES ##
-    bcachefs-tools = {
-      url = "github:koverstreet/bcachefs-tools";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
 
     ucodenix.url = "github:e-tho/ucodenix";
     browser-previews = {
