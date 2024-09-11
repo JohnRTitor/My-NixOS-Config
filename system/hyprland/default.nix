@@ -146,7 +146,8 @@ in {
       nvtopPackages.amd # for AMD GPUs
     ])
     ++ [
-      self.packages.${pkgs.system}.weather-python-script # weather script
+      self.packages.${pkgs.system}.weather-python-script # weather script'
+      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     ];
 
   # Environment variables to start the session with

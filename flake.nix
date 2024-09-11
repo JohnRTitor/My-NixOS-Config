@@ -29,6 +29,7 @@
 
     ## DESKTOP ENVIRONMENT ##
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
 
     ## MISC PACKAGES ##
 
