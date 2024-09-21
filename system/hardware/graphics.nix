@@ -78,7 +78,11 @@ in {
 
   # Graphics environment variables
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "radeonsi";
+    # apparently no need to set libva driver name anymore
+    # LIBVA_DRIVER_NAME = "radeonsi";
+    # best for amdgpu, va_gl can be used to select vaapi backend for vdpau,
+    # but it does not support a lot of features
+    # we need to set this manually like below
     VDPAU_DRIVER = "radeonsi";
   };
 }

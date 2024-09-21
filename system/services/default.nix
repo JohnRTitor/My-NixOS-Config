@@ -27,7 +27,8 @@
 
   # Enable scx extra schedulers, only available for linux-cachyos
   chaotic.scx.enable = (config.boot.kernelPackages.kernel.passthru.config.CONFIG_SCHED_CLASS_EXT or null) == "y"; # by default uses rustland
-  chaotic.scx.scheduler = "scx_bpfland";
+  # rustland is better and causes less lag in high load, even better than bpfland
+  chaotic.scx.scheduler = "scx_rustland";
 
   # Accounts daemon is needed to remember passwords and other account information
   # by display manager and other services
@@ -44,20 +45,22 @@
     enable = true;
     xdgOpenUsePortal = true; # use xdg-open with xdg-desktop-portal
   };
+
+  /*
+  # Not used anywhere
   xdg.terminal-exec = {
     enable = true;
     settings = {
       default = [
         "${pkgs.kitty}/share/applications/kitty.desktop"
       ];
-      /*
       GNOME = [
         "com.raggesilver.BlackBox.desktop"
         "org.gnome.Terminal.desktop"
       ];
-      */
     };
   };
+  */
 
   # XDG portal paths to link if useUserPackages=true is enabled in home-manager (flake.nix)
   environment.pathsToLink = [

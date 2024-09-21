@@ -85,6 +85,10 @@
         "github-copilot"
         "nixidea"
       ])
+      (jetbrains.plugins.addPlugins jetbrains.pycharm-professional [
+        "github-copilot"
+        "nixidea"
+      ])
 
       # whatsapp-for-linux
       libreoffice-fresh

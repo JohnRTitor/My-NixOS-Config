@@ -33,7 +33,10 @@
 
     ## MISC PACKAGES ##
 
-    ucodenix.url = "github:e-tho/ucodenix";
+    ucodenix = {
+      url = "github:e-tho/ucodenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package
       inputs.nixpkgs.follows = "nixpkgs";

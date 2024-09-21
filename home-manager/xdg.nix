@@ -47,12 +47,13 @@ in {
   xdg.mimeApps.associations.added = {
     # Text files
     "text/plain" = "org.gnome.TextEditor.desktop;";
+    "text/x-python" = "org.gnome.TextEditor.desktop;";
     "application/x-shellscript" = "org.gnome.TextEditor.desktop;";
     "application/json" = "org.gnome.TextEditor.desktop;code.desktop;";
     "application/xml" = "org.gnome.TextEditor.desktop;";
     "application/x-executable" = "kitty-open.desktop;Alacritty.desktop;";
     # Open directory with apps
-    "inode/directory" = "code.desktop;org.gnome.Nautilus.desktop;thunar.desktop;nnn.desktop;org.gnome.baobab.desktop;";
+    "inode/directory" = "org.gnome.Nautilus.desktop;code.desktop;thunar.desktop;nnn.desktop;org.gnome.baobab.desktop;";
     # Telegram
     "x-scheme-handler/tg" = "org.telegram.desktop.desktop;";
     "x-xdg-protocol-tg" = "org.telegram.desktop.desktop;";

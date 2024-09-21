@@ -18,6 +18,8 @@
       commit.verbose = true;
       # always rebase when pulling
       pull.rebase = true;
+      # automatically convert crlf line endings to lf when commiting
+      core.autocrlf = "input";
     };
     lfs.enable = true; # git lfs for large files
     diff-so-fancy.enable = true;

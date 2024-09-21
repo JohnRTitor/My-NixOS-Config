@@ -76,7 +76,11 @@ in {
     glib-networking.enable = true; # network extensions libs
   };
 
-  services.tumbler.enable = true; # thumbnailer service
+  services.tumbler.enable = true; # thumbnailer service for nauitlus
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "kitty";
+  };
 
   ## Configure essential packages ##
 

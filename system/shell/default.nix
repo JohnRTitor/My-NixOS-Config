@@ -12,5 +12,5 @@
   };
 
   # devenv a newer way for nix-shell
-  environment.systemPackages = [ pkgs.devenv ];
+  environment.systemPackages = [pkgs.devenv];
 }
