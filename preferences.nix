@@ -24,7 +24,7 @@
   servicesSettings = {
     adb = false;
     avahi = false;
-    nginx = false;
+    nginx = true;
     containers = false;
     tpm = false;
     virtualisation = false;
