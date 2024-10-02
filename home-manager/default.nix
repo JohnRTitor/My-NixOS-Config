@@ -26,6 +26,11 @@
 
       ./services.nix # services
     ]
+    ++ lib.optionals servicesSettings.nginx [
+      # Default Nginx server welcome testing page
+      # Nginx global config is located in ../dev-environment/nginx.nix
+      ./web-server-html
+    ]
     ++ lib.optionals osConfig.programs.thunar.enable [./thunar.nix]
     ++ lib.optionals servicesSettings.virtualisation [./virt-manager.nix];
 
