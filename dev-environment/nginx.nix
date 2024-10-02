@@ -38,6 +38,8 @@
     enable = true;
     package = pkgs.mariadb;
   };
+  # mycli is a MySQL cli helper with auto-completion and syntax highlighting
+  environment.systemPackages = with pkgs; [ mycli ];
 
   # PHP-FPM pool configuration
   # Needed for nginx to communicate with PHP
