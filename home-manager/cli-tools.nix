@@ -10,7 +10,7 @@ And scripts may not work the high customised setup
   # eza, a modern replacement for ls
   programs.eza = {
     enable = true;
-    icons = true;
+    icons = "auto";
     git = true;
     extraOptions = [
       # extra flags to pass to eza

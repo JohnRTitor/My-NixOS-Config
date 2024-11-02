@@ -5,7 +5,7 @@
   fonts.packages = with pkgs; [
     noto-fonts
     fira-code # used in VS code
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     jetbrains-mono
     font-awesome
     (nerdfonts.override {
