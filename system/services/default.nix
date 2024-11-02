@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  pkgs-master,
   systemSettings,
   servicesSettings,
   ...
@@ -26,9 +27,13 @@
   };
 
   # Enable scx extra schedulers, only available for linux-cachyos
-  chaotic.scx.enable = (config.boot.kernelPackages.kernel.passthru.config.CONFIG_SCHED_CLASS_EXT or null) == "y"; # by default uses rustland
+  services.scx.enable = true;
+  services.scx.package = pkgs-master.scx.full;
   # rustland is better and causes less lag in high load, even better than bpfland
-  chaotic.scx.scheduler = "scx_rustland";
+  services.scx.scheduler = "scx_rustland";
+  services.scx.extraArgs = [
+    "--verbose"
+  ];
 
   # Accounts daemon is needed to remember passwords and other account information
   # by display manager and other services

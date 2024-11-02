@@ -6,6 +6,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/nixos-unstable-small"; # For latest packages
     nixpkgs-master.url = "nixpkgs/master"; # Testing branch of nixpkgs
+    nixpkgs-scx-test.url = "github:nixos/nixpkgs/refs/pull/352300/merge";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts"; # Flake parts for easy flake management
