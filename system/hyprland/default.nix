@@ -68,6 +68,11 @@ in {
     enable = true; # enable Hypridle idle manager, needed for Hyprlock
     package = pkgs.hypridle;
   };
+  systemd.user.services.hypridle.path = [
+    config.programs.hyprland.package
+    config.programs.hyprlock.package
+    pkgs.procps
+  ];
 
   programs = {
     evince.enable = true; # document viewer
