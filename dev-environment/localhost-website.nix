@@ -8,8 +8,6 @@
   userSettings,
   ...
 }: {
-  services.nginx.enable = true;
-
   # Nginx virtual host configuration for localhost
   services.nginx.virtualHosts."localhost" = {
     root = "/var/www/localhost-server";

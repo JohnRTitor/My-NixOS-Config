@@ -20,10 +20,13 @@
     ]
     ++ lib.optionals servicesSettings.adb [./adb-toolchain.nix]
     ++ lib.optionals servicesSettings.nginx [
-      ./nginx.nix
+      ./localhost-website.nix
       ./adminer.nix
       ./mysql.nix
     ];
+
+  services.nginx.enable = servicesSettings.nginx;
+  services.nginx.package = pkgs.nginxQuic;
 
   programs.java.enable = true;
 }
