@@ -1,7 +1,20 @@
 # Configure networking, firewall, proxy, etc.
-{...}: {
+{
+  lib,
+  servicesSettings,
+  ...
+}: {
   # Enable WIFI, Ethernet, ...
   networking.networkmanager.enable = true;
+
+  networking.extraHosts =
+    lib.concatStringsSep "\n"
+    (lib.mapAttrsToList (name: ip: "${ip} ${name}") {
+      "adminer.local" = "127.0.0.1";
+      # "myhost" = "127.0.0.1";
+      # "myhost2" = "127.0.0.1";
+    });
+
   /*
   networking.networkmanager.wifi.backend = "iwd"; # newer backend
 

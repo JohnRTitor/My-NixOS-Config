@@ -1,20 +1,28 @@
 # Import of thie module is controlled by bool: servicesSettings.nginx
-# This config file mainly contains the Nginx configuration for localhost
-# Integrates with PHP (done through PHP-FPM) and MySQL
+# This is a configuration file for the adminer.local virtual host
+# It is a database management tool that is a single PHP file
 {
+  self,
   config,
   lib,
   pkgs,
-  userSettings,
+  servicesSettings,
   ...
 }: {
-  services.nginx.enable = true;
+  # Nginx configuration for adminer.local
+  # but for this to work, adminer.local must point to "127.0.0.1"
+  # via networking.extraHosts, you should add to ../system/network.nix
 
-  # Nginx virtual host configuration for localhost
-  services.nginx.virtualHosts."localhost" = {
-    root = "/var/www/localhost-server";
+  # To use adminer, just type adminer.local in the browser
+  # After any changes to this file, run the following commands:
+  # systemctl restart phpfpm-adminer.service nginx.service
+
+  services.nginx.virtualHosts."adminer.local" = {
     extraConfig = ''
       index index.php;
+    '';
+    locations."/".extraConfig = ''
+      try_files $uri $uri/ /index.php?$args;
     '';
 
     locations."~ ^(.+\\.php)(.*)$" = {
@@ -23,18 +31,19 @@
         try_files $fastcgi_script_name =404;
         include ${config.services.nginx.package}/conf/fastcgi_params;
         fastcgi_split_path_info  ^(.+\.php)(.*)$;
-        fastcgi_pass unix:${config.services.phpfpm.pools.mypool.socket};
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        fastcgi_pass unix:${config.services.phpfpm.pools.adminer.socket};
+        fastcgi_param  SCRIPT_FILENAME  $document_root/$fastcgi_script_name;
         fastcgi_param  PATH_INFO        $fastcgi_path_info;
 
         include ${config.services.nginx.package}/conf/fastcgi.conf;
       '';
     };
+    root = "${self.packages.${pkgs.system}.adminer-pematon-with-adminer-theme}";
   };
 
   # PHP-FPM pool configuration
   # Needed for nginx to communicate with PHP
-  services.phpfpm.pools.mypool = {
+  services.phpfpm.pools.adminer = {
     user = "nobody";
     settings = {
       "pm" = "dynamic";
@@ -47,14 +56,5 @@
       "pm.max_requests" = 500;
     };
     phpEnv."PATH" = lib.makeBinPath [pkgs.php];
-  };
-
-  # Bind mount the website instances directory
-  # As nginx can't follow symlinks
-  # And will have permissions issues if we use symlinks
-  fileSystems."/var/www/localhost-server" = {
-    device = "/home/masum/Website-Instances";
-    fsType = "none";
-    options = ["bind"];
   };
 }
