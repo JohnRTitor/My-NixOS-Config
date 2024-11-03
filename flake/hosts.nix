@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   self,
   ...
@@ -6,7 +7,7 @@
   inherit (inputs) nixpkgs nixpkgs-edge nixpkgs-master;
   inherit (nixpkgs) lib; # use lib from nixpkgs
 
-  inherit (import ../preferences.nix) systemSettings userSettings servicesSettings;
+  inherit (config.myOptions) systemSettings userSettings servicesSettings;
 
   # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
   pkgs-edge = import nixpkgs-edge {

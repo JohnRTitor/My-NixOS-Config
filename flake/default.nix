@@ -1,13 +1,14 @@
-let
-  inherit ((import ../preferences.nix).systemSettings) systemarch;
-in {
+{config, ... }:
+{
   imports = [
     ./hosts.nix # NixOS hosts/desktop systems are are defined there
+    ./options-definitions.nix
+    ../preferences.nix
   ];
 
   # systems for which you want to build the `perSystem` attributes
   systems = [
-    systemarch
+    config.myOptions.systemSettings.systemarch
     # "x86_64-linux"
     # "aarch64-linux"
   ];

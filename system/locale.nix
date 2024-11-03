@@ -7,15 +7,15 @@
   i18n.defaultLocale = systemSettings.locale;
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = systemSettings.localeoverride;
-    LC_IDENTIFICATION = systemSettings.localeoverride;
-    LC_MEASUREMENT = systemSettings.localeoverride;
-    LC_MONETARY = systemSettings.localeoverride;
-    LC_NAME = systemSettings.localeoverride;
-    LC_NUMERIC = systemSettings.localeoverride;
-    LC_PAPER = systemSettings.localeoverride;
-    LC_TELEPHONE = systemSettings.localeoverride;
-    LC_TIME = systemSettings.localeoverride;
+    LC_ADDRESS = systemSettings.additionalLocale;
+    LC_IDENTIFICATION = systemSettings.additionalLocale;
+    LC_MEASUREMENT = systemSettings.additionalLocale;
+    LC_MONETARY = systemSettings.additionalLocale;
+    LC_NAME = systemSettings.additionalLocale;
+    LC_NUMERIC = systemSettings.additionalLocale;
+    LC_PAPER = systemSettings.additionalLocale;
+    LC_TELEPHONE = systemSettings.additionalLocale;
+    LC_TIME = systemSettings.additionalLocale;
   };
 
   # Configure keymap in X11
