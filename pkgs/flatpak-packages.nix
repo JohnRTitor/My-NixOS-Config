@@ -7,7 +7,6 @@
 
   userPackages = [
     # Flatpak packages to be installed on a per user basis
-    "io.github.tdesktop_x64.TDesktop" # 64Gram
     "im.riot.Riot" # Element Matrix Client
     "dev.vencord.Vesktop" # Vesktop
   ];

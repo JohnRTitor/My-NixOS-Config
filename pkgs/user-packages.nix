@@ -98,6 +98,8 @@
       mission-center # Taskmanager clone
       warp # file transfer, also install android app
       clapper
+
+      _64gram
     ])
     ++ (with pkgs-edge; [
       # list of latest packages from nixpkgs master

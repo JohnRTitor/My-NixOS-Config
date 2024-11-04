@@ -28,7 +28,7 @@
 
   # Enable scx extra schedulers, only available for linux-cachyos
   services.scx.enable = true;
-  services.scx.package = pkgs-master.scx.full;
+  services.scx.package = pkgs.scx.full;
   # rustland is better and causes less lag in high load, even better than bpfland
   services.scx.scheduler = "scx_rustland";
   services.scx.extraArgs = [

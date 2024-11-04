@@ -23,6 +23,6 @@
     shell =
       if (userSettings.shell == "zsh")
       then pkgs.zsh
-      else pkgs.bash;
+      else pkgs.bashInteractive;
   };
 }
