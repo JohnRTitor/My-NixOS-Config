@@ -5,7 +5,8 @@
   userSettings,
   ...
 }: {
-  nix.package = pkgs.lix; # pkgs-edge.nixVersions.latest; # Use latest nix
+  ## Determinate Nix is configured in ../flake/hosts.nix
+  # nix.package = pkgs.lix; # pkgs-edge.nixVersions.latest; # Use latest nix
   # DONOT DISABLE THIS
   nix.settings.trusted-users = [userSettings.username]; # FIXME: if someday custom cache works without this
 

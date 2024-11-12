@@ -36,6 +36,7 @@ in {
       modules =
         [
           ../default-host/configuration.nix # main nix configuration
+          inputs.determinate.nixosModules.default # new nix by determinant systems
           inputs.chaotic.nixosModules.default # chaotic nix bleeding edge packages
           inputs.nur.nixosModules.nur # NUR - NixOS user repository
           inputs.ucodenix.nixosModules.ucodenix # ucodeNix - CPU microcode updates
@@ -48,7 +49,7 @@ in {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "hm.bak";
+              #backupFileExtension = "hm.bak";
               extraSpecialArgs =
                 specialArgs
                 // {
