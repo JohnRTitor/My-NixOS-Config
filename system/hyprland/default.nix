@@ -100,7 +100,6 @@ in {
       pamixer
       pavucontrol # audio control
       playerctl # media player control
-      pantheon.pantheon-agent-polkit # polkit agent for root prompt
       # POLKIT service is manually started
       # as defined in Hyprland-Dots repo
       rofi-wayland # app launcher
@@ -156,6 +155,8 @@ in {
       self.packages.${pkgs.system}.weather-python-script # weather script'
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     ];
+
+  security.soteria.enable = true; # soteria graphical polkit agent
 
   # Environment variables to start the session with
   environment.sessionVariables = {
