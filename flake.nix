@@ -6,7 +6,8 @@
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/nixos-unstable-small"; # For latest packages
     nixpkgs-master.url = "nixpkgs/master"; # Testing branch of nixpkgs
-    nixpkgs-scx-test.url = "github:nixos/nixpkgs/refs/pull/352300/merge";
+    nixpkgs-cava-fix.url = "github:nixos/nixpkgs/staging-next-24.11";
+    nixpkgs-libreoffice-pin.url = "nixpkgs/8487207876bffcf99e92aea3b853998bbeb474f0";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts"; # Flake parts for easy flake management
@@ -37,10 +38,7 @@
 
     ## MISC PACKAGES ##
 
-    ucodenix = {
-      url = "github:e-tho/ucodenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ucodenix.url = "github:e-tho/ucodenix";
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package
       inputs.nixpkgs.follows = "nixpkgs";

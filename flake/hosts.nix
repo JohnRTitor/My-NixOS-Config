@@ -2,31 +2,13 @@
   config,
   inputs,
   self,
+  pkgs-edge,
+  pkgs-master,
   ...
 }: let
-  inherit (inputs) nixpkgs nixpkgs-edge nixpkgs-master;
-  inherit (nixpkgs) lib; # use lib from nixpkgs
+  inherit (inputs.nixpkgs) lib; # use lib from nixpkgs
 
   inherit (config.myOptions) systemSettings userSettings servicesSettings;
-
-  # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
-  pkgs-edge = import nixpkgs-edge {
-    system = systemSettings.systemarch;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-      android_sdk.accept_license = true;
-    };
-  };
-
-  pkgs-master = import nixpkgs-master {
-    system = systemSettings.systemarch;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-      android_sdk.accept_license = true;
-    };
-  };
 
   specialArgs = {inherit self inputs pkgs-edge pkgs-master systemSettings userSettings servicesSettings;};
 in {

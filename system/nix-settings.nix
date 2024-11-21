@@ -35,8 +35,7 @@
   environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
   nixpkgs.config.android_sdk.accept_license = true;
 
-  programs.ssh.knownHosts."darwin-build-box.nix-community.org".publicKey =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFz8FXSVEdf8FvDMfboxhB5VjSe7y2WgSa09q1L4t099";
+  programs.ssh.knownHosts."darwin-build-box.nix-community.org".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFz8FXSVEdf8FvDMfboxhB5VjSe7y2WgSa09q1L4t099";
 
   nix = {
     distributedBuilds = true;
@@ -51,7 +50,7 @@
           "aarch64-darwin"
           "x86_64-darwin"
         ];
-        supportedFeatures = [ "big-parallel" "nixos-test" "benchmark" ];
+        supportedFeatures = ["big-parallel" "nixos-test" "benchmark"];
       }
     ];
   };

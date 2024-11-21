@@ -21,7 +21,6 @@ namespace nixos {
 				}
 			}
 		}
-
 		// Add AdminerTheme at the end of the plugins array
 		require_once(__DIR__ . '/plugins/AdminerTheme.php');
         // Color variant can by specified in constructor parameter.
