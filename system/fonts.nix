@@ -8,15 +8,10 @@
     noto-fonts-cjk-sans
     jetbrains-mono
     font-awesome
-    (nerdfonts.override {
-      # Nerd fonts, must for icons
-      fonts = [
-        "JetBrainsMono" # used in VS code terminal
-        "InconsolataLGC" # used in Alacritty, VS code
-        "FiraCode" # used in VS code
-        "Cousine" # Preferred by me as GTK font
-      ];
-    })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.inconsolata-lgc
+    nerd-fonts.fira-code
+    nerd-fonts.cousine
     roboto
     lohit-fonts.bengali # Bengali fonts
     # ultimate-oldschool-pc-font-pack
