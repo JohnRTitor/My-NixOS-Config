@@ -779,22 +779,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ananicy-service-fix": {
-      "locked": {
-        "lastModified": 1733165318,
-        "narHash": "sha256-70fBWeujm0vBlSdoI220+eIl9htzkn9JFCCipnNtAOI=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "7cf7058845c2f43058e4b032a73ed2580bc16318",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "refs/pull/361172/merge",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-cava-fix": {
       "locked": {
         "lastModified": 1733098789,
@@ -1072,7 +1056,6 @@
         "nix-flatpak": "nix-flatpak",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs_6",
-        "nixpkgs-ananicy-service-fix": "nixpkgs-ananicy-service-fix",
         "nixpkgs-cava-fix": "nixpkgs-cava-fix",
         "nixpkgs-edge": "nixpkgs-edge",
         "nixpkgs-libreoffice-pin": "nixpkgs-libreoffice-pin",
