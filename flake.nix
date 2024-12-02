@@ -7,6 +7,7 @@
     nixpkgs-edge.url = "nixpkgs/nixos-unstable-small"; # For latest packages
     nixpkgs-master.url = "nixpkgs/master"; # Testing branch of nixpkgs
     nixpkgs-cava-fix.url = "github:nixos/nixpkgs/staging-next-24.11";
+    nixpkgs-ananicy-service-fix.url = "github:nixos/nixpkgs/refs/pull/361172/merge";
     nixpkgs-libreoffice-pin.url = "nixpkgs/8487207876bffcf99e92aea3b853998bbeb474f0";
 
     flake-parts = {

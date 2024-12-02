@@ -5,5 +5,5 @@
   pkgs-edge,
   ...
 }: {
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_hardened;
 }
