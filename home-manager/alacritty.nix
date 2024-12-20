@@ -8,7 +8,7 @@
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
     # SETTINGS START
-    live_config_reload = true;
+    general.live_config_reload = true;
 
     bell = {
       animation = "EaseOutExpo";
@@ -96,7 +96,7 @@
       semantic_escape_chars = ",│`|:\"' ()[]{}<>";
     };
 
-    shell = {
+    terminal.shell = {
       program =
         if (userSettings.shell == "zsh")
         then "/run/current-system/sw/bin/zsh"

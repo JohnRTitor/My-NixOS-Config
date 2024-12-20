@@ -12,7 +12,6 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      cava = inputs.nixpkgs-cava-fix.legacyPackages.${pkgs.system}.cava;
     })
   ];
 }

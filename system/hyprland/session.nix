@@ -17,7 +17,7 @@
   # that properly starts Hyprland compositor with
   # `graphical-session.target` and necessary services
   programs.uwsm.enable = true;
-  programs.uwsm.package = pkgs-edge.uwsm;
+  programs.uwsm.package = pkgs.uwsm;
   programs.uwsm.waylandCompositors = {
     hyprland = {
       prettyName = "Hyprland";

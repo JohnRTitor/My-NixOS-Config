@@ -10,7 +10,7 @@
   # lanzaboote for secureboot
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "/etc/secureboot";
+    pkiBundle = "/var/lib/sbctl";
   };
 
   # sbctl - a frontend to create, enroll manage keys

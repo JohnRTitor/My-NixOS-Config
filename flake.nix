@@ -1,13 +1,11 @@
 {
-  description = "Flake of JohnRTitor (Hyprland, Secure-Boot)";
+  description = "NixOS configuration of JohnRTitor (Hyprland, Secure-Boot)";
 
   # Main sources and repositories
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
     nixpkgs-edge.url = "nixpkgs/nixos-unstable-small"; # For latest packages
     nixpkgs-master.url = "nixpkgs/master"; # Testing branch of nixpkgs
-    nixpkgs-cava-fix.url = "github:nixos/nixpkgs/staging-next-24.11";
-    nixpkgs-libreoffice-pin.url = "nixpkgs/8487207876bffcf99e92aea3b853998bbeb474f0";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts"; # Flake parts for easy flake management
@@ -30,20 +28,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.4.1"; # Declarative Flatpak support for NixOS
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.5.1"; # Declarative Flatpak support for NixOS
 
     ## DESKTOP ENVIRONMENT ##
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # Hyprland, a Wayland WM, use git submodules too
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ## MISC PACKAGES ##
 
     ucodenix.url = "github:e-tho/ucodenix";
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package
+      url = "github:nix-community/nix-vscode-extensions"; # Grab latest VScode extensions as a package;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR"; # Nix User Repository, for community packages
+    nur = {
+      url = "github:nix-community/NUR"; # Nix User Repository, for community packages
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 

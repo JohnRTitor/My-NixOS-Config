@@ -89,6 +89,7 @@
         "github-copilot"
         "nixidea"
       ])
+      scilab-bin
 
       # whatsapp-for-linux
       libreoffice-fresh

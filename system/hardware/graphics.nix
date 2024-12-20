@@ -5,7 +5,7 @@
   pkgs-edge,
   ...
 }: let
-  nur-amdgpu = config.nur.repos.materus;
+  nur-amdgpu = pkgs.nur.repos.materus;
 in {
   hardware.amdgpu = {
     initrd.enable = true;
@@ -13,6 +13,10 @@ in {
     opencl.enable = false;
   };
 
+  /*
+  # Enabling AMDVLK autodisables RADV
+  # RADV is better
+  # AMDVLK is buggy and VK implementation is not good
   hardware.amdgpu.amdvlk = {
     enable = true;
     support32Bit.enable = true;
@@ -25,6 +29,7 @@ in {
       IdleAfterSubmitGpuMask = 0;
     };
   };
+  */
 
   # AMDGPU-PRO firmware
   hardware.firmware = with nur-amdgpu; [

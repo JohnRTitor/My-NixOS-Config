@@ -14,7 +14,7 @@
   pkgs-hyprland =
     if hyprlandFlake
     then inputs.hyprland.packages.${pkgs.system}
-    else pkgs-edge;
+    else pkgs;
 in {
   imports = [
     ./session.nix
