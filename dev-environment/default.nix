@@ -15,6 +15,7 @@
       # and contains a lot of prebuilt packages
       # configured in home manager
 
+      ./jupyter.nix
       # ./deprecated/c-toolchain.nix
       # ./deprecated/php.nix
     ]
