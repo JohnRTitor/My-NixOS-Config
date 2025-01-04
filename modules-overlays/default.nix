@@ -12,6 +12,9 @@
 
   nixpkgs.overlays = [
     (final: prev: {
+      jack1 = pkgs-master.jack1;
+      pocl = pkgs-master.pocl;
+      rocmPackages = pkgs-master.rocmPackages;
     })
   ];
 }
