@@ -8,7 +8,7 @@
 }: {
   imports = [
     #./amdgpu.nix # import modules here to test
-    "${inputs.nixpkgs-jupyter-service-fix}/nixos/modules/services/development/jupyter/default.nix"
+    "${inputs.nixpkgs-master}/nixos/modules/services/development/jupyter/default.nix"
   ];
 
   disabledModules = [

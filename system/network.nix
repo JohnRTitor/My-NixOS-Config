@@ -10,7 +10,8 @@
   networking.extraHosts =
     lib.concatStringsSep "\n"
     (lib.mapAttrsToList (name: ip: "${ip} ${name}") {
-      "adminer.local" = "127.0.0.1";
+      "adminer.local" = "127.0.0.10";
+      # "jupyter.local" = "127.0.0.11";
       # "myhost" = "127.0.0.1";
       # "myhost2" = "127.0.0.1";
     });

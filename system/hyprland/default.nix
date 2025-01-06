@@ -11,6 +11,7 @@
   ...
 }: let
   hyprlandFlake = true;
+  hyprlandLTO = true;
   pkgs-hyprland =
     if hyprlandFlake
     then inputs.hyprland.packages.${pkgs.system}
@@ -25,16 +26,24 @@ in {
     enable = true;
     package =
       (pkgs-hyprland.hyprland.override {
-        #stdenv = pkgs.clangStdenv;
+        stdenv = pkgs.clangStdenv;
       })
       .overrideAttrs
       (prevAttrs: {
         patches =
           (prevAttrs.patches or [])
           ++ [
-            #./enable-lto.patch
             ./add-env-vars-to-export.patch
+          ] ++ lib.optionals hyprlandLTO [
+            ./enable-lto.patch
           ];
+        mesonFlags = prevAttrs.mesonFlags or []
+          ++ lib.optionals hyprlandLTO [
+          (lib.mesonBool "b_lto" true)
+          (lib.mesonOption "b_lto_threads" "12")
+          (lib.mesonOption "b_lto_mode" "thin")
+          (lib.mesonBool "b_thinlto_cache" true)
+        ];
       });
     portalPackage = pkgs-hyprland.xdg-desktop-portal-hyprland;
   };
