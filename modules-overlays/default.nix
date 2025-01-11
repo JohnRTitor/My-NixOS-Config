@@ -8,18 +8,14 @@
 }: {
   imports = [
     #./amdgpu.nix # import modules here to test
-    "${inputs.nixpkgs-master}/nixos/modules/services/development/jupyter/default.nix"
   ];
 
   disabledModules = [
-    "${inputs.nixpkgs}/nixos/modules/services/development/jupyter/default.nix"
+    # Disable specific modules
   ];
 
   nixpkgs.overlays = [
     (final: prev: {
-      jack1 = pkgs-master.jack1;
-      pocl = pkgs-master.pocl;
-      rocmPackages = pkgs-master.rocmPackages;
     })
   ];
 }
