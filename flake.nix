@@ -12,9 +12,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    # Determinate, Nix by Determinate Systems
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*.tar.gz";
-
     # Don't add follows nixpkgs, else will cause local rebuilds
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # Bleeding edge packages from chaotic nyx, especially CachyOS kernel
 
