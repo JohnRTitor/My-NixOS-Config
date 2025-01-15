@@ -6,7 +6,7 @@
 {
   self,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   inputs,
   ...
 }: {
@@ -22,7 +22,7 @@
 
       #(callPackage ./gparted-wrapper.nix {})
     ])
-    ++ (with pkgs-edge; [
+    ++ (with pkgs-master; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
     ])

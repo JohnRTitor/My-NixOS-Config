@@ -6,7 +6,7 @@
   config,
   lib,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   inputs,
   ...
 }: let

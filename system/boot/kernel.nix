@@ -2,7 +2,7 @@
 {
   config,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   ...
 }: {
   boot.kernelPackages = pkgs.linuxPackages_cachyos;

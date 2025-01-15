@@ -1,7 +1,7 @@
 # This config file is used to configure browsers
 {
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   inputs,
   ...
 }: {

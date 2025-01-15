@@ -2,7 +2,6 @@
   config,
   inputs,
   self,
-  pkgs-edge,
   pkgs-master,
   ...
 }: let
@@ -10,7 +9,7 @@
 
   inherit (config.myOptions) systemSettings userSettings servicesSettings;
 
-  specialArgs = {inherit self inputs pkgs-edge pkgs-master systemSettings userSettings servicesSettings;};
+  specialArgs = {inherit self inputs pkgs-master systemSettings userSettings servicesSettings;};
 in {
   flake = {
     nixosConfigurations.${systemSettings.hostname} = lib.nixosSystem {

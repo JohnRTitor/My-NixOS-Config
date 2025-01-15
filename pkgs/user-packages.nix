@@ -5,7 +5,7 @@
 # They are scattered in ../system/ ../home-manager/ and ../apps/ directories
 {
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   inputs,
   ...
 }: {
@@ -102,7 +102,7 @@
 
       _64gram
     ])
-    ++ (with pkgs-edge; [
+    ++ (with pkgs-master; [
       # list of latest packages from nixpkgs master
       # Can be used to install latest version of some packages
       # Some packages may not be cached so.. it may take some time to build

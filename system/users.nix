@@ -2,7 +2,7 @@
 {
   self,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   systemSettings,
   userSettings,
   inputs,

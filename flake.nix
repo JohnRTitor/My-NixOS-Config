@@ -4,7 +4,6 @@
   # Main sources and repositories
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable"; # Unstable NixOS system (default)
-    nixpkgs-edge.url = "nixpkgs/nixos-unstable-small"; # For latest packages
     nixpkgs-master.url = "nixpkgs/master"; # Testing branch of nixpkgs
 
     flake-parts = {

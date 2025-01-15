@@ -2,7 +2,7 @@
 {
   config,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   ...
 }: let
   nur-amdgpu = pkgs.nur.repos.materus;

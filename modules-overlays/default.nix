@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  pkgs-edge,
   pkgs-master,
   inputs,
   ...

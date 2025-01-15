@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   ...
 }: {
   # Enable GDM with wayland

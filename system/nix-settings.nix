@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   userSettings,
   ...
 }: {

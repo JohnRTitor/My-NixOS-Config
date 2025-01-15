@@ -3,7 +3,7 @@
   osConfig,
   lib,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   inputs,
   systemSettings,
   userSettings,

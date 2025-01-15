@@ -5,16 +5,7 @@
   ...
 }:
 let 
-  # bleeding edge packages from nixpkgs unstable branch, for packages that need immediate updates
-  pkgs-edge = import inputs.nixpkgs-edge {
-    system = config.myOptions.systemSettings.systemarch;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-      android_sdk.accept_license = true;
-    };
-  };
-
+  # bleeding edge packages from nixpkgs master branch, for packages that need immediate updates
   pkgs-master = import inputs.nixpkgs-master {
     system = config.myOptions.systemSettings.systemarch;
     config = {
@@ -31,7 +22,7 @@ in
     ../preferences.nix
   ];
 
-  _module.args = { inherit pkgs-edge pkgs-master; };
+  _module.args = { inherit pkgs-master; };
 
   # systems for which you want to build the `perSystem` attributes
   systems = lib.unique [

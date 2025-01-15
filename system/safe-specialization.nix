@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  pkgs-edge,
+  pkgs-master,
   ...
 }: {
   # Creates a second boot entry with xanmod kernel and scx disabled
